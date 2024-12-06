@@ -24,7 +24,7 @@ const roboto = Roboto({
 
 // Importing Poppins font with all weights
 const poppins = Poppins({
-  weight: ['100', '200', '300', '400', '500', '600', '700', '800', '900'],  // Requesting all weights
+  weight: ["300","400", "500" ,"600" ,"700", "900"],  // Requesting all weights
   subsets: ['latin'],
 });
 
