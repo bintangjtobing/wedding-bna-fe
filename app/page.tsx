@@ -1,4 +1,4 @@
-'use client'
+"use client";
 
 import Image from "next/image";
 import { useState, useRef } from "react";
@@ -15,12 +15,14 @@ export default function Home() {
 
   // Variants untuk animasi
   const motionVariants = {
-    hidden: { x: '100%', opacity: 0 }, // Kondisi awal
+    hidden: { x: "100%", opacity: 0 }, // Kondisi awal
     visible: { x: 0, opacity: 1 }, // Kondisi akhir
   };
 
   // Fungsi untuk mengontrol video
-  const handleOpenChange: React.Dispatch<React.SetStateAction<boolean>> = (isOpen) => {
+  const handleOpenChange: React.Dispatch<React.SetStateAction<boolean>> = (
+    isOpen
+  ) => {
     setOpen(isOpen);
     if (videoRef.current) {
       if (isOpen) {
@@ -30,11 +32,10 @@ export default function Home() {
       }
     }
   };
-  
 
   return (
     <>
-     <Modal open={open} setOpen={setOpen} />
+      <Modal open={open} setOpen={setOpen} />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
         <div className="relative">
@@ -65,7 +66,9 @@ export default function Home() {
           <nav className="max-w-screen-xl mx-auto py-5 px-3">
             <Image
               className="absolute z-20"
-              src={'https://res.cloudinary.com/du0tz73ma/image/upload/v1733230643/image_1_toske2.png'}
+              src={
+                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733230643/image_1_toske2.png"
+              }
               width={120}
               height={120}
               alt="logo"
@@ -74,13 +77,15 @@ export default function Home() {
 
           <div className="mx-auto pl-5 lg:pl-32 absolute bottom-40 w-full z-20">
             <Image
-              src={'https://res.cloudinary.com/du0tz73ma/image/upload/v1733231582/image_3_gkyqke.png'}
+              src={
+                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733231582/image_3_gkyqke.png"
+              }
               width={100}
               height={100}
               alt="nikahfix-series"
             />
             <div className="text-white mt-3 lg:mt-5">
-              <h1 className="text-3xl lg:text-5xl font-extrabold mb-5 lg:mb-5">
+              <h1 className="text-3xl lg:text-4xl font-extrabold mb-5 lg:mb-5">
                 Bintang & Ayu <br /> Sebelum hari H
               </h1>
               <div className="flex justify-between">
@@ -92,7 +97,7 @@ export default function Home() {
                     onClick={() => handleOpenChange(true)}
                     className="text-white py-2 px-3 lg:py-4 lg:px-9 rounded-md text-sm lg:text-2xl font-semibold flex gap-1 items-center"
                     style={{
-                      backgroundColor: 'rgba(249, 250, 251, 0.3)',
+                      backgroundColor: "rgba(249, 250, 251, 0.3)",
                     }}
                   >
                     <svg
@@ -124,7 +129,7 @@ export default function Home() {
                       delay: openGuest ? 0 : 0.8, // Tambahkan jeda saat openGuest berubah menjadi false
                       ease: "easeOut",
                     }}
-                    style={{ backgroundColor: 'rgba(2, 6, 23, 0.7)' }}
+                    style={{ backgroundColor: "rgba(2, 6, 23, 0.7)" }}
                     className="border-l-4 border-white px-4 py-2 absolute w-max right-0 bottom-[-4rem] lg:bottom-0"
                   >
                     <p className="text-white">11 Juli 2025</p>
