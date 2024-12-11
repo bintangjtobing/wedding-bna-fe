@@ -120,8 +120,8 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                     <div className="lg:flex justify-between space-y-3 items-center text-gray-400 mb-3 lg:mb-5">
                       <p>
                         Coming soon 2025 July 11<sup>st</sup>{" "}
-                        <span className="border text-sm px-2">HD</span>{" "}
-                        <span className="border text-sm px-2">SU</span>
+                        <span className="border text-sm px-2 ml-1">4K</span>{" "}
+                        <span className="border text-sm px-2">17+</span>
                       </p>
                       <p className="text-white text-sm">
                         <span className="text-gray-400 text-xs">Cast:</span>{" "}
