@@ -1,6 +1,4 @@
 import React from "react";
-import * as Dialog from "@radix-ui/react-dialog";
-import { Cross2Icon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "motion/react";
@@ -136,9 +134,9 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                         menuju pernikahan.
                       </p>
                       <p className="text-xs lg:text-sm text-gray-400 font-light">
-                        "Sehati sepikirlah kamu, dan hiduplah dalam damai
+                       {`"Sehati sepikirlah kamu, dan hiduplah dalam damai
                         sejahtera; maka Allah, sumber kasih dan damai sejahtera
-                        akan menyertai kamu!"
+                        akan menyertai kamu!"`}
                       </p>
                     </div>
                     <div className="mt-8">
@@ -439,7 +437,7 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:py-2 lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
                               <p className="lg:text-xl text-sm font-medium">
-                                Groom's Favorite
+                                {`Groom's Favorite`}
                               </p>
                             </div>
                           </div>
@@ -484,7 +482,7 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
                               <p className="lg:text-xl text-sm font-medium">
-                                Bride's Favorite
+                                {`Bride's Favorite`}
                               </p>
                             </div>
                           </div>

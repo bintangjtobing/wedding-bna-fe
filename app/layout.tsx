@@ -1,6 +1,6 @@
 import type { Metadata } from "next";
 import localFont from "next/font/local";
-import { Roboto, Poppins } from "next/font/google";
+import { Poppins } from "next/font/google";
 import "./globals.css";
 
 // Importing local fonts
@@ -14,12 +14,6 @@ const geistMono = localFont({
   src: "./fonts/GeistMonoVF.woff",
   variable: "--font-geist-mono",
   weight: "100 900",
-});
-
-// Importing Google Font (Roboto)
-const roboto = Roboto({
-  weight: "400",
-  subsets: ["latin"],
 });
 
 // Importing Poppins font with all weights

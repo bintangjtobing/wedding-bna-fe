@@ -1,4 +1,5 @@
 import { motion, AnimatePresence } from "framer-motion";
+import Image from "next/image";
 
 interface Props {
   openGuest: boolean;
@@ -34,9 +35,9 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
           className="fixed inset-0 h-screen w-screen bg-[#141414] flex items-center justify-center z-50"
         >
           <div className="text-center">
-            <h1 className="text-4xl font-medium text-white mb-3">Who's watching?</h1>
+            <h1 className="text-4xl font-medium text-white mb-3">{`Who's watching?`}</h1>
             <div>
-              <img
+              <Image
                 className="mx-auto cursor-pointer"
                 src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png"
                 alt="Guest Avatar"
