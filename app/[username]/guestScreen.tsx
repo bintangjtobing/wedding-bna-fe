@@ -1,5 +1,6 @@
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
+import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
 
 interface Props {
@@ -25,13 +26,15 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
     },
   };
 
+  const params = useParams();
+  const username = params.username;
 
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`https://wedding-api.bintangtobing.com/api/invitation`)
+      const response = await fetch(`https://wedding-api.bintangtobing.com/api/invitation/${username}`)
       const result = await response.json()
-      setName(result[0].name)
-      setProfile_picture(result[0].profile_picture)
+      setName(result.name)
+      setProfile_picture(result.profile_picture)
     }
 
     getData()
@@ -57,7 +60,7 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
                 width={200}
                 height={200}
                 className="mx-auto cursor-pointer"
-                src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png"
+                src={profil_picture}
                 alt="Guest Avatar"
               />
               <p className="text-gray-500 mt-5 font-light">{name}</p>
