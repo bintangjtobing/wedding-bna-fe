@@ -9,7 +9,6 @@ interface Props {
 
 export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
   const [name, setName] = useState<string>("")
-  const [profil_picture, setProfile_picture] = useState<string>('')
   const variant = {
     // hidden: {
     //   opacity: 0,
@@ -31,7 +30,6 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
       const response = await fetch(`https://wedding-api.bintangtobing.com/api/invitation`)
       const result = await response.json()
       setName(result[0].name)
-      setProfile_picture(result[0].profile_picture)
     }
 
     getData()

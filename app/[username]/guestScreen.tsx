@@ -38,7 +38,7 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
     }
 
     getData()
-  }, [])
+  }, [username])
   
 
   return (
