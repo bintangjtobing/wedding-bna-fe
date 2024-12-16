@@ -2,6 +2,8 @@ import React from "react";
 import Image from "next/image";
 import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "motion/react";
+import { Collaps } from "./collapsible";
+import Link from "next/link";
 
 interface DialogProps {
   open: boolean;
@@ -134,7 +136,7 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                         menuju pernikahan.
                       </p>
                       <p className="text-xs lg:text-sm text-gray-400 font-light">
-                       {`"Sehati sepikirlah kamu, dan hiduplah dalam damai
+                        {`"Sehati sepikirlah kamu, dan hiduplah dalam damai
                         sejahtera; maka Allah, sumber kasih dan damai sejahtera
                         akan menyertai kamu!"`}
                       </p>
@@ -244,14 +246,14 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                           Jl Pembangunan III No. 57A, Medan Timur
                         </p>
                       </div>
-                      <button
+                      <Link href={'#'}
                         style={{
                           backgroundColor: "rgb(217,217,217, 0.5)",
                         }}
-                        className="w-full py-3 mt-3"
+                        className="w-full py-3 mt-3 block text-center rounded-md"
                       >
                         Add to calendar
-                      </button>
+                      </Link>
                     </div>
                     <div className="mt-8">
                       <Image
@@ -279,14 +281,14 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                           Jl Rela No. 119, Medan
                         </p>
                       </div>
-                      <button
+                      <Link href={'#'}
                         style={{
                           backgroundColor: "rgb(217,217,217, 0.5)",
                         }}
-                        className="w-full py-3 mt-3"
+                        className="w-full py-3 mt-3 block text-center rounded-md"
                       >
                         Add to calendar
-                      </button>
+                      </Link>
                     </div>
                     <div className="mt-8 space-y-5 lg:space-y-10">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-2 lg:mb-8">
@@ -313,11 +315,14 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                               </p>
                             </div>
                           </div>
-                          <p className="mt-4 lg:text-lg text-xs text-gray-200">
-                            Bintang dan Ayu pertama kali bertemu sebagai rekan
+                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                            <Collaps
+                              contentTriger="Bintang dan Ayu pertama kali bertemu sebagai rekan...."
+                              content="Bintang dan Ayu pertama kali bertemu sebagai rekan
                             kerja di kantor yang sama. Kegiatan-kegiatan kecil
-                            kantor yang sering melibatkan orang-orang didala...
-                          </p>
+                            kantor yang sering melibatkan orang-orang didala... "
+                            />
+                          </div>
                         </div>
                       </div>
                       <div>
@@ -341,12 +346,15 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                               </p>
                             </div>
                           </div>
-                          <p className="mt-4 lg:text-lg text-xs text-gray-200">
-                            Hari demi hari terlewati, sampai akhirnya mereka
+                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                            <Collaps
+                              contentTriger="Hari demi hari terlewati, sampai akhirnya mereka..."
+                              content="Hari demi hari terlewati, sampai akhirnya mereka
                             menyadari bahwa perasaan yang mereka miliki satu
                             sama lain bukan sebatas rekan kerja belaka,
-                            melain...
-                          </p>
+                            melain..."
+                            />
+                          </div>
                         </div>
                       </div>
                       <div>
@@ -370,17 +378,20 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                               </p>
                             </div>
                           </div>
-                          <p className="mt-4 lg:text-lg text-xs text-gray-200">
-                            Seringkali Bintang memberitahu Ayu bahwa ia tertarik
+                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                            <Collaps
+                              contentTriger="Seringkali Bintang memberitahu Ayu bahwa ia tertarik....."
+                              content="Seringkali Bintang memberitahu Ayu bahwa ia tertarik
                             dan ingin menjalani hubungan lebih serius. Sampai
                             akhirnya di akhir 2023, Bintang mulai
-                            memberanikan...
-                          </p>
+                            memberanikan..."
+                            />
+                          </div>
                         </div>
                       </div>
                       <div>
                         <div>
-                          <div className="lg:flex grid grid-cols-2 items-center gap-5">
+                          <div className="lg:flex grid grid-cols-2 gap-5">
                             <Image
                               src={
                                 "https://res.cloudinary.com/du0tz73ma/image/upload/v1733412772/image_7_nabhvi.png"
@@ -402,11 +413,11 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                               </p>
                             </div>
                           </div>
-                          <p className="mt-4 lg:text-lg text-xs text-gray-200">
+                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
                             Ketika hari H itu datang, Bintang dan Ayu akan
                             berbagi kisah haru mereka disini. Sampai bertemu
                             lagi di cerita bahagia selanjutnya!
-                          </p>
+                          </div>
                         </div>
                       </div>
                     </div>
@@ -515,9 +526,10 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                           className="rounded-2xl"
                         />
                       </div>
-                      <button className="w-full py-3 rounded-md font-semibold bg-[#EB2929] mt-8">
+                      <Link href={'/more-collection'} className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8">
                         Load more collections
-                      </button>
+                      </Link>
+
                     </div>
                     <div className="mt-8">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-8">

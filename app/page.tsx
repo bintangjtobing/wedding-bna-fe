@@ -63,16 +63,18 @@ export default function Home() {
               zIndex: 1,
             }}
           ></div>
-          <nav className="max-w-screen-xl mx-auto py-5 px-3">
-            <Image
-              className="absolute z-20"
-              src={
-                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733230643/image_1_toske2.png"
-              }
-              width={120}
-              height={120}
-              alt="logo"
-            />
+          <nav className="w-full mx-auto py-5 px-3 absolute top-0">
+            <div className="max-w-screen-xxl mx-auto px-10">
+              <Image
+                className=""
+                src={
+                  "https://res.cloudinary.com/du0tz73ma/image/upload/v1733230643/image_1_toske2.png"
+                }
+                width={120}
+                height={120}
+                alt="logo"
+              />
+            </div>
           </nav>
 
           <div className="mx-auto pl-5 lg:pl-32 absolute bottom-40 w-full z-20">
