@@ -5,6 +5,7 @@
 import React from "react";
 import * as Dialog from "@radix-ui/react-dialog";
 import { Cross2Icon } from "@radix-ui/react-icons";
+import Image from "next/image";
 
 interface ImageModalProps {
   isOpen: boolean;
@@ -29,9 +30,11 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUrl }) =>
                 <Cross2Icon />
               </button>
             </Dialog.Close>
-            <img
+            <Image
               src={imageUrl}
               alt="Enlarged"
+              width={1000}
+              height={1000}
               className="rounded-lg w-full h-full object-contain"
             />
           </div>

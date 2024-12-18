@@ -5,10 +5,12 @@ import { useState, useRef } from "react";
 import { Modal } from "./Modal";
 import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
+import { ModalForMoreCollections } from "./Modal/ModalForMoreCollections";
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
+  const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -35,7 +37,8 @@ export default function Home() {
 
   return (
     <>
-      <Modal open={open} setOpen={setOpen} />
+      <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection}/>
+      <Modal setOpemModalCollection={setOpenModalCollection} openModalCollection={openModalCollection} open={open} setOpen={setOpen} />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
         <div className="relative">

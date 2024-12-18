@@ -26,7 +26,7 @@ const ModalWelcome = () => {
                                     className="inline-flex h-[40px] items-center justify-center rounded bg-pink-500 px-[20px] text-white font-medium hover:bg-pink-600 focus:ring-2 focus:ring-pink-300 focus:outline-none"
                                     onClick={() => setOpen(false)}
                                 >
-                                    Let's Celebrate!
+                                    {`Let's Celebrate!`}
                                 </button>
                             </Dialog.Close>
                         </div>

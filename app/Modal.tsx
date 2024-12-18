@@ -8,9 +8,11 @@ import Link from "next/link";
 interface DialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
+  openModalCollection: boolean;
+  setOpemModalCollection: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
-export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
+export const Modal: React.FC<DialogProps> = ({ open, setOpen, setOpemModalCollection, openModalCollection }) => {
   const { ref, inView } = useInView({
     triggerOnce: true, // Animasi hanya dijalankan sekali
     threshold: 0.1, // Elemen minimal 10% terlihat di layar untuk memicu animasi
@@ -55,7 +57,7 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
   return (
     <>
       <AnimatePresence>
-        {open && (
+        {open && !openModalCollection && (
           <>
             <motion.div
               variants={overlayVariants}
@@ -526,9 +528,13 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen }) => {
                           className="rounded-2xl"
                         />
                       </div>
-                      <Link href={'/more-collection'} className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8">
+                      {/* <Link href={'/more-collection'} className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8">
                         Load more collections
-                      </Link>
+                      </Link> */}
+
+                      <button onClick={() => setOpemModalCollection(true)} className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8">
+                        Load more collections
+                      </button>
 
                     </div>
                     <div className="mt-8">
