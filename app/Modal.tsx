@@ -4,15 +4,45 @@ import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "motion/react";
 import { Collaps } from "./collapsible";
 import Link from "next/link";
+import { useState } from "react";
+import { postAttendance } from "./services/attendance";
+import Swal from 'sweetalert2'
 
 interface DialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   openModalCollection: boolean;
   setOpemModalCollection: React.Dispatch<React.SetStateAction<boolean>>;
+  parameter: string;
 }
 
-export const Modal: React.FC<DialogProps> = ({ open, setOpen, setOpemModalCollection, openModalCollection }) => {
+export const Modal: React.FC<DialogProps> = ({ 
+  open, 
+  setOpen, 
+  setOpemModalCollection, 
+  openModalCollection,
+  parameter
+}) => {
+
+  const [name, setName] = useState<string>("");
+  const [message, setMessage] = useState<string>("");
+  const [attend, setAttend] = useState<string>("");
+
+  const handleClick = async () => {
+    try {
+      const response = await postAttendance({attendace_name: name, attendance_message: message, attend: attend === "1" ? true : false}, parameter);
+      if(response.message === "Attendance updated successfully"){
+        Swal.fire({
+          title: "Thankyou",
+          text: "Some beautiful message",
+          icon: "success"
+        });
+      }
+    } catch (error) {
+      console.log(error);
+    }
+  }
+
   const { ref, inView } = useInView({
     triggerOnce: true, // Animasi hanya dijalankan sekali
     threshold: 0.1, // Elemen minimal 10% terlihat di layar untuk memicu animasi
@@ -648,6 +678,7 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen, setOpemModalCollec
                           Nama
                         </label>
                         <input
+                          onChange={(e) => setName(e.target.value)}
                           type="text"
                           className="bg-white h-10 text-black px-3"
                         />
@@ -657,11 +688,29 @@ export const Modal: React.FC<DialogProps> = ({ open, setOpen, setOpemModalCollec
                           Pesan
                         </label>
                         <textarea
+                          onChange={(e) => setMessage(e.target.value)}
                           rows={5}
                           className="bg-white text-black px-3"
                         />
                       </div>
-                      <button className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md">
+                      <div className="mt-10 flex flex-col">
+                        <label className="mb-2 lg:text-2xl text-lg" htmlFor="attendance">
+                          Kehadiran
+                        </label>
+                        <select
+                          onChange={(e) => setAttend(e.target.value)}
+                          className="h-10 px-2 text-black border border-gray-300 rounded"
+                          name="attendance"
+                          id="attendance"
+                          defaultValue="0"
+                          aria-label="Attendance options"
+                        >
+                          <option value="0">Berhalang hadir</option>
+                          <option value="1">Hadir</option>
+                        </select>
+
+                      </div>
+                      <button onClick={handleClick} className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md">
                         Send
                       </button>
                     </div>

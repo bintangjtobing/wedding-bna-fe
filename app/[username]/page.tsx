@@ -6,11 +6,15 @@ import { Modal } from "../Modal";
 import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
 import { ModalForMoreCollections } from "../Modal/ModalForMoreCollections";
+import { useParams } from "next/navigation";
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
   const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
+
+  const params = useParams();
+  const username = Array.isArray(params.username) ? params.username[0] : params.username; // Pastikan username adalah string
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -38,7 +42,13 @@ export default function Home() {
   return (
     <>
       <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection} />
-      <Modal setOpemModalCollection={setOpenModalCollection} openModalCollection={openModalCollection} open={open} setOpen={setOpen} />
+      <Modal 
+        setOpemModalCollection={setOpenModalCollection} 
+        openModalCollection={openModalCollection} 
+        open={open} 
+        setOpen={setOpen} 
+        parameter={username}
+      />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
         <div className="relative">

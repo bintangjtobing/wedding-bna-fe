@@ -38,7 +38,13 @@ export default function Home() {
   return (
     <>
       <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection}/>
-      <Modal setOpemModalCollection={setOpenModalCollection} openModalCollection={openModalCollection} open={open} setOpen={setOpen} />
+      <Modal 
+        setOpemModalCollection={setOpenModalCollection} 
+        openModalCollection={openModalCollection} 
+        open={open} 
+        setOpen={setOpen} 
+        parameter="john-doe"
+      />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
         <div className="relative">
