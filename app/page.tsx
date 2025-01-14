@@ -12,7 +12,7 @@ export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
   const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
-  const [openModalGift, setOpenModalGift] = useState<boolean>(true)
+  const [openModalGift, setOpenModalGift] = useState<boolean>(false)
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
