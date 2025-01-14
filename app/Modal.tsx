@@ -7,12 +7,14 @@ import Link from "next/link";
 import { useState } from "react";
 import { postAttendance } from "./services/attendance";
 import Swal from 'sweetalert2'
+import { Footer } from "./footer/Footer";
 
 interface DialogProps {
   open: boolean;
   setOpen: React.Dispatch<React.SetStateAction<boolean>>;
   openModalCollection: boolean;
   setOpemModalCollection: React.Dispatch<React.SetStateAction<boolean>>;
+  setOpenModalGift: React.Dispatch<React.SetStateAction<boolean>>;
   parameter: string;
 }
 
@@ -21,6 +23,7 @@ export const Modal: React.FC<DialogProps> = ({
   setOpen, 
   setOpemModalCollection, 
   openModalCollection,
+  setOpenModalGift,
   parameter
 }) => {
 
@@ -41,6 +44,12 @@ export const Modal: React.FC<DialogProps> = ({
     } catch (error) {
       console.log(error);
     }
+  }
+
+
+  const handleClickOpenModalGift = () => {
+    setOpenModalGift(true)
+    setOpen(false)
   }
 
   const { ref, inView } = useInView({
@@ -66,9 +75,11 @@ export const Modal: React.FC<DialogProps> = ({
     exit: {
       opacity: 0,
       scale: 0.8, // Modal mengecil lagi saat menghilang
+      x: "100%", // Modal bergerak ke kiri
       transition: { duration: 0.5, ease: "easeIn" },
     },
   };
+  
 
   const overlayVariants = {
     hidden: {
@@ -102,7 +113,7 @@ export const Modal: React.FC<DialogProps> = ({
               initial="hidden"
               animate="visible"
               exit="exit"
-              className="absolute inset-0 z-50 flex items-center justify-center"
+              className="absolute inset-0 z-40 flex items-center justify-center"
             >
               <div className="absolute z-50 w-full h-screen">
                 <div className="w-screen lg:w-[1080px] mx-auto text-white overflow-hidden">
@@ -632,6 +643,7 @@ export const Modal: React.FC<DialogProps> = ({
                             </p>
                           </div>
                           <motion.div
+                            onClick={() => handleClickOpenModalGift()}
                             ref={ref}
                             variants={motionVariants}
                             initial="hidden"
@@ -645,7 +657,7 @@ export const Modal: React.FC<DialogProps> = ({
                               backgroundColor: "rgba(80, 80, 80, 0.7)",
                               willChange: "transform, opacity", // Pastikan browser merender transformasi elemen
                             }}
-                            className="border-l-4 border-gray-400 absolute right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
+                            className="border-l-4 border-gray-400 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
                           >
                             <p className="text-sm">Sending gift?</p>
                           </motion.div>
@@ -714,48 +726,7 @@ export const Modal: React.FC<DialogProps> = ({
                         Send
                       </button>
                     </div>
-                    <footer className="pt-64 text-left">
-                      <p
-                        className="text-gray-100 font-light text-sm"
-                        style={{ color: "rgba(255,255,255,0.5)" }}
-                      >
-                        Copyright ©{new Date().getFullYear()} Bintang Tobing &
-                        Ayu Sinaga.
-                        <br />
-                        {`Terima kasih kepada orang tua, keluarga saya dan dari Ayu Sinaga, `}
-                        <a
-                          href="https://www.instagram.com/bahar.iii1/"
-                          className="underline hover:text-gray-200"
-                          target="_blank"
-                          rel="noopener noreferrer"
-                          style={{
-                            color: "rgba(255,255,255,0.5)",
-                            fontSize: "0.875rem",
-                          }}
-                        >
-                          {`Bahari `}
-                        </a>
-                        dan seluruh tim Boxity untuk terwujudnya acara pranikah,
-                        pemberkatan nikah dan juga aplikasi web undangan ini.
-                        <br />
-                        <br />
-                        Serta rasa sangat bersyukur untuk tim media,
-                        dokumentasi, akomodasi tempat, makanan, acara, dan musik
-                        untuk kontribusi nya terhadap sukses nya acara ini.
-                        <br />
-                        <br />
-                        Support by{" "}
-                        <abbr title="PT Boxity Central Indonesia">
-                          BoxityID
-                        </abbr>
-                        , <abbr title="PatunganYuk IDN">PatunganYukIDN</abbr>,
-                        dan{" "}
-                        <abbr title="Level Up Gaming Market">
-                          Level Up Game Hub
-                        </abbr>
-                        . All right reserved by PT Boxity Central Indonesia.
-                      </p>
-                    </footer>
+                   <Footer/>
                   </div>
                 </div>
               </div>

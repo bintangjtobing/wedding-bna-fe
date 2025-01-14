@@ -36,4 +36,4 @@ jobs:
           BUILD_DIR=".next"
 
           # Deploy application files
-          sshpass -p 'SZ3bLYhBSC9scTp' rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./ bintangtobing@153.92.5.213:/home/bintangtobing/wedding-bintang-ayu.bintangtobing.com/
+          sshpass -p 'Seni@ti12345' rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./ root@195.35.23.150:/var/www/wedding-bna-fe/

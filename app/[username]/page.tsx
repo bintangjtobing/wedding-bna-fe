@@ -7,11 +7,13 @@ import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
 import { ModalForMoreCollections } from "../Modal/ModalForMoreCollections";
 import { useParams } from "next/navigation";
+import { ModalForGift } from "../Modal/ModalForGift";
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
   const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
+  const [openModalGift, setOpenModalGift] = useState<boolean>(false)
 
   const params = useParams();
   const username = Array.isArray(params.username) ? params.username[0] : params.username; // Pastikan username adalah string
@@ -41,6 +43,7 @@ export default function Home() {
 
   return (
     <>
+      <ModalForGift setOpenModalGift={setOpenModalGift} openModalGift={openModalGift}/>
       <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection} />
       <Modal 
         setOpemModalCollection={setOpenModalCollection} 
@@ -48,6 +51,7 @@ export default function Home() {
         open={open} 
         setOpen={setOpen} 
         parameter={username}
+        setOpenModalGift={setOpenModalGift}
       />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">

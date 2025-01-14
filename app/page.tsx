@@ -6,11 +6,13 @@ import { Modal } from "./Modal";
 import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
 import { ModalForMoreCollections } from "./Modal/ModalForMoreCollections";
+import { ModalForGift } from "./Modal/ModalForGift";
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
   const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
+  const [openModalGift, setOpenModalGift] = useState<boolean>(true)
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -38,9 +40,11 @@ export default function Home() {
   return (
     <>
       <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection}/>
+      <ModalForGift openModalGift={openModalGift} setOpenModalGift={setOpenModalGift}/>
       <Modal 
         setOpemModalCollection={setOpenModalCollection} 
         openModalCollection={openModalCollection} 
+        setOpenModalGift={setOpenModalGift}
         open={open} 
         setOpen={setOpen} 
         parameter="john-doe"
