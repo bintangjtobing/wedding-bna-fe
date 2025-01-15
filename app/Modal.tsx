@@ -6,7 +6,7 @@ import { Collaps } from "./collapsible";
 import Link from "next/link";
 import { useState } from "react";
 import { postAttendance } from "./services/attendance";
-import Swal from 'sweetalert2'
+import Swal from "sweetalert2";
 import { Footer } from "./footer/Footer";
 
 interface DialogProps {
@@ -18,39 +18,44 @@ interface DialogProps {
   parameter: string;
 }
 
-export const Modal: React.FC<DialogProps> = ({ 
-  open, 
-  setOpen, 
-  setOpemModalCollection, 
+export const Modal: React.FC<DialogProps> = ({
+  open,
+  setOpen,
+  setOpemModalCollection,
   openModalCollection,
   setOpenModalGift,
-  parameter
+  parameter,
 }) => {
-
   const [name, setName] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [attend, setAttend] = useState<string>("");
 
   const handleClick = async () => {
     try {
-      const response = await postAttendance({attendace_name: name, attendance_message: message, attend: attend === "1" ? true : false}, parameter);
-      if(response.message === "Attendance updated successfully"){
+      const response = await postAttendance(
+        {
+          attendace_name: name,
+          attendance_message: message,
+          attend: attend === "1" ? true : false,
+        },
+        parameter
+      );
+      if (response.message === "Attendance updated successfully") {
         Swal.fire({
           title: "Thankyou",
           text: "Some beautiful message",
-          icon: "success"
+          icon: "success",
         });
       }
     } catch (error) {
       console.log(error);
     }
-  }
-
+  };
 
   const handleClickOpenModalGift = () => {
-    setOpenModalGift(true)
-    setOpen(false)
-  }
+    setOpenModalGift(true);
+    setOpen(false);
+  };
 
   const { ref, inView } = useInView({
     triggerOnce: true, // Animasi hanya dijalankan sekali
@@ -79,7 +84,6 @@ export const Modal: React.FC<DialogProps> = ({
       transition: { duration: 0.5, ease: "easeIn" },
     },
   };
-  
 
   const overlayVariants = {
     hidden: {
@@ -198,18 +202,22 @@ export const Modal: React.FC<DialogProps> = ({
                         className="w-full aspect-video mt-5 rounded-3xl"
                       />
                       <p className="mt-5 text-sm lg:text-base">
-                        Halo! Karena kalian adalah orang penting yang mengisi
-                        hari-hari kami, kami ingin informasikan bahwa kami akan
-                        segera menikah! {"<3"} <br />
-                        Tapi sebelumnya, kami mohon maaf kepada teman dan
-                        kerabat semua karena tidak bisa mengundang kalian hadir
-                        di hari bahagia kami, dikarenakan pernikahan kami
-                        bersifat intimate wedding yang dilaksanakan di Bekasi
-                        dan hanya dihadiri oleh keluarga dan orang terdekat.{" "}
-                        <br />
-                        Walaupun begitu, kami harapkan sebaik-baiknya doa untuk
-                        kelancaran pernikahan dan hari-hari bahagia setelahnya.
-                        Dengan penuh cinta, The bride and groom {"<3"}
+                        Dengan penuh kebahagiaan, kami ingin berbagi kabar
+                        gembira ini! <br />
+                        Kami telah memutuskan untuk melangkah bersama menuju
+                        babak baru dalam kehidupan kami. {"<3"} <br />
+                        Pernikahan kami akan dilangsungkan secara sederhana
+                        dalam suasana intimate wedding di Bekasi, hanya dihadiri
+                        oleh keluarga dan sahabat terdekat. <br />
+                        Kami mohon maaf sebesar-besarnya karena tidak dapat
+                        mengundang semua orang yang kami sayangi untuk hadir
+                        bersama kami di hari bahagia ini. <br />
+                        Namun, meskipun tidak bersama secara fisik, kami selalu
+                        merasakan kehangatan cinta dan dukungan dari kalian
+                        semua. Kami mohon doa yang terbaik untuk perjalanan kami
+                        ke depan, agar selalu dipenuhi dengan kebahagiaan,
+                        cinta, dan berkah. <br />
+                        Dengan penuh cinta, The Bride and Groom {"<3"}
                       </p>
                     </div>
                     <div className="mt-8">
@@ -289,7 +297,12 @@ export const Modal: React.FC<DialogProps> = ({
                           Jl Pembangunan III No. 57A, Medan Timur
                         </p>
                       </div>
-                      <Link href={'#'}
+                      <Link
+                        href={
+                          "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pemberkatan+Pernikahan+Bintang+%26+Ayu&dates=20250711T030000Z/20250711T040000Z&details=Pemberkatan+Pernikahan+di+HKBP+GLUGUR+Resort+Medan+Utara.&location=HKBP+GLUGUR+Resort+Medan+Utara"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{
                           backgroundColor: "rgb(217,217,217, 0.5)",
                         }}
@@ -324,7 +337,12 @@ export const Modal: React.FC<DialogProps> = ({
                           Jl Rela No. 119, Medan
                         </p>
                       </div>
-                      <Link href={'#'}
+                      <Link
+                        href={
+                          "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pesta+Adat+Pernikahan+Bintang+%26+Ayu&dates=20250711T060000Z/20250711T070000Z&details=Pesta+Adat+Pernikahan+di+Wisma+Mahinna+Center.&location=Wisma+Mahinna+Center"
+                        }
+                        target="_blank"
+                        rel="noopener noreferrer"
                         style={{
                           backgroundColor: "rgb(217,217,217, 0.5)",
                         }}
@@ -573,10 +591,12 @@ export const Modal: React.FC<DialogProps> = ({
                         Load more collections
                       </Link> */}
 
-                      <button onClick={() => setOpemModalCollection(true)} className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8">
+                      <button
+                        onClick={() => setOpemModalCollection(true)}
+                        className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8"
+                      >
                         Load more collections
                       </button>
-
                     </div>
                     <div className="mt-8">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-8">
@@ -706,7 +726,10 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                       </div>
                       <div className="mt-10 flex flex-col">
-                        <label className="mb-2 lg:text-2xl text-lg" htmlFor="attendance">
+                        <label
+                          className="mb-2 lg:text-2xl text-lg"
+                          htmlFor="attendance"
+                        >
                           Kehadiran
                         </label>
                         <select
@@ -720,13 +743,15 @@ export const Modal: React.FC<DialogProps> = ({
                           <option value="0">Berhalang hadir</option>
                           <option value="1">Hadir</option>
                         </select>
-
                       </div>
-                      <button onClick={handleClick} className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md">
+                      <button
+                        onClick={handleClick}
+                        className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md"
+                      >
                         Send
                       </button>
                     </div>
-                   <Footer/>
+                    <Footer />
                   </div>
                 </div>
               </div>
