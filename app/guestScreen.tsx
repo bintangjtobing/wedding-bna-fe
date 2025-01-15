@@ -8,7 +8,7 @@ interface Props {
 }
 
 export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
-  const [name, setName] = useState<string>("")
+  const [name, setName] = useState<string>("");
   const variant = {
     // hidden: {
     //   opacity: 0,
@@ -24,17 +24,17 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
     },
   };
 
-
   useEffect(() => {
     const getData = async () => {
-      const response = await fetch(`https://wedding-api.bintangtobing.com/api/invitation`)
-      const result = await response.json()
-      setName(result[0].name)
-    }
+      const response = await fetch(
+        `https://wedding-api.bintangtobing.com/api/invitation`
+      );
+      const result = await response.json();
+      setName(result[0].name);
+    };
 
-    getData()
-  }, [])
-  
+    getData();
+  }, []);
 
   return (
     <AnimatePresence>
@@ -49,7 +49,7 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
           className="fixed inset-0 h-screen w-screen bg-[#141414] flex items-center justify-center z-50"
         >
           <div className="text-center">
-            <h1 className="text-4xl font-medium text-white mb-3">{`Who's watching?`}</h1>
+            <h1 className="text-4xl font-medium text-white mb-3">{`Kami dengan hormat mengundang`}</h1>
             <div>
               <Image
                 width={200}

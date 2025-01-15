@@ -80,7 +80,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       src="https://res.cloudinary.com/du0tz73ma/image/upload/v1736782597/image_17_cpxamh.png"
                       width={857}
                       height={403}
-                      alt=""
+                      alt="Asset Wedding Bintang & Ayu"
                       className="w-full"
                     />
                   </div>
@@ -139,7 +139,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                               src={url}
                               width={300}
                               height={300}
-                              alt=""
+                              alt="Asset Wedding Bintang & Ayu"
                             />
                           </div>
                           <div className="flex items-center justify-between mt-5">
@@ -172,7 +172,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                           src="https://res.cloudinary.com/du0tz73ma/image/upload/v1736783255/image_26_ajuzzj.png"
                           width={300}
                           height={300}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                         />
                       </div>
                       <div className="flex items-center justify-between mt-5">
@@ -189,8 +189,34 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       )}
                       <p className="text-gray-300 font-light">Atas nama</p>
                       <p className="text-gray-300 font-light">
-                        AYU STEVANI SINAGA
+                        BINTANG CATO JEREMIA L TOBING
                       </p>
+                    </div>
+                    <div>
+                      <div className="bg-[#2d2d2d] py-10 rounded-xl">
+                        <Image
+                          className="mx-auto"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/v1736930478/469c239d-f604-478d-b4d4-bf1b502b8508.png"
+                          width={300}
+                          height={300}
+                          alt="Asset Wedding Bintang & Ayu"
+                        />
+                      </div>
+                      <div className="flex items-center justify-between mt-5">
+                        <p className="text-2xl font-semibold">
+                          TSQ4Mgu431dghWzu7U6McftK2hTJ7QVoz3
+                        </p>
+                        <ClipboardCopyIcon
+                          className="h-6 w-6 cursor-pointer"
+                          onClick={() =>
+                            handleCopy("TSQ4Mgu431dghWzu7U6McftK2hTJ7QVoz3")
+                          }
+                        />
+                      </div>
+                      {copied === "TSQ4Mgu431dghWzu7U6McftK2hTJ7QVoz3" && (
+                        <span className="text-green-500 text-sm">Copied!</span>
+                      )}
+                      <p className="text-gray-300 font-light">USDT (TRC20)</p>
                     </div>
                   </div>
                 </section>

@@ -11,8 +11,9 @@ import { ModalForGift } from "./Modal/ModalForGift";
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
-  const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
-  const [openModalGift, setOpenModalGift] = useState<boolean>(false)
+  const [openModalCollection, setOpenModalCollection] =
+    useState<boolean>(false);
+  const [openModalGift, setOpenModalGift] = useState<boolean>(false);
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -39,19 +40,38 @@ export default function Home() {
 
   return (
     <>
-      <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection}/>
-      <ModalForGift openModalGift={openModalGift} setOpenModalGift={setOpenModalGift}/>
-      <Modal 
-        setOpemModalCollection={setOpenModalCollection} 
-        openModalCollection={openModalCollection} 
+      <ModalForMoreCollections
+        openModalCollection={openModalCollection}
+        setOpenModalCollection={setOpenModalCollection}
+      />
+      <ModalForGift
+        openModalGift={openModalGift}
         setOpenModalGift={setOpenModalGift}
-        open={open} 
-        setOpen={setOpen} 
+      />
+      <Modal
+        setOpemModalCollection={setOpenModalCollection}
+        openModalCollection={openModalCollection}
+        setOpenModalGift={setOpenModalGift}
+        open={open}
+        setOpen={setOpen}
         parameter="john-doe"
       />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
         <div className="relative">
+          <nav className="w-full mx-auto py-5 px-3 absolute top-0">
+            <div className="max-w-screen-xxl mx-auto px-10">
+              <Image
+                className=""
+                src={
+                  "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1736927089/BINTANGAYU-logoweb_kmycu4.png"
+                }
+                width={120}
+                height={120}
+                alt="Logo Wedding Bintang & Ayu"
+              />
+            </div>
+          </nav>
           <video
             ref={videoRef} // Tambahkan referensi ke elemen video
             className="h-screen object-cover"
@@ -76,19 +96,6 @@ export default function Home() {
               zIndex: 1,
             }}
           ></div>
-          <nav className="w-full mx-auto py-5 px-3 absolute top-0">
-            <div className="max-w-screen-xxl mx-auto px-10">
-              <Image
-                className=""
-                src={
-                  "https://res.cloudinary.com/du0tz73ma/image/upload/v1733230643/image_1_toske2.png"
-                }
-                width={120}
-                height={120}
-                alt="logo"
-              />
-            </div>
-          </nav>
 
           <div className="mx-auto pl-5 lg:pl-32 absolute bottom-40 w-full z-20">
             <Image
@@ -130,7 +137,7 @@ export default function Home() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Buka detail
+                    Buka undangan
                   </button>
                 </div>
                 <div className="relative">
@@ -147,7 +154,7 @@ export default function Home() {
                     style={{ backgroundColor: "rgba(2, 6, 23, 0.7)" }}
                     className="border-l-4 border-white px-4 py-2 absolute w-max right-0 bottom-[-4rem] lg:bottom-0"
                   >
-                    <p className="text-white">11 Juli 2025</p>
+                    <p className="text-white">11 July 2025</p>
                   </motion.div>
                 </div>
               </div>

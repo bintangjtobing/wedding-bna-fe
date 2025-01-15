@@ -198,25 +198,32 @@ export const Modal: React.FC<DialogProps> = ({
                         }
                         width={2000}
                         height={1000}
-                        alt=""
+                        alt="Asset Wedding Bintang & Ayu"
                         className="w-full aspect-video mt-5 rounded-3xl"
                       />
+                      <h4 className="mt-5 font-bold text-xl lg:text-xl">
+                        Dengan penuh kebahagiaan, kami ingin berbagi kabar
+                        gembira ini!
+                      </h4>
                       <p className="mt-5 text-sm lg:text-base">
                         Dengan penuh kebahagiaan, kami ingin berbagi kabar
                         gembira ini! <br />
                         Kami telah memutuskan untuk melangkah bersama menuju
                         babak baru dalam kehidupan kami. {"<3"} <br />
+                        <br />
                         Pernikahan kami akan dilangsungkan secara sederhana
-                        dalam suasana intimate wedding di Bekasi, hanya dihadiri
-                        oleh keluarga dan sahabat terdekat. <br />
+                        dalam suasana wedding di Medan, hanya dihadiri oleh
+                        keluarga, teman, dan sahabat terdekat. <br />
                         Kami mohon maaf sebesar-besarnya karena tidak dapat
                         mengundang semua orang yang kami sayangi untuk hadir
                         bersama kami di hari bahagia ini. <br />
+                        <br />
                         Namun, meskipun tidak bersama secara fisik, kami selalu
                         merasakan kehangatan cinta dan dukungan dari kalian
                         semua. Kami mohon doa yang terbaik untuk perjalanan kami
                         ke depan, agar selalu dipenuhi dengan kebahagiaan,
                         cinta, dan berkah. <br />
+                        <br />
                         Dengan penuh cinta, The Bride and Groom {"<3"}
                       </p>
                     </div>
@@ -232,7 +239,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={500}
                             height={500}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="aspect-square"
                           />
                           <div className="">
@@ -252,7 +259,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={500}
                             height={500}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="aspect-square"
                           />
                           <div>
@@ -278,7 +285,7 @@ export const Modal: React.FC<DialogProps> = ({
                         }
                         width={1031}
                         height={403}
-                        alt=""
+                        alt="Asset Wedding Bintang & Ayu"
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lg:text-3xl text-xl font-bold mb-2 mt-8">
@@ -318,7 +325,7 @@ export const Modal: React.FC<DialogProps> = ({
                         }
                         width={1031}
                         height={403}
-                        alt=""
+                        alt="Asset Wedding Bintang & Ayu"
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lx:text-3xl text-xl font-bold mb-2 mt-8">
@@ -364,7 +371,7 @@ export const Modal: React.FC<DialogProps> = ({
                               }
                               width={500}
                               height={500}
-                              alt=""
+                              alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
                             />
                             <div>
@@ -395,7 +402,7 @@ export const Modal: React.FC<DialogProps> = ({
                               }
                               width={500}
                               height={500}
-                              alt=""
+                              alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
                             />
                             <div>
@@ -427,7 +434,7 @@ export const Modal: React.FC<DialogProps> = ({
                               }
                               width={500}
                               height={500}
-                              alt=""
+                              alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
                             />
                             <div>
@@ -459,7 +466,7 @@ export const Modal: React.FC<DialogProps> = ({
                               }
                               width={500}
                               height={500}
-                              alt=""
+                              alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
                             />
                             <div>
@@ -493,7 +500,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                         <div className="relative">
@@ -503,7 +510,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={500}
                             height={500}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="rounded-2xl absolute"
                           />
                           <div className="absolute bottom-4 w-full">
@@ -520,7 +527,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                         <Image
@@ -529,7 +536,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                         <Image
@@ -538,7 +545,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                         <div className="relative">
@@ -548,7 +555,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={500}
                             height={500}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="rounded-2xl"
                           />
                           <div className="absolute bottom-4 w-full">
@@ -565,7 +572,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                         <Image
@@ -574,7 +581,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                         <Image
@@ -583,7 +590,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={500}
                           height={500}
-                          alt=""
+                          alt="Asset Wedding Bintang & Ayu"
                           className="rounded-2xl"
                         />
                       </div>
@@ -610,7 +617,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={200}
                             height={200}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="w-10 h-10"
                           />
                           <div>
@@ -630,7 +637,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={200}
                             height={200}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="w-10 h-10"
                           />
                           <div>
@@ -650,7 +657,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={200}
                             height={200}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="w-10 h-10"
                           />
                           <div>
@@ -689,7 +696,7 @@ export const Modal: React.FC<DialogProps> = ({
                             }
                             width={200}
                             height={200}
-                            alt=""
+                            alt="Asset Wedding Bintang & Ayu"
                             className="w-10 h-10"
                           />
                           <div>

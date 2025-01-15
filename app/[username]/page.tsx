@@ -12,11 +12,14 @@ import { ModalForGift } from "../Modal/ModalForGift";
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
-  const [openModalCollection, setOpenModalCollection] = useState<boolean>(false)
-  const [openModalGift, setOpenModalGift] = useState<boolean>(false)
+  const [openModalCollection, setOpenModalCollection] =
+    useState<boolean>(false);
+  const [openModalGift, setOpenModalGift] = useState<boolean>(false);
 
   const params = useParams();
-  const username = Array.isArray(params.username) ? params.username[0] : params.username; // Pastikan username adalah string
+  const username = Array.isArray(params.username)
+    ? params.username[0]
+    : params.username; // Pastikan username adalah string
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -43,13 +46,19 @@ export default function Home() {
 
   return (
     <>
-      <ModalForGift setOpenModalGift={setOpenModalGift} openModalGift={openModalGift}/>
-      <ModalForMoreCollections openModalCollection={openModalCollection} setOpenModalCollection={setOpenModalCollection} />
-      <Modal 
-        setOpemModalCollection={setOpenModalCollection} 
-        openModalCollection={openModalCollection} 
-        open={open} 
-        setOpen={setOpen} 
+      <ModalForGift
+        setOpenModalGift={setOpenModalGift}
+        openModalGift={openModalGift}
+      />
+      <ModalForMoreCollections
+        openModalCollection={openModalCollection}
+        setOpenModalCollection={setOpenModalCollection}
+      />
+      <Modal
+        setOpemModalCollection={setOpenModalCollection}
+        openModalCollection={openModalCollection}
+        open={open}
+        setOpen={setOpen}
         parameter={username}
         setOpenModalGift={setOpenModalGift}
       />
@@ -89,7 +98,7 @@ export default function Home() {
                 }
                 width={120}
                 height={120}
-                alt="logo"
+                alt="Logo Wedding Bintang & Ayu"
               />
             </div>
           </nav>
@@ -134,7 +143,7 @@ export default function Home() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Buka detail
+                    Buka undangan
                   </button>
                 </div>
                 <div className="relative">
@@ -151,7 +160,7 @@ export default function Home() {
                     style={{ backgroundColor: "rgba(2, 6, 23, 0.7)" }}
                     className="border-l-4 border-white px-4 py-2 absolute w-max right-0 bottom-[-4rem] lg:bottom-0"
                   >
-                    <p className="text-white">11 Juli 2025</p>
+                    <p className="text-white">11 July 2025</p>
                   </motion.div>
                 </div>
               </div>
