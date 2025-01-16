@@ -119,7 +119,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       {
                         url: "https://res.cloudinary.com/du0tz73ma/image/upload/v1736783258/image_25_dg0v1x.png",
                         background: "#D9D9D9",
-                        padding: "2rem",
+                        padding: "1rem",
                         account: "9015 9696 8041",
                         name: "AYU STEVANI SINAGA",
                       },
@@ -135,7 +135,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                             className="rounded-xl"
                           >
                             <Image
-                              className="mx-auto"
+                              className="mx-auto" 
                               src={url}
                               width={300}
                               height={300}
@@ -176,7 +176,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                         />
                       </div>
                       <div className="flex items-center justify-between mt-5">
-                        <p className="text-2xl font-semibold">
+                        <p className="text-xl font-semibold">
                           bintangjtobing@gmail.com
                         </p>
                         <ClipboardCopyIcon
@@ -195,7 +195,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                     <div>
                       <div className="bg-[#2d2d2d] py-10 rounded-xl">
                         <Image
-                          className="mx-auto"
+                          className="mx-auto h-24 w-24"
                           src="https://res.cloudinary.com/dilb4d364/image/upload/v1736930478/469c239d-f604-478d-b4d4-bf1b502b8508.png"
                           width={300}
                           height={300}
@@ -203,7 +203,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                         />
                       </div>
                       <div className="flex items-center justify-between mt-5">
-                        <p className="text-2xl font-semibold">
+                        <p className="text-xs lg:text-sm font-semibold w-full">
                           TSQ4Mgu431dghWzu7U6McftK2hTJ7QVoz3
                         </p>
                         <ClipboardCopyIcon
