@@ -71,10 +71,10 @@ export default function Home() {
             autoPlay
             muted
             loop
-            id="myVideo"
+            id="prawedding-bintang-ayu-clip"
           >
             <source
-              src="https://res.cloudinary.com/du0tz73ma/video/upload/v1733931845/videoplayback_fwiym8.mp4"
+              src="https://res.cloudinary.com/dilb4d364/video/upload/v1737128472/praweddingba1_b58ymi.mp4"
               type="video/mp4"
             />
           </video>
