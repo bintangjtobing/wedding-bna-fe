@@ -125,7 +125,6 @@ export const Modal: React.FC<DialogProps> = ({
                     <video
                       className="object-cover aspect-video rounded-t-3xl"
                       autoPlay
-                      muted
                       loop
                       id="prawedding-bintang-ayu-clip"
                     >

@@ -69,7 +69,6 @@ export default function Home() {
             ref={videoRef} // Tambahkan referensi ke elemen video
             className="h-screen object-cover"
             autoPlay
-            muted
             loop
             id="prawedding-bintang-ayu-clip"
           >
