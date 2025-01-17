@@ -80,7 +80,7 @@ export default function Home() {
             id="prawedding-bintang-ayu-clip"
           >
             <source
-              src="https://res.cloudinary.com/dilb4d364/video/upload/v1737134693/prawedding-ba-1_wt4dgz.webm"
+              src="https://res.cloudinary.com/dilb4d364/video/upload/w_2000/q_auto/f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
               type="video/webm"
             />
           </video>

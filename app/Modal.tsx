@@ -129,7 +129,7 @@ export const Modal: React.FC<DialogProps> = ({
                       id="prawedding-bintang-ayu-clip"
                     >
                       <source
-                        src="https://res.cloudinary.com/dilb4d364/video/upload/v1737134693/prawedding-ba-1_wt4dgz.webm"
+                        src="https://res.cloudinary.com/dilb4d364/video/upload/w_2000/q_auto/f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
                         type="video/webm"
                       />
                     </video>
@@ -193,13 +193,15 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <Image
                         src={
-                          "https://res.cloudinary.com/du0tz73ma/image/upload/v1733403018/allef-vinicius-DmUbkltYsKI-unsplash_dgxqmp.jpg"
+                          "https://res.cloudinary.com/dilb4d364/image/upload/w_2000/q_auto/f_auto/v1737136266/JON00595_mwjayw.jpg"
                         }
                         width={2000}
                         height={1000}
                         alt="Asset Wedding Bintang & Ayu"
                         className="w-full aspect-video mt-5 rounded-3xl"
+                        style={{ objectFit: "cover" }}
                       />
+
                       <h4 className="mt-5 font-bold text-xl lg:text-xl">
                         Dengan penuh kebahagiaan, kami ingin berbagi kabar
                         gembira ini!
@@ -234,12 +236,16 @@ export const Modal: React.FC<DialogProps> = ({
                         <div>
                           <Image
                             src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733406083/image_aftbje.png"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/ar_1:1,c_auto,g_auto,w_500/v1737136694/IMG_1871_uvkjbd.jpg"
                             }
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
                             className="aspect-square"
+                            style={{
+                              objectFit: "cover",
+                              borderRadius: "1rem",
+                            }}
                           />
                           <div className="">
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
@@ -254,12 +260,16 @@ export const Modal: React.FC<DialogProps> = ({
                         <div>
                           <Image
                             src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733406120/image_1_irtoyv.png"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/ar_1:1,c_auto,g_auto,w_500/v1737136718/JON00635_jayl9u.jpg"
                             }
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
                             className="aspect-square"
+                            style={{
+                              objectFit: "cover",
+                              borderRadius: "1rem",
+                            }}
                           />
                           <div>
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
