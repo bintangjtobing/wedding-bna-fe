@@ -74,7 +74,8 @@ export default function Home() {
           </nav>
           <video
             ref={videoRef} // Tambahkan referensi ke elemen video
-            className="h-screen object-cover"
+            className="h-screen object-cover w-screen"
+            muted
             autoPlay
             loop
             id="prawedding-bintang-ayu-clip"
