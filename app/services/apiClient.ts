@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const apiClient = axios.create({
-    baseURL: "https://api-wedding-bintang.baharihari.com",
+    baseURL: "https://wedding-api.bintangtobing.com",
     withCredentials: false,
     headers: {
         Accept: "application/json",

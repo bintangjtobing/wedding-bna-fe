@@ -6,7 +6,7 @@ import { Modal } from "../Modal";
 import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
 import { ModalForMoreCollections } from "../Modal/ModalForMoreCollections";
-import { useParams } from "next/navigation";
+// import { useParams } from "next/navigation";
 import { ModalForGift } from "../Modal/ModalForGift";
 
 export default function Home() {
@@ -16,10 +16,10 @@ export default function Home() {
     useState<boolean>(false);
   const [openModalGift, setOpenModalGift] = useState<boolean>(false);
 
-  const params = useParams();
-  const username = Array.isArray(params.username)
-    ? params.username[0]
-    : params.username; // Pastikan username adalah string
+  // const params = useParams();
+  // const username = Array.isArray(params.username)
+  //   ? params.username[0]
+  //   : params.username; // Pastikan username adalah string
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -59,7 +59,7 @@ export default function Home() {
         openModalCollection={openModalCollection}
         open={open}
         setOpen={setOpen}
-        parameter={username}
+        // parameter={username}
         setOpenModalGift={setOpenModalGift}
       />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
@@ -67,7 +67,8 @@ export default function Home() {
         <div className="relative">
           <video
             ref={videoRef} // Tambahkan referensi ke elemen video
-            className="h-screen object-cover"
+            className="h-screen object-cover w-screen"
+            muted
             autoPlay
             loop
             id="prawedding-bintang-ayu-clip"

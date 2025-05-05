@@ -2,6 +2,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useParams } from "next/navigation";
 import { useEffect, useState } from "react";
+import { useUser } from "@/context/UserContext";
 
 interface Props {
   openGuest: boolean;
@@ -9,8 +10,9 @@ interface Props {
 }
 
 export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
+  const {setUser } = useUser()
   const [name, setName] = useState<string>("");
-  const [profil_picture, setProfile_picture] = useState<string>("");
+  // const [profil_picture, setProfile_picture] = useState<string>("");
   const variant = {
     // hidden: {
     //   opacity: 0,
@@ -35,8 +37,14 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
         `https://wedding-api.bintangtobing.com/api/invitation/${username}`
       );
       const result = await response.json();
-      setName(result.name);
-      setProfile_picture(result.profile_picture);
+      setName(result.data.name);
+      // setProfile_picture(result.data.profile_picture);
+
+      setUser({
+        name: result.data.name,
+        phone_number: result.data.phone_number,
+        username: result.data.username
+      })
     };
 
     getData();
@@ -61,7 +69,7 @@ export const GuestScreen: React.FC<Props> = ({ openGuest, setOpenGuest }) => {
                 width={200}
                 height={200}
                 className="mx-auto cursor-pointer"
-                src={profil_picture}
+                src={'https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png'}
                 alt="Guest Avatar"
               />
               <p className="text-gray-500 mt-5 font-light">{name}</p>

@@ -1,8 +1,8 @@
 import apiClient from "./apiClient";
 
-export const postAttendance = async (data: { attendace_name: string; attendance_message: string; attend: boolean}, parameter: string ) => {
+export const postAttendance = async (data: { username: string; name: string; message: string; attendance: string} ) => {
     try {
-        const response = await apiClient.post(`/api/mengundang/${parameter}/attendance`, data);
+        const response = await apiClient.post(`/api/invitation/messages`, data);
         return response.data;
     } catch (error) {
         throw error;

@@ -1,6 +1,5 @@
-import React from "react";
+import React, { useEffect } from "react";
 import Image from "next/image";
-import { useInView } from "react-intersection-observer";
 import { motion, AnimatePresence } from "motion/react";
 import { Collaps } from "./collapsible";
 import Link from "next/link";
@@ -8,6 +7,9 @@ import { useState } from "react";
 import { postAttendance } from "./services/attendance";
 import Swal from "sweetalert2";
 import { Footer } from "./footer/Footer";
+import { Form } from "./Form";
+import { useUser } from "@/context/UserContext";
+import { Messages } from "@/components/commons/Messages";
 
 interface DialogProps {
   open: boolean;
@@ -15,7 +17,6 @@ interface DialogProps {
   openModalCollection: boolean;
   setOpemModalCollection: React.Dispatch<React.SetStateAction<boolean>>;
   setOpenModalGift: React.Dispatch<React.SetStateAction<boolean>>;
-  parameter: string;
 }
 
 export const Modal: React.FC<DialogProps> = ({
@@ -24,21 +25,29 @@ export const Modal: React.FC<DialogProps> = ({
   setOpemModalCollection,
   openModalCollection,
   setOpenModalGift,
-  parameter,
 }) => {
+  const { user } = useUser()
   const [name, setName] = useState<string>("");
+  const [username, setUserName] = useState<string>("")
   const [message, setMessage] = useState<string>("");
-  const [attend, setAttend] = useState<string>("");
+  const [attend, setAttend] = useState<string>("tidak_hadir");
+
+  useEffect(() => {
+    if (user?.name) {
+      setName(user.name);
+      setUserName(user.username)
+    }
+  }, [user]);
 
   const handleClick = async () => {
     try {
       const response = await postAttendance(
         {
-          attendace_name: name,
-          attendance_message: message,
-          attend: attend === "1" ? true : false,
+          name: name,
+          username: username,
+          message: message,
+          attendance: attend
         },
-        parameter
       );
       if (response.message === "Attendance updated successfully") {
         Swal.fire({
@@ -56,17 +65,6 @@ export const Modal: React.FC<DialogProps> = ({
     setOpenModalGift(true);
     setOpen(false);
   };
-
-  const { ref, inView } = useInView({
-    triggerOnce: true, // Animasi hanya dijalankan sekali
-    threshold: 0.1, // Elemen minimal 10% terlihat di layar untuk memicu animasi
-  });
-
-  const motionVariants = {
-    hidden: { x: "80%", opacity: 0 }, // Kondisi awal (dari kanan, transparan)
-    visible: { x: 0, opacity: 1 }, // Kondisi akhir (ke posisi semula, terlihat)
-  };
-
   const modalVariants = {
     hidden: {
       opacity: 0,
@@ -614,159 +612,16 @@ export const Modal: React.FC<DialogProps> = ({
                         Load more collections
                       </button>
                     </div>
-                    <div className="mt-8">
-                      <h2 className="lg:text-3xl text-2xl font-bold mb-8">
-                        Wish for couples
-                      </h2>
-                      <div className="space-y-5">
-                        <div className="flex lg:gap-10 gap-5">
-                          <Image
-                            src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
-                            }
-                            width={200}
-                            height={200}
-                            alt="Asset Wedding Bintang & Ayu"
-                            className="w-10 h-10"
-                          />
-                          <div>
-                            <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                              Warga Instagram
-                            </h3>
-                            <p className="text-gray-300 text-sm lg:text-base w-[90%]">
-                              Hai kak, selamat menempuh hidup baru yahh, Tuhan
-                              Yesus memberkati pernikahan kakak sama Abang. 🎁🎁
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex lg:gap-10 gap-5">
-                          <Image
-                            src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
-                            }
-                            width={200}
-                            height={200}
-                            alt="Asset Wedding Bintang & Ayu"
-                            className="w-10 h-10"
-                          />
-                          <div>
-                            <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                              Warga Instagram
-                            </h3>
-                            <p className="text-gray-300 text-sm lg:text-base w-[90%]">
-                              Hai kak, selamat menempuh hidup baru yahh, Tuhan
-                              Yesus memberkati pernikahan kakak sama Abang. 🎁🎁
-                            </p>
-                          </div>
-                        </div>
-                        <div className="flex lg:gap-10 gap-5 relative">
-                          <Image
-                            src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
-                            }
-                            width={200}
-                            height={200}
-                            alt="Asset Wedding Bintang & Ayu"
-                            className="w-10 h-10"
-                          />
-                          <div>
-                            <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                              Warga Instagram
-                            </h3>
-                            <p className="text-gray-300 text-sm lg:text-base w-[90%]">
-                              Hai kak, selamat menempuh hidup baru yahh, Tuhan
-                              Yesus memberkati pernikahan kakak sama Abang. 🎁🎁
-                            </p>
-                          </div>
-                          <motion.div
-                            onClick={() => handleClickOpenModalGift()}
-                            ref={ref}
-                            variants={motionVariants}
-                            initial="hidden"
-                            animate={inView ? "visible" : "hidden"}
-                            transition={{
-                              type: "tween",
-                              duration: 0.8,
-                              ease: "easeOut",
-                            }}
-                            style={{
-                              backgroundColor: "rgba(80, 80, 80, 0.7)",
-                              willChange: "transform, opacity", // Pastikan browser merender transformasi elemen
-                            }}
-                            className="border-l-4 border-gray-400 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
-                          >
-                            <p className="text-sm">Sending gift?</p>
-                          </motion.div>
-                        </div>
-                        <div className="flex lg:gap-10 gap-5">
-                          <Image
-                            src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
-                            }
-                            width={200}
-                            height={200}
-                            alt="Asset Wedding Bintang & Ayu"
-                            className="w-10 h-10"
-                          />
-                          <div>
-                            <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                              Warga Instagram
-                            </h3>
-                            <p className="text-gray-300 text-sm lg:text-base w-[90%]">
-                              Hai kak, selamat menempuh hidup baru yahh, Tuhan
-                              Yesus memberkati pernikahan kakak sama Abang. 🎁🎁
-                            </p>
-                          </div>
-                        </div>
-                      </div>
-                    </div>
-                    <div className="mt-16">
-                      <div className="flex flex-col">
-                        <label className="mb-2 lg:text-2xl text-lg" htmlFor="">
-                          Nama
-                        </label>
-                        <input
-                          onChange={(e) => setName(e.target.value)}
-                          type="text"
-                          className="bg-white h-10 text-black px-3"
-                        />
-                      </div>
-                      <div className="flex flex-col mt-10">
-                        <label className="mb-2 lg:text-2xl text-lg" htmlFor="">
-                          Pesan
-                        </label>
-                        <textarea
-                          onChange={(e) => setMessage(e.target.value)}
-                          rows={5}
-                          className="bg-white text-black px-3"
-                        />
-                      </div>
-                      <div className="mt-10 flex flex-col">
-                        <label
-                          className="mb-2 lg:text-2xl text-lg"
-                          htmlFor="attendance"
-                        >
-                          Kehadiran
-                        </label>
-                        <select
-                          onChange={(e) => setAttend(e.target.value)}
-                          className="h-10 px-2 text-black border border-gray-300 rounded"
-                          name="attendance"
-                          id="attendance"
-                          defaultValue="0"
-                          aria-label="Attendance options"
-                        >
-                          <option value="0">Berhalang hadir</option>
-                          <option value="1">Hadir</option>
-                        </select>
-                      </div>
-                      <button
-                        onClick={handleClick}
-                        className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md"
-                      >
-                        Send
-                      </button>
-                    </div>
+                    <Messages 
+                      handleClickOpenModalGift={handleClickOpenModalGift}
+                    />
+                    <Form
+                      setAttend={setAttend}
+                      setName={setName}
+                      name={name}
+                      setMessage={setMessage}
+                      handleClick={handleClick}
+                    />
                     <Footer />
                   </div>
                 </div>

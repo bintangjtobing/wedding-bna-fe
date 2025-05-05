@@ -7,6 +7,7 @@ import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
 import { ModalForMoreCollections } from "./Modal/ModalForMoreCollections";
 import { ModalForGift } from "./Modal/ModalForGift";
+// import { useSearchParams } from 'next/navigation';
 
 export default function Home() {
   const [open, setOpen] = useState<boolean>(false);
@@ -14,6 +15,8 @@ export default function Home() {
   const [openModalCollection, setOpenModalCollection] =
     useState<boolean>(false);
   const [openModalGift, setOpenModalGift] = useState<boolean>(false);
+  // const searchParams = useSearchParams();
+  // const invite = searchParams.get('we-invite');
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
@@ -54,7 +57,7 @@ export default function Home() {
         setOpenModalGift={setOpenModalGift}
         open={open}
         setOpen={setOpen}
-        parameter="john-doe"
+        // parameter={invite || "jhon-dea"}
       />
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
