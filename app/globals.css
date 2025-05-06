@@ -115,3 +115,43 @@ body {
   text-transform: uppercase !important;
   letter-spacing: 0.5px !important;
 }
+/* Style khusus untuk toast */
+.toast-popup {
+  background-color: #222222 !important;
+  color: #ffffff !important;
+  padding-left: 20px !important;
+  border-radius: 8px !important;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3) !important;
+  position: relative !important;
+  overflow: hidden !important;
+}
+
+.toast-icon {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.swal2-icon {
+  background-color: transparent !important;
+  border: none !important;
+}
+
+.swal2-success-ring, .swal2-success-fix {
+  background-color: transparent !important;
+}
+
+.toast-with-left-border::before {
+  content: "";
+  position: absolute;
+  left: 3px;
+  top: 0;
+  bottom: 0;
+  width: 6px;
+  background-color: #4BB543;
+}
+
+.toast-title {
+  font-weight: 500 !important;
+  font-size: 16px !important;
+  padding-left: 8px !important;
+}

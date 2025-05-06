@@ -39,6 +39,39 @@ export const Modal: React.FC<DialogProps> = ({
     }
   }, [user]);
 
+
+  const Toast = Swal.mixin({
+    toast: true,
+    position: "top-end",
+    showConfirmButton: false,
+    timer: 3000,
+    timerProgressBar: true,
+    didOpen: (toast) => {
+      const toastEl = Swal.getPopup();
+    
+      if (toastEl) {
+        toastEl.classList.add('toast-with-left-border');
+        
+        // Cari elemen ikon dan hapus background-nya dengan type casting
+        const iconEl = toastEl.querySelector('.swal2-icon') as HTMLElement;
+        if (iconEl) {
+          iconEl.style.backgroundColor = 'transparent';
+        }
+      }
+    
+      toast.onmouseenter = Swal.stopTimer;
+      toast.onmouseleave = Swal.resumeTimer;
+    },
+    background: "#222222",
+    color: "#ffffff",
+    iconColor: "#4BB543",
+    customClass: {
+      popup: 'toast-popup',
+      title: 'toast-title',
+      icon: 'toast-icon' // Tambahkan class khusus untuk ikon
+    }
+  });
+
   const handleClick = async () => {
     try {
       const response = await postAttendance(
@@ -50,20 +83,12 @@ export const Modal: React.FC<DialogProps> = ({
         },
       );
       if (response.status === "success") {
-        Swal.fire({
-          title: "Terimakasih",
-          text: "Pesan kamu berhasil terkirim",
+        Toast.fire({
+          theme: "dark",
           icon: "success",
-          background: "#1a1a1a",
-          color: "#ffffff",
-          iconColor: "#4BB543", // Warna hijau untuk icon success
-          confirmButtonColor: "#4BB543",
-          customClass: {
-            popup: 'dark-theme-popup',
-            title: 'dark-theme-title',
-            htmlContainer: 'dark-theme-content', // Menggunakan htmlContainer, bukan content
-            confirmButton: 'dark-theme-button'
-          }
+          title: "Pesan berhasil terkirim",
+          background: "#ffffff",
+          iconColor: "#4BB543"
         });
       }
     } catch (error) {
@@ -622,7 +647,7 @@ export const Modal: React.FC<DialogProps> = ({
                         Load more collections
                       </button>
                     </div>
-                    <Messages 
+                    <Messages
                       handleClickOpenModalGift={handleClickOpenModalGift}
                     />
                     <Form
