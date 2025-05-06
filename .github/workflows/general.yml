@@ -37,3 +37,10 @@ jobs:
 
           # Deploy application files
           sshpass -p 'c#)rgPMzNC2998@Vb4.M' rsync -avz --delete -e "ssh -o StrictHostKeyChecking=no" ./ root@147.93.30.80:/var/www/wedding-bna-fe/
+
+      - name: Restart Server (optional)
+        run: |
+          sshpass -p 'c#)rgPMzNC2998@Vb4.M' ssh -o StrictHostKeyChecking=no root@147.93.30.80 '
+            systemctl restart nginx
+            pm2 restart wedding-bintang
+          '

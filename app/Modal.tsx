@@ -49,10 +49,10 @@ export const Modal: React.FC<DialogProps> = ({
           attendance: attend
         },
       );
-      if (response.message === "Attendance updated successfully") {
+      if (response.status === "success") {
         Swal.fire({
-          title: "Thankyou",
-          text: "Some beautiful message",
+          title: "Terimakasih",
+          text: "Pesan kamu berhasil terkirim",
           icon: "success",
         });
       }
@@ -121,6 +121,7 @@ export const Modal: React.FC<DialogProps> = ({
                 <div className="w-screen lg:w-[1080px] mx-auto text-white overflow-hidden">
                   <div className="mt-20 rounded-t-3xl">
                     <video
+                      muted
                       className="object-cover aspect-video rounded-t-3xl"
                       autoPlay
                       loop
