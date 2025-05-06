@@ -80,3 +80,38 @@ body {
     @apply bg-background text-foreground;
   }
 }
+
+
+@keyframes pulseOnce {
+  0% { background-color: rgba(255, 255, 255, 0.15); }
+  50% { background-color: rgba(255, 255, 255, 0.3); }
+  100% { background-color: rgba(255, 255, 255, 0.05); }
+}
+
+.bg-white\/5 {
+  background-color: rgba(255, 255, 255, 0.05);
+}
+
+.animate-pulse-once {
+  animation: pulseOnce 3s ease-out forwards;
+}
+
+.dark-theme-popup {
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+}
+
+.dark-theme-title {
+  color: #ffffff !important;
+}
+
+.dark-theme-content {
+  color: #cccccc !important;
+}
+
+.dark-theme-button {
+  border-radius: 4px !important;
+  font-weight: 500 !important;
+  text-transform: uppercase !important;
+  letter-spacing: 0.5px !important;
+}

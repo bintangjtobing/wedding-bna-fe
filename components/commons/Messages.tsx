@@ -1,10 +1,9 @@
 import Image from "next/image"
-import { motion } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
-import { useEffect, useState } from "react";
+import { useEffect, useState, useRef } from "react";
 import Pusher from 'pusher-js';
 
-// Update interface to match the actual structure of your Pusher data
 interface MessageData {
     id: number | string;
     contact_id?: number;
@@ -14,6 +13,7 @@ interface MessageData {
     is_approved?: number;
     created_at: string;
     updated_at: string;
+    isNew?: boolean; // Flag to track new messages from Pusher
     contact?: {
         id: number;
         name: string;
@@ -58,12 +58,14 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
     const [messages, setMessages] = useState<MessageData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
+    const newMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
     
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.1,
     });
 
+    // Animation for "sending gift" element
     const motionVariants = {
         hidden: { x: "80%", opacity: 0 },
         visible: { x: 0, opacity: 1 },
@@ -91,6 +93,15 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
         };
 
         getData();
+    }, []);
+
+    // Cleanup any timeout on unmount
+    useEffect(() => {
+        return () => {
+            if (newMessageTimeoutRef.current) {
+                clearTimeout(newMessageTimeoutRef.current);
+            }
+        };
     }, []);
 
     // Pusher setup
@@ -157,6 +168,7 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
                         attendance: messageAttendance,
                         created_at: createdAt,
                         updated_at: updatedAt,
+                        isNew: true, // Flag this as a new message for animation
                     };
                     
                     // Add contact if it exists
@@ -180,6 +192,19 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
                     
                     // Update state with the properly formatted message
                     setMessages(prevMessages => [formattedMessage, ...prevMessages]);
+                    
+                    // Clear isNew flag after animation completes
+                    if (newMessageTimeoutRef.current) {
+                        clearTimeout(newMessageTimeoutRef.current);
+                    }
+                    
+                    newMessageTimeoutRef.current = setTimeout(() => {
+                        setMessages(prevMessages => 
+                            prevMessages.map(msg => 
+                                msg.id === messageId ? { ...msg, isNew: false } : msg
+                            )
+                        );
+                    }, 3000);
                 }
             } catch (error) {
                 console.error("Error processing new message:", error);
@@ -214,48 +239,72 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
                         <p className="text-gray-300">No messages yet. Be the first to send your wishes!</p>
                     ) : (
                         <>
-                            {messages.slice(0, 4).map((message, index) => (
-                                <div key={`message-${message.id}-${index}`} className="flex lg:gap-10 gap-5 relative">
-                                    <Image
-                                        src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
-                                        width={200}
-                                        height={200}
-                                        alt="User Avatar"
-                                        className="w-10 h-10"
-                                    />
-                                    <div>
-                                        <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                                            {message.contact?.name || message.name || "Wedding Guest"}
-                                        </h3>
-                                        <p className="text-gray-300 text-sm lg:text-base w-max">
-                                            {typeof message.message === 'string' 
-                                                ? message.message 
-                                                : "Congratulations on your wedding day!"}
-                                        </p>
-                                    </div>
-                                    {index === 2 && (
-                                        <motion.div
-                                            onClick={handleClickOpenModalGift}
-                                            ref={ref}
-                                            variants={motionVariants}
-                                            initial="hidden"
-                                            animate={inView ? "visible" : "hidden"}
+                            <AnimatePresence mode="popLayout">
+                                {messages.slice(0, 4).map((message, index) => {
+                                    // Only add animation class for new messages
+                                    const newMessageClass = message.isNew 
+                                        ? "border border-white/30 rounded-lg bg-white/5" 
+                                        : "";
+                                    
+                                    // Define animation based on whether this is a new message
+                                    const isNewItem = message.isNew;
+                                    
+                                    return (
+                                        <motion.div 
+                                            key={`message-${message.id}`} 
+                                            className={`flex lg:gap-10 gap-5 relative p-2 ${newMessageClass}`}
+                                            layout
+                                            initial={isNewItem ? { opacity: 0, y: -50 } : { opacity: 1 }}
+                                            animate={{ opacity: 1, y: 0 }}
                                             transition={{
-                                                type: "tween",
-                                                duration: 0.8,
-                                                ease: "easeOut",
+                                                type: "spring", 
+                                                stiffness: 300, 
+                                                damping: 24,
+                                                delay: isNewItem ? 0 : index * 0.1, // Stagger delay for existing items
                                             }}
-                                            style={{
-                                                backgroundColor: "rgba(80, 80, 80, 0.7)",
-                                                willChange: "transform, opacity",
-                                            }}
-                                            className="border-l-4 border-gray-400 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
                                         >
-                                            <p className="text-sm">Sending gift?</p>
+                                            <Image
+                                                src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
+                                                width={200}
+                                                height={200}
+                                                alt="User Avatar"
+                                                className="w-10 h-10"
+                                            />
+                                            <div className="flex-1">
+                                                <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
+                                                    {message.contact?.name || message.name || "Wedding Guest"}
+                                                </h3>
+                                                <p className="text-gray-300 text-sm lg:text-base w-max">
+                                                    {typeof message.message === 'string' 
+                                                        ? message.message 
+                                                        : "Congratulations on your wedding day!"}
+                                                </p>
+                                            </div>
+                                            {index === 2 && (
+                                                <motion.div
+                                                    onClick={handleClickOpenModalGift}
+                                                    ref={ref}
+                                                    variants={motionVariants}
+                                                    initial="hidden"
+                                                    animate={inView ? "visible" : "hidden"}
+                                                    transition={{
+                                                        type: "tween",
+                                                        duration: 0.8,
+                                                        ease: "easeOut",
+                                                    }}
+                                                    style={{
+                                                        backgroundColor: "rgba(80, 80, 80, 0.7)",
+                                                        willChange: "transform, opacity",
+                                                    }}
+                                                    className="border-l-4 border-gray-400 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
+                                                >
+                                                    <p className="text-sm">Sending gift?</p>
+                                                </motion.div>
+                                            )}
                                         </motion.div>
-                                    )}
-                                </div>
-                            ))}
+                                    );
+                                })}
+                            </AnimatePresence>
                         </>
                     )}
                 </div>

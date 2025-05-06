@@ -54,6 +54,16 @@ export const Modal: React.FC<DialogProps> = ({
           title: "Terimakasih",
           text: "Pesan kamu berhasil terkirim",
           icon: "success",
+          background: "#1a1a1a",
+          color: "#ffffff",
+          iconColor: "#4BB543", // Warna hijau untuk icon success
+          confirmButtonColor: "#4BB543",
+          customClass: {
+            popup: 'dark-theme-popup',
+            title: 'dark-theme-title',
+            htmlContainer: 'dark-theme-content', // Menggunakan htmlContainer, bukan content
+            confirmButton: 'dark-theme-button'
+          }
         });
       }
     } catch (error) {
@@ -121,7 +131,6 @@ export const Modal: React.FC<DialogProps> = ({
                 <div className="w-screen lg:w-[1080px] mx-auto text-white overflow-hidden">
                   <div className="mt-20 rounded-t-3xl">
                     <video
-                      muted
                       className="object-cover aspect-video rounded-t-3xl"
                       autoPlay
                       loop
