@@ -28,6 +28,28 @@ interface MessageData {
     };
 }
 
+interface PusherMessageData {
+    message?: {
+        id?: number | string;
+        name?: string;
+        message?: string;
+        attendance?: string;
+        created_at?: string;
+        updated_at?: string;
+        contact?: Record<string, unknown>;
+        [key: string]: unknown;
+    };
+    [key: string]: unknown;
+}
+
+interface PusherErrorEvent {
+    type: string;
+    data: {
+        code: number;
+        message: string;
+    };
+}
+
 interface MessagesProps {
     handleClickOpenModalGift: () => void;
 }
@@ -36,8 +58,7 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
     const [messages, setMessages] = useState<MessageData[]>([]);
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
-    const [pusherInstance, setPusherInstance] = useState<Pusher | null>(null);
-
+    
     const { ref, inView } = useInView({
         triggerOnce: true,
         threshold: 0.1,
@@ -80,34 +101,81 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
             forceTLS: true,
         });
 
-        setPusherInstance(pusher);
-
         // Subscribe to the 'messages' channel
         const channel = pusher.subscribe('messages');
 
         // Listen for the 'new-message' event with proper error handling
-        channel.bind('new-message', (newData: any) => {
+        channel.bind('new-message', (newData: PusherMessageData) => {
             console.log('New message received: ', newData);
             
             try {
-                // Check if data is in expected format
+                // Check if data is in expected format and extract it properly
                 const messageData = newData.message || newData;
                 
                 // Ensure we have a proper object with required fields
                 if (typeof messageData === 'object' && messageData !== null) {
+                    // Generate a unique ID if none is provided
+                    const messageId: string | number = 
+                        typeof messageData.id === 'string' || typeof messageData.id === 'number' 
+                            ? messageData.id 
+                            : `temp-${Date.now()}`;
+                    
+                    // Get name with fallback
+                    const messageName: string = 
+                        typeof messageData.name === 'string' 
+                            ? messageData.name 
+                            : "Guest";
+                    
+                    // Get message content with fallback
+                    const messageContent: string = 
+                        typeof messageData.message === 'string' 
+                            ? messageData.message 
+                            : "";
+                    
+                    // Get attendance with fallback
+                    const messageAttendance: string = 
+                        typeof messageData.attendance === 'string' 
+                            ? messageData.attendance 
+                            : "";
+                    
+                    // Get timestamps with fallbacks
+                    const createdAt: string = 
+                        typeof messageData.created_at === 'string' 
+                            ? messageData.created_at 
+                            : new Date().toISOString();
+                    
+                    const updatedAt: string = 
+                        typeof messageData.updated_at === 'string' 
+                            ? messageData.updated_at 
+                            : new Date().toISOString();
+                    
                     // Create a properly formatted message object with only the fields we need
                     const formattedMessage: MessageData = {
-                        id: messageData.id || `temp-${Date.now()}`,
-                        name: messageData.name || "Guest",
-                        message: messageData.message || "",
-                        attendance: messageData.attendance || "",
-                        created_at: messageData.created_at || new Date().toISOString(),
-                        updated_at: messageData.updated_at || new Date().toISOString(),
+                        id: messageId,
+                        name: messageName,
+                        message: messageContent,
+                        attendance: messageAttendance,
+                        created_at: createdAt,
+                        updated_at: updatedAt,
                     };
                     
                     // Add contact if it exists
-                    if (messageData.contact) {
-                        formattedMessage.contact = messageData.contact;
+                    if (messageData.contact && typeof messageData.contact === 'object') {
+                        // Type assertion with proper check
+                        const contact = messageData.contact as {
+                            id?: number;
+                            name?: string;
+                            username?: string;
+                            [key: string]: unknown;
+                        };
+                        
+                        if (contact && typeof contact.id === 'number') {
+                            formattedMessage.contact = {
+                                id: contact.id,
+                                name: typeof contact.name === 'string' ? contact.name : "Guest",
+                                username: typeof contact.username === 'string' ? contact.username : undefined,
+                            };
+                        }
                     }
                     
                     // Update state with the properly formatted message
@@ -119,7 +187,7 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
         });
 
         // Error handling for pusher connection
-        pusher.connection.bind('error', (err: any) => {
+        pusher.connection.bind('error', (err: PusherErrorEvent) => {
             console.error('Pusher connection error:', err);
         });
 
