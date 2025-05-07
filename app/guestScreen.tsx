@@ -15,6 +15,9 @@ interface Props {
 const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
   const { setUser } = useUser();
   const [name, setName] = useState<string>("");
+  const [welcome, setWelcome] = useState("Kami dengan hormat mengundang");
+  const [isLoading, setIsLoading] = useState(true);
+  const [error, setError] = useState<string | null>(null);
   const searchParams = useSearchParams();
   const invite = searchParams.get('we-invite');
 
@@ -32,7 +35,14 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
 
   useEffect(() => {
     const getData = async () => {
-      if (!invite) return;
+      if (!invite) {
+        setIsLoading(false);
+        setError("Tidak ada kode undangan yang diberikan");
+        return;
+      }
+      
+      setIsLoading(true);
+      setError(null);
       
       try {
         const response = await fetch(
@@ -40,6 +50,7 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
         );
         
         if (!response.ok) {
+          setWelcome("");
           throw new Error(`HTTP error! Status: ${response.status}`);
         }
         
@@ -51,12 +62,24 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
           phone_number: result.data.phone_number || ''
         });
       } catch (error) {
+        setError("Nama tidak ditemukan dalam daftar undangan");
         console.error("Error fetching invitation data:", error);
+      } finally {
+        setIsLoading(false);
       }
     };
 
-    getData();
-  }, [invite, setUser]);
+    if (openGuest) {
+      getData();
+    }
+  }, [invite, setUser, openGuest]);
+
+  const handleScreenClick = () => {
+    // Only close if name exists - means data was successfully loaded
+    if (name && !isLoading) {
+      setOpenGuest(false);
+    }
+  };
 
   return (
     <AnimatePresence>
@@ -67,25 +90,43 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
           initial={{ opacity: 0 }}
           animate="visible"
           exit="exit"
-          onClick={() => {
-            if(name) {
-              setOpenGuest(false)
-            }
-          }}
+          onClick={handleScreenClick}
           className="fixed inset-0 h-screen w-screen bg-[#141414] flex items-center justify-center z-50"
         >
-          <div className="text-center">
-            <h1 className="text-4xl font-medium text-white mb-3">{`Kami dengan hormat mengundang`}</h1>
-            <div>
-              <Image
-                width={200}
-                height={200}
-                className="mx-auto cursor-pointer"
-                src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png"
-                alt="Guest Avatar"
-              />
-              <p className="text-gray-500 mt-5 font-light">{name || 'Loading guest name...'}</p>
-            </div>
+          <div className="text-center px-6">
+            <h1 className="text-2xl xl:text-4xl font-medium max-w-2xl text-white mb-6">{welcome}</h1>
+            
+            {isLoading ? (
+              <div className="flex flex-col items-center">
+                <div className="w-16 h-16 border-t-4 border-white border-solid rounded-full animate-spin mb-4"></div>
+                <p className="text-gray-400">Sedang memuat data undangan...</p>
+              </div>
+            ) : error ? (
+              <div className="text-center">
+                <Image
+                  width={140}
+                  height={140}
+                  className="mx-auto mb-4"
+                  src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png"
+                  alt="Guest Avatar"
+                />
+                <p className="text-red-400 mb-2">{error}</p>
+                <p className="text-gray-400 text-sm max-w-md mx-auto">
+                  Periksa kembali link undangan Anda atau hubungi pemilik acara untuk mendapatkan link yang benar.
+                </p>
+              </div>
+            ) : (
+              <div className="animate-fadeIn">
+                <Image
+                  width={200}
+                  height={200}
+                  className="mx-auto cursor-pointer"
+                  src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png"
+                  alt="Guest Avatar"
+                />
+                <p className="text-white font-medium text-2xl mt-5">{name}</p>
+              </div>
+            )}
           </div>
         </motion.section>
       )}
@@ -100,7 +141,8 @@ const GuestScreenLoading = ({ openGuest }: { openGuest: boolean }) => {
   return (
     <div className="fixed inset-0 h-screen w-screen bg-[#141414] flex items-center justify-center z-50">
       <div className="text-center">
-        <h1 className="text-4xl font-medium text-white mb-3">Loading invitation...</h1>
+        <h1 className="text-4xl font-medium text-white mb-6">Loading invitation...</h1>
+        <div className="w-16 h-16 border-t-4 border-white border-solid rounded-full animate-spin mx-auto"></div>
       </div>
     </div>
   );
