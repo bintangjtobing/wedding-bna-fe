@@ -1,3 +1,5 @@
+import { useTranslate } from "@/context/LanguageContext";
+
 interface FormProps {
     setName: React.Dispatch<React.SetStateAction<string>>;
     name: string
@@ -6,20 +8,22 @@ interface FormProps {
     handleClick: () => Promise<void>
 }
 
-export const Form:React.FC<FormProps> = ({
+export const Form: React.FC<FormProps> = ({
     setName,
     setMessage,
     name,
     setAttend,
     handleClick
 }) => {
-    
+
+    const t = useTranslate()
+
     return (
         <>
             <div className="mt-16">
                 <div className="flex flex-col">
                     <label className="mb-2 lg:text-2xl text-lg" htmlFor="">
-                        Nama
+                        {t('ucapan.nama')}
                     </label>
                     <input
                         onChange={(e) => setName(e.target.value)}
@@ -30,7 +34,7 @@ export const Form:React.FC<FormProps> = ({
                 </div>
                 <div className="flex flex-col mt-10">
                     <label className="mb-2 lg:text-2xl text-lg" htmlFor="">
-                        Pesan
+                        {t('ucapan.pesan')}
                     </label>
                     <textarea
                         onChange={(e) => setMessage(e.target.value)}
@@ -43,7 +47,7 @@ export const Form:React.FC<FormProps> = ({
                         className="mb-2 lg:text-2xl text-lg"
                         htmlFor="attendance"
                     >
-                        Kehadiran
+                         {t('ucapan.kehadiran')}
                     </label>
                     <select
                         onChange={(e) => setAttend(e.target.value)}
@@ -53,16 +57,16 @@ export const Form:React.FC<FormProps> = ({
                         defaultValue="berhalangan-hadir"
                         aria-label="Attendance options"
                     >
-                        <option value="tidak_hadir">Berhalang hadir</option>
-                        <option value="belum_pasti">Belum pasti</option>
-                        <option value="hadir">Hadir</option>
+                        <option value="tidak_hadir">{t('kehadiran.berhalangan_hadir')}</option>
+                        <option value="belum_pasti">{t('kehadiran.belum_pasti')}</option>
+                        <option value="hadir">{t('kehadiran.hadir')}</option>
                     </select>
                 </div>
                 <button
                     onClick={handleClick}
                     className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md"
                 >
-                    Send
+                     {t('ucapan.kirim')}
                 </button>
             </div>
         </>

@@ -10,6 +10,8 @@ import { Footer } from "./footer/Footer";
 import { Form } from "./Form";
 import { useUser } from "@/context/UserContext";
 import { Messages } from "@/components/commons/Messages";
+import { useTranslate } from "@/context/LanguageContext";
+import FormattedText from "@/lib/FormatedText";
 
 interface DialogProps {
   open: boolean;
@@ -26,6 +28,7 @@ export const Modal: React.FC<DialogProps> = ({
   openModalCollection,
   setOpenModalGift,
 }) => {
+  const t = useTranslate()
   const { user } = useUser()
   const [name, setName] = useState<string>("");
   const [username, setUserName] = useState<string>("")
@@ -48,17 +51,17 @@ export const Modal: React.FC<DialogProps> = ({
     timerProgressBar: true,
     didOpen: (toast) => {
       const toastEl = Swal.getPopup();
-    
+
       if (toastEl) {
         toastEl.classList.add('toast-with-left-border');
-        
+
         // Cari elemen ikon dan hapus background-nya dengan type casting
         const iconEl = toastEl.querySelector('.swal2-icon') as HTMLElement;
         if (iconEl) {
           iconEl.style.backgroundColor = 'transparent';
         }
       }
-    
+
       toast.onmouseenter = Swal.stopTimer;
       toast.onmouseleave = Swal.resumeTimer;
     },
@@ -189,40 +192,35 @@ export const Modal: React.FC<DialogProps> = ({
                           alt="nikahfix-series"
                         />
                         <h1 className="text-2xl lg:text-3xl font-extrabold mb-2">
-                          Bintang & Ayu <br /> Sebelum hari H
+                          {t('intro.nama_pasangan')} <br /> {t('intro.sebelum_hari')}
                         </h1>
-                        <p>Romantic, Married, Family, Documenter</p>
+                        <p>{t('intro.deskripsi')}</p>
                       </div>
                     </div>
                   </div>
                   <div className="bg-[#151515] text-white px-5 lg:px-10 py-8">
                     <div className="lg:flex justify-between space-y-3 items-center text-gray-400 mb-3 lg:mb-5">
                       <p>
-                        Coming soon 2025 July 11<sup>st</sup>{" "}
+                        {t('intro.segera_hadir_dengan_tanggal')}<sup>st</sup>{" "}
                         <span className="border text-sm px-2 ml-1">4K</span>{" "}
                         <span className="border text-sm px-2">17+</span>
                       </p>
                       <p className="text-white text-sm">
                         <span className="text-gray-400 text-xs">Cast:</span>{" "}
-                        Bintang Tobing, Ayu Stevani Sinaga
+                        {t('pasangan.nama_lengkap_pasangan')}
                       </p>
                     </div>
                     <div className="lg:w-[70%]">
                       <p className="mb-3 lg:mb-5 text-sm lg:text-base">
-                        Setelah Bintang dan Ayu dipertemukan dalam situasi yang
-                        tepat, di mana keduanya telah siap untuk memulai
-                        hubungan bersama, tibalah mereka di awal perjalanan baru
-                        menuju pernikahan.
+                        {t("pasangan.cerita_singkat")}
                       </p>
                       <p className="text-xs lg:text-sm text-gray-400 font-light">
-                        {`"Sehati sepikirlah kamu, dan hiduplah dalam damai
-                        sejahtera; maka Allah, sumber kasih dan damai sejahtera
-                        akan menyertai kamu!"`}
+                        {t('pasangan.kutipan_alkitab')}
                       </p>
                     </div>
                     <div className="mt-8">
                       <h2 className="text-2xl lg:text-3xl font-bold">
-                        Breaking News
+                        {t("pengumuman.judul")}
                       </h2>
                       <Image
                         src={
@@ -236,34 +234,16 @@ export const Modal: React.FC<DialogProps> = ({
                       />
 
                       <h4 className="mt-5 font-bold text-xl lg:text-xl">
-                        Dengan penuh kebahagiaan, kami ingin berbagi kabar
-                        gembira ini!
+                        {t('pengumuman.pengantar')}
                       </h4>
-                      <p className="mt-5 text-sm lg:text-base">
-                        Dengan penuh kebahagiaan, kami ingin berbagi kabar
-                        gembira ini! <br />
-                        Kami telah memutuskan untuk melangkah bersama menuju
-                        babak baru dalam kehidupan kami. {"<3"} <br />
-                        <br />
-                        Pernikahan kami akan dilangsungkan secara sederhana
-                        dalam suasana wedding di Medan, hanya dihadiri oleh
-                        keluarga, teman, dan sahabat terdekat. <br />
-                        Kami mohon maaf sebesar-besarnya karena tidak dapat
-                        mengundang semua orang yang kami sayangi untuk hadir
-                        bersama kami di hari bahagia ini. <br />
-                        <br />
-                        Namun, meskipun tidak bersama secara fisik, kami selalu
-                        merasakan kehangatan cinta dan dukungan dari kalian
-                        semua. Kami mohon doa yang terbaik untuk perjalanan kami
-                        ke depan, agar selalu dipenuhi dengan kebahagiaan,
-                        cinta, dan berkah. <br />
-                        <br />
-                        Dengan penuh cinta, The Bride and Groom {"<3"}
-                      </p>
+                      <FormattedText
+                        text={t('pengumuman.isi')}
+                        className="mt-5 text-sm lg:text-base"
+                      />
                     </div>
                     <div className="mt-8">
                       <h2 className="font-bold text-2xl lg:text-3xl">
-                        Bride and Groom
+                        {t('pengantin.judul')}
                       </h2>
                       <div className="grid lg:grid-cols-2 gap-10 mt-8">
                         <div>
@@ -282,11 +262,10 @@ export const Modal: React.FC<DialogProps> = ({
                           />
                           <div className="">
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
-                              Ayu Stevani Sinaga
+                              {t('pengantin.pengantin_wanita')}
                             </h3>
                             <p className="text-gray-400 text-sm lg:text-base mt-2 lg:mt-3">
-                              Putri dari Bapak Toni Steven Sinaga dan ibu
-                              Asnawati br Siregar
+                              {t('pengantin.orang_tua_wanita')}
                             </p>
                           </div>
                         </div>
@@ -306,11 +285,10 @@ export const Modal: React.FC<DialogProps> = ({
                           />
                           <div>
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
-                              Bintang Cato Jeremia L Tobing
+                              {t('pengantin.pengantin_pria')}
                             </h3>
                             <p className="text-gray-400 text-sm lg:text-base mt-2 lg:mt-3">
-                              Putra dari Bapak Bastian Valen Tobing dan ibu
-                              Cicih Warsih br Simanjuntak
+                              {t('pengantin.orang_tua_pria')}
                             </p>
                           </div>
                         </div>
@@ -319,7 +297,7 @@ export const Modal: React.FC<DialogProps> = ({
 
                     <div className="mt-8">
                       <h2 className="lg:text-3xl text-xl font-bold mb-5 lg:mb-8">
-                        Wedding Reception & Blessing
+                        {t('acara.judul_pemberkatan')}
                       </h2>
                       <Image
                         src={
@@ -331,19 +309,19 @@ export const Modal: React.FC<DialogProps> = ({
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lg:text-3xl text-xl font-bold mb-2 mt-8">
-                        HKBP GLUGUR Resort Medan Utara
+                        {t('acara.lokasi_pemberkatan')}
                       </h2>
                       <div className="lg:flex items-center justify-between">
                         <div className="flex items-center gap-5 mb-3">
                           <div className="bg-gray-100 px-5 lg:px-10 py-3 lg:py-3 text-[#151515] w-fit text-md lg:text-xl font-semibold rounded-md">
-                            <p>11 July 2025</p>
+                            <p>{t('acara.tanggal_pemberkatan')}</p>
                           </div>
                           <p className="font-semibold text-white text-base lg:text-lg">
-                            10:00 WIB
+                            {t('acara.waktu_pemberkatan')}
                           </p>
                         </div>
                         <p className="text-gray-200 font-light text-sm lg:text-base">
-                          Jl Pembangunan III No. 57A, Medan Timur
+                          {t('acara.alamat_pemberkatan')}
                         </p>
                       </div>
                       <Link
@@ -357,7 +335,7 @@ export const Modal: React.FC<DialogProps> = ({
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
-                        Add to calendar
+                        {t('acara.tambah_kalender')}
                       </Link>
                     </div>
                     <div className="mt-8">
@@ -371,19 +349,19 @@ export const Modal: React.FC<DialogProps> = ({
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lx:text-3xl text-xl font-bold mb-2 mt-8">
-                        Wisma Mahinna Center
+                        {t('acara.lokasi_resepsi')}
                       </h2>
                       <div className="lg:flex items-center justify-between">
                         <div className="flex items-center gap-5 mb-3">
                           <div className="bg-gray-100 px-5 lg:px-10 py-3 lg:py-3 text-[#151515] w-fit text-md lg:text-xl font-semibold rounded-md">
-                            <p>11 July 2025</p>
+                            <p>{t('acara.tanggal_resepsi')}</p>
                           </div>
                           <p className="font-semibold text-white text-base lg:text-lg">
-                            13:00 WIB
+                            {t('acara.waktu_resepsi')}
                           </p>
                         </div>
                         <p className="text-gray-200 font-light text-sm lg:text-base">
-                          Jl Rela No. 119, Medan
+                          {t('acara.alamat_resepsi')}
                         </p>
                       </div>
                       <Link
@@ -397,12 +375,12 @@ export const Modal: React.FC<DialogProps> = ({
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
-                        Add to calendar
+                        {t('acara.tambah_kalender')}
                       </Link>
                     </div>
                     <div className="mt-8 space-y-5 lg:space-y-10">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-2 lg:mb-8">
-                        Our love story
+                        {t('kisah_cinta.judul')}
                       </h2>
                       <div className="">
                         <div>
@@ -418,19 +396,20 @@ export const Modal: React.FC<DialogProps> = ({
                             />
                             <div>
                               <h3 className="lg:text-3xl text-md">
-                                Episode 01: How we meet each other at time
+                                {t('kisah_cinta.episode1_judul')}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                26m 10s
+                                {t('kisah_cinta.episode1_durasi')}
                               </p>
                             </div>
                           </div>
                           <div className="mt-4 lg:text-lg text-xs text-gray-200">
                             <Collaps
-                              contentTriger="Bintang dan Ayu pertama kali bertemu sebagai rekan...."
-                              content="Bintang dan Ayu pertama kali bertemu sebagai rekan
-                            kerja di kantor yang sama. Kegiatan-kegiatan kecil
-                            kantor yang sering melibatkan orang-orang didala... "
+                              contentTriger={t('kisah_cinta.episode1_isi')}
+                              // content="Bintang dan Ayu pertama kali bertemu sebagai rekan
+                              // kerja di kantor yang sama. Kegiatan-kegiatan kecil
+                              // kantor yang sering melibatkan orang-orang didala... "
+                              content={t('kisah_cinta.episode1_isi')}
                             />
                           </div>
                         </div>
@@ -449,20 +428,21 @@ export const Modal: React.FC<DialogProps> = ({
                             />
                             <div>
                               <h3 className="lg:text-3xl text-md">
-                                Episode 02: A Love that Grows With Time
+                                {t('kisah_cinta.episode2_judul')}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                26m 10s
+                                {t('kisah_cinta.episode2_durasi')}
                               </p>
                             </div>
                           </div>
                           <div className="mt-4 lg:text-lg text-xs text-gray-200">
                             <Collaps
-                              contentTriger="Hari demi hari terlewati, sampai akhirnya mereka..."
-                              content="Hari demi hari terlewati, sampai akhirnya mereka
-                            menyadari bahwa perasaan yang mereka miliki satu
-                            sama lain bukan sebatas rekan kerja belaka,
-                            melain..."
+                              contentTriger={t('kisah_cinta.episode2_isi')}
+                              //   content="Hari demi hari terlewati, sampai akhirnya mereka
+                              // menyadari bahwa perasaan yang mereka miliki satu
+                              // sama lain bukan sebatas rekan kerja belaka,
+                              // melain..."
+                              content={t('kisah_cinta.episode2_isi')}
                             />
                           </div>
                         </div>
@@ -481,20 +461,21 @@ export const Modal: React.FC<DialogProps> = ({
                             />
                             <div>
                               <h3 className="lg:text-3xl text-md">
-                                Episode 03: Choose to Spend Life Together
+                                {t('kisah_cinta.episode3_judul')}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                26m 10s
+                                {t('kisah_cinta.episode3_durasi')}
                               </p>
                             </div>
                           </div>
                           <div className="mt-4 lg:text-lg text-xs text-gray-200">
                             <Collaps
-                              contentTriger="Seringkali Bintang memberitahu Ayu bahwa ia tertarik....."
-                              content="Seringkali Bintang memberitahu Ayu bahwa ia tertarik
-                            dan ingin menjalani hubungan lebih serius. Sampai
-                            akhirnya di akhir 2023, Bintang mulai
-                            memberanikan..."
+                              contentTriger={t('kisah_cinta.episode3_isi')}
+                              //   content="Seringkali Bintang memberitahu Ayu bahwa ia tertarik
+                              // dan ingin menjalani hubungan lebih serius. Sampai
+                              // akhirnya di akhir 2023, Bintang mulai
+                              // memberanikan..."
+                              content={t('kisah_cinta.episode3_isi')}
                             />
                           </div>
                         </div>
@@ -513,27 +494,25 @@ export const Modal: React.FC<DialogProps> = ({
                             />
                             <div>
                               <button className="bg-[#EB2929] lg:px-8 lg:py-2 px-4 py-1 text-xs lg:text-base text-white font-semibold rounded-md lg:mb-5 mb-2">
-                                Coming Soon
+                                {t('kisah_cinta.coming_soon')}
                               </button>
                               <h3 className="lg:text-3xl text-base">
-                                Episode 04: The Begining of Forever
+                                {t('kisah_cinta.episode4_judul')}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                26m 10s
+                                {t('kisah_cinta.episode4_durasi')}
                               </p>
                             </div>
                           </div>
                           <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            Ketika hari H itu datang, Bintang dan Ayu akan
-                            berbagi kisah haru mereka disini. Sampai bertemu
-                            lagi di cerita bahagia selanjutnya!
+                            {t('kisah_cinta.episode4_isi')}
                           </div>
                         </div>
                       </div>
                     </div>
                     <div className="mt-8">
                       <h2 className="lg:text-3xl text-2xl font-bold lg:mb-10 mb-5">
-                        Our gallery collections
+                        {t('galeri.judul')}
                       </h2>
                       <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-5">
                         <Image
@@ -558,7 +537,7 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:py-2 lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
                               <p className="lg:text-xl text-sm font-medium">
-                                {`Groom's Favorite`}
+                                {t('galeri.favorit_pria')}
                               </p>
                             </div>
                           </div>
@@ -603,7 +582,7 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
                               <p className="lg:text-xl text-sm font-medium">
-                                {`Bride's Favorite`}
+                                {t('galeri.favorit_wanita')}
                               </p>
                             </div>
                           </div>
@@ -644,7 +623,7 @@ export const Modal: React.FC<DialogProps> = ({
                         onClick={() => setOpemModalCollection(true)}
                         className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8"
                       >
-                        Load more collections
+                        {t('galeri.muat_lebih')}
                       </button>
                     </div>
                     <Messages

@@ -7,9 +7,10 @@ import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
 import { ModalForMoreCollections } from "./Modal/ModalForMoreCollections";
 import { ModalForGift } from "./Modal/ModalForGift";
-// import { useSearchParams } from 'next/navigation';
+import { useTranslate } from "@/context/LanguageContext";
 
 export default function Home() {
+  const t = useTranslate()
   const [open, setOpen] = useState<boolean>(false);
   const [openGuest, setOpenGuest] = useState<boolean>(true);
   const [openModalCollection, setOpenModalCollection] =
@@ -111,12 +112,12 @@ export default function Home() {
             />
             <div className="text-white mt-3 lg:mt-5">
               <h1 className="text-3xl lg:text-4xl font-extrabold mb-5 lg:mb-5">
-                Bintang & Ayu <br /> Sebelum hari H
+                {t('intro.nama_pasangan')} <br /> {t('intro.sebelum_hari')}
               </h1>
               <div className="flex justify-between">
                 <div className="flex items-center gap-3">
                   <button className="bg-white text-gray-950 py-2 px-3 lg:py-4 lg:px-9 rounded-md text-sm lg:text-2xl font-semibold">
-                    Coming soon
+                    {t('intro.segera_hadir')}
                   </button>
                   <button
                     onClick={() => handleOpenChange(true)}
@@ -140,7 +141,7 @@ export default function Home() {
                         clipRule="evenodd"
                       />
                     </svg>
-                    Buka undangan
+                    {t('intro.buka_undangan')}
                   </button>
                 </div>
                 <div className="relative">
@@ -157,7 +158,7 @@ export default function Home() {
                     style={{ backgroundColor: "rgba(2, 6, 23, 0.7)" }}
                     className="border-l-4 border-white px-4 py-2 absolute w-max right-0 bottom-[-4rem] lg:bottom-0"
                   >
-                    <p className="text-white">11 July 2025</p>
+                    <p className="text-white">{t('tanggal')}</p>
                   </motion.div>
                 </div>
               </div>

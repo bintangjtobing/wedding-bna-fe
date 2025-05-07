@@ -1,0 +1,95 @@
+{
+  "umum": {
+    "judul_situs": "Wedding Invitation of Bintang & Ayu",
+    "bahasa": "Language"
+  },
+  "intro": {
+    "undangan": "We cordially invite",
+    "nama_pasangan": "Bintang & Ayu",
+    "sebelum_hari": "Before the big day",
+    "segera_hadir": "Coming soon",
+    "buka_undangan": "Open invitation",
+    "tanggal": "July 11, 2025",
+    "deskripsi": "Romantic, Married, Family, Documenter",
+    "segera_hadir_dengan_tanggal": "Coming soon July 11, 2025"
+  },
+  "pasangan": {
+    "nama_lengkap_pasangan": "Bintang Tobing, Ayu Stevani Sinaga",
+    "cerita_singkat": "After Bintang and Ayu met in the right situation, where both were ready to start a relationship together, they arrived at the beginning of a new journey towards marriage.",
+    "kutipan_alkitab": "\"Be of the same mind, live in peace; and the God of love and peace will be with you!\""
+  },
+  "pengumuman": {
+    "judul": "Breaking News",
+    "pengantar": "With great joy, we want to share this wonderful news!",
+    "isi": "With great joy, we want to share this wonderful news!\n\nWe have decided to take the next step together into a new chapter of our lives. <3\n\nOur wedding will be held in a simple setting in Medan, attended only by close family, friends, and loved ones.\n\nWe deeply apologize as we cannot invite everyone we care about to be physically present with us on this happy day.\n\nHowever, even if not physically together, we always feel the warmth of your love and support. We ask for your best wishes and prayers for our journey ahead, that it may always be filled with happiness, love, and blessings.\n\nWith love,\nThe Bride and Groom <3"
+  },
+  "pengantin": {
+    "judul": "Bride and Groom",
+    "pengantin_wanita": "Ayu Stevani Sinaga",
+    "orang_tua_wanita": "Daughter of Mr. Toni Steven Sinaga and Mrs. Asnawati br Siregar",
+    "pengantin_pria": "Bintang Cato Jeremia L Tobing",
+    "orang_tua_pria": "Son of Mr. Bastian Valen Tobing and Mrs. Cicih Warsih br Simanjuntak"
+  },
+  "acara": {
+    "judul_pemberkatan": "Wedding Reception & Blessing",
+    "lokasi_pemberkatan": "HKBP GLUGUR Resort North Medan",
+    "tanggal_pemberkatan": "July 11, 2025",
+    "waktu_pemberkatan": "10:00 AM",
+    "alamat_pemberkatan": "Jl Pembangunan III No. 57A, East Medan",
+    "tambah_kalender": "Add to calendar",
+    "lokasi_resepsi": "Wisma Mahinna Center",
+    "tanggal_resepsi": "July 11, 2025",
+    "waktu_resepsi": "1:00 PM",
+    "alamat_resepsi": "Jl Rela No. 119, Medan"
+  },
+  "kisah_cinta": {
+    "judul": "Our love story",
+    "episode1_judul": "Episode 01: How we meet each other at time",
+    "episode1_durasi": "26m 10s",
+    "episode1_isi": "Bintang and Ayu first met as colleagues....",
+    "episode2_judul": "Episode 02: A Love that Grows With Time",
+    "episode2_durasi": "26m 10s",
+    "episode2_isi": "Day by day passed, until finally they...",
+    "episode3_judul": "Episode 03: Choose to Spend Life Together",
+    "episode3_durasi": "26m 10s",
+    "episode3_isi": "Often Bintang would tell Ayu that he was interested.....",
+    "segera_hadir": "Coming Soon",
+    "episode4_judul": "Episode 04: The Beginning of Forever",
+    "episode4_durasi": "26m 10s",
+    "episode4_isi": "When the big day comes, Bintang and Ayu will share their touching story here. See you in the next happy story!"
+  },
+  "galeri": {
+    "judul": "Our gallery collections",
+    "favorit_pria": "Groom's Favorite",
+    "favorit_wanita": "Bride's Favorite",
+    "muat_lebih": "Load more collections"
+  },
+  "ucapan": {
+    "judul": "Wish for couples",
+    "nama": "Name",
+    "pesan": "Message",
+    "kehadiran": "Attendance",
+    "kirim": "Send"
+  },
+  "kehadiran": {
+    "hadir": "Will attend",
+    "belum_pasti": "Not sure yet",
+    "berhalangan_hadir": "Unable to attend"
+  },
+  "footer": {
+    "content1": "Thank you to the parents and families of Ayu Sinaga and Bintang Tobing, Bahari, and the entire Boxity team for making the engagement, wedding blessing, and this wedding web app possible.",
+    "content2": "We also express our deepest gratitude to the media and documentation team from Solu Photoworks, and the accommodation, catering, event, and music teams for their contribution to the success of this celebration."
+  },
+  "gift": {
+    "terimakasih": "Thank you",
+    "pesan1": "For your intention to send a gift",
+    "pesan2": "There are a few ways you can do it",
+    "pesan3": "to send us your gift.",
+    "atas_nama": "In the name of"
+  },
+  "guest": {
+    "error1": "Name not found in the guest list",
+    "error2": "Please check your invitation link or contact the event host to get the correct one.",
+    "loading": "Loading invitation data..."
+  }
+}

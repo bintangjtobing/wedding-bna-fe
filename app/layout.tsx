@@ -3,6 +3,7 @@ import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "@/context/UserContext";
+import { LanguageProvider } from '@/context/LanguageContext';
 
 // Importing local fonts
 const geistSans = localFont({
@@ -72,7 +73,7 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
       >
-        <UserProvider>{children}</UserProvider>
+        <LanguageProvider><UserProvider>{children}</UserProvider></LanguageProvider>
       </body>
     </html>
   );

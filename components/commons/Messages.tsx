@@ -3,6 +3,7 @@ import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState, useRef } from "react";
 import Pusher from 'pusher-js';
+import { useTranslate } from "@/context/LanguageContext";
 
 interface MessageData {
     id: number | string;
@@ -59,6 +60,7 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
     const [loading, setLoading] = useState(true);
     const [error, setError] = useState<string | null>(null);
     const newMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
+    const t = useTranslate()
     
     const { ref, inView } = useInView({
         triggerOnce: true,
@@ -228,7 +230,7 @@ export const Messages: React.FC<MessagesProps> = ({ handleClickOpenModalGift }) 
         <>
             <div className="mt-8">
                 <h2 className="lg:text-3xl text-2xl font-bold mb-8">
-                    Wish for couples
+                    {t('ucapan.judul')}
                 </h2>
                 <div className="space-y-5">
                     {loading ? (
