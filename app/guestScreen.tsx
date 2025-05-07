@@ -67,7 +67,11 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
           initial={{ opacity: 0 }}
           animate="visible"
           exit="exit"
-          onClick={() => setOpenGuest(false)}
+          onClick={() => {
+            if(name) {
+              setOpenGuest(false)
+            }
+          }}
           className="fixed inset-0 h-screen w-screen bg-[#141414] flex items-center justify-center z-50"
         >
           <div className="text-center">

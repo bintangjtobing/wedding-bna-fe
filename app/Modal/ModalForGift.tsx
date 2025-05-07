@@ -4,6 +4,7 @@ import { ClipboardCopyIcon } from "@radix-ui/react-icons";
 import Image from "next/image";
 import { Footer } from "../footer/Footer";
 import { ArrowLeft } from "lucide-react";
+import { useUser } from "@/context/UserContext";
 
 interface ModalForGiftProps {
   openModalGift: boolean;
@@ -15,6 +16,8 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
   setOpenModalGift,
 }) => {
   const [copied, setCopied] = useState<string | null>(null);
+
+  const {user} = useUser()
 
   const handleCopy = (text: string) => {
     navigator.clipboard
@@ -55,13 +58,13 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
             initial="hidden"
             animate="visible"
             exit="exit"
-            className="absolute inset-0 z-50 flex items-center justify-center"
+            className="fixed inset-0 z-50 flex items-start justify-center overflow-y-auto"
           >
-            <div className="absolute z-50 w-full h-screen">
-              <div className="w-screen lg:w-[768px] mx-auto text-white overflow-hidden bg-[#151515] mt-20 px-10 pb-10 py-6 rounded-xl relative">
+            <div className="relative z-50 w-full pt-10">
+              <div className="w-screen lg:w-[768px] mx-auto text-white bg-[#151515] px-10 pb-10 py-6 rounded-xl relative mb-10">
                 <button
                   onClick={() => setOpenModalGift(false)}
-                  className="fixed z-50 border rounded-full p-2"
+                  className="absolute top-6 left-10 border rounded-full p-2"
                 >
                   <ArrowLeft />
                 </button>
@@ -71,7 +74,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                     Sudah berniat untuk mengirim hadiah
                   </h2>
                   <p className="text-sm font-light text-gray-200">
-                    Ada beberapa cara untuk kak [nama dari server] bisa mengirim
+                    Ada beberapa cara untuk kak {user && user?.name} bisa mengirim
                     kami hadiah.
                   </p>
 

@@ -63,14 +63,14 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                             initial="hidden"
                             animate="visible"
                             exit="exit"
-                            className="absolute inset-0 z-50 flex items-center justify-center"
+                            className="fixed inset-0 z-50 flex items-start justify-center pt-10 overflow-y-auto"
                         >
-                            <div className="absolute z-50 w-full h-screen">
-                                <div className="w-screen lg:w-[1080px] mx-auto text-white overflow-hidden bg-[#151515]">
+                            <div className="relative z-50 w-full">
+                                <div className="w-screen lg:w-[1080px] mx-auto text-white bg-[#151515] mb-10">
                                     <section className="grid grid-rows-3 xl:grid-rows-1 xl:grid-cols-3 gap-6 p-3 overflow-hidden">
                                         {/* Left Side */}
                                         <button onClick={() => setOpenModalCollection(false)} className="fixed z-50 border rounded-full p-2">
-                                            <ArrowLeft/>
+                                            <ArrowLeft />
                                         </button>
                                         <div className="grid grid-rows-7 gap-6">
                                             <motion.div
@@ -135,7 +135,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                     }}
                                                 ></div>
                                                 <div className="text-white text-center h-full flex px-5 items-end pb-3 justify-center font-semibold text-md 2xl:text-xl relative z-10">
-                                                   
+
                                                 </div>
                                             </motion.div>
 
@@ -246,7 +246,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 justify-center font-semibold text-lg 2xl:text-2xl relative z-10">
-                                                        
+
                                                     </div>
                                                 </motion.div>
                                                 <div className="bg-black w-full rounded-3xl">
@@ -314,7 +314,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 justify-center font-semibold text-lg 2xl:text-2xl relative z-10">
-                                                       
+
                                                     </div>
                                                 </motion.div>
                                             </div>
@@ -349,7 +349,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 justify-center font-semibold text-lg 2xl:text-2xl relative z-10">
-                                                        
+
                                                     </div>
                                                 </motion.div>
                                                 <motion.div
@@ -378,7 +378,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 px-2 justify-center font-semibold text-md 2xl:text-xl relative z-10">
-                                                      
+
                                                     </div>
                                                 </motion.div>
                                             </div>
@@ -468,7 +468,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 justify-center font-semibold text-lg 2xl:text-2xl relative z-10">
-                                                   </div>
+                                                    </div>
                                                 </motion.div>
                                             </div>
 
@@ -530,7 +530,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 justify-center font-semibold text-lg 2xl:text-2xl relative z-10">
-                                                     
+
                                                     </div>
                                                 </motion.div>
                                                 <motion.div
@@ -559,7 +559,7 @@ export const ModalForMoreCollections: React.FC<ModalForMoreCollectionsProps> = (
                                                         }}
                                                     ></div>
                                                     <div className="text-white text-center h-full flex items-end pb-3 justify-center font-semibold text-lg 2xl:text-2xl relative z-10">
-                                                        
+
                                                     </div>
                                                 </motion.div>
                                             </div>
