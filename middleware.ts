@@ -14,21 +14,11 @@ export async function middleware(request: NextRequest) {
   ) {
     return NextResponse.next();
   }
-
-  // Check if the language preference is already set in cookies
-  const langCookie = request.cookies.get('NEXT_LOCALE');
-  if (langCookie) {
-    // User already has language preference, don't change it
-    return NextResponse.next();
-  }
-
-  // Get client IP address
-  const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
   
   try {
     // Call the IPGeolocation API
     const apiResponse = await fetch(
-      `https://api.ipgeolocation.io/v2/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe&ip=${ip}`
+      `https://api.ipgeolocation.io/v2/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe`
     );
     
     if (!apiResponse.ok) {
@@ -36,10 +26,24 @@ export async function middleware(request: NextRequest) {
     }
     
     const data = await apiResponse.json();
-    const countryCode = data.country_code2; // ISO country code (e.g., 'ID')
+    
+    // Access the country_code2 from the nested location object
+    const countryCode = data.location.country_code2; // ISO country code (e.g., 'ID')
     
     // Check if user is from Indonesia, otherwise default to English
     const lang = INDONESIAN_COUNTRIES.includes(countryCode) ? 'id' : 'en';
+    
+    // Check if the language parameter already matches what we detected
+    const currentLang = request.nextUrl.searchParams.get('lang');
+    if (currentLang === lang) {
+      // Still update the cookie to refresh expiration time
+      const response = NextResponse.next();
+      response.cookies.set('NEXT_LOCALE', lang, {
+        maxAge: 60 * 60 * 24 * 7, // 1 week
+        path: '/',
+      });
+      return response;
+    }
     
     // Create a URL object to modify the path
     const url = request.nextUrl.clone();
@@ -62,7 +66,6 @@ export async function middleware(request: NextRequest) {
     return redirectResponse;
     
   } catch (error) {
-    console.error('Error detecting location:', error);
     // In case of error, default to English
     const url = request.nextUrl.clone();
     if (!url.searchParams.has('lang')) {

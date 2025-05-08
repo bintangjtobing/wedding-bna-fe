@@ -83,7 +83,7 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
     if (openGuest) {
       getData();
     }
-  }, [invite, setUser, openGuest, t]);
+  }, []);
 
   const handleScreenClick = () => {
     if (name && !isLoading) {
