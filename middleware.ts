@@ -6,28 +6,16 @@ import type { NextRequest } from 'next/server';
 const INDONESIAN_COUNTRIES = ['ID'];
 
 export async function middleware(request: NextRequest) {
-  console.log('🔍 Middleware executing...');
-  console.log(`🔄 URL: ${request.nextUrl.toString()}`);
-  
   // Skip API routes and static files
   if (
     request.nextUrl.pathname.startsWith('/api') ||
     request.nextUrl.pathname.startsWith('/_next') ||
     request.nextUrl.pathname.includes('.')
   ) {
-    console.log('⏩ Skipping middleware for API/static route');
     return NextResponse.next();
   }
   
   try {
-    // Log all potential IP headers to determine which one contains the client IP
-    console.log('📋 IP Header Debug:');
-    console.log(`  • x-real-ip: ${request.headers.get('x-real-ip')}`);
-    console.log(`  • x-forwarded-for: ${request.headers.get('x-forwarded-for')}`);
-    console.log(`  • cf-connecting-ip: ${request.headers.get('cf-connecting-ip')}`);
-    console.log(`  • x-client-ip: ${request.headers.get('x-client-ip')}`);
-    console.log(`  • request.ip: ${request.ip}`);
-    
     // Get the real client IP address from various headers
     // This is important when your server is behind a proxy or CDN
     const clientIp = 
@@ -38,16 +26,12 @@ export async function middleware(request: NextRequest) {
       request.ip || 
       '127.0.0.1';
     
-    console.log(`🌐 Selected Client IP: ${clientIp}`);
-    console.log(`🔎 Calling IPGeolocation API with IP: ${clientIp}...`);
-    
     // Call the IPGeolocation API with the client's IP
     const apiResponse = await fetch(
       `https://api.ipgeolocation.io/v2/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe&ip=${clientIp}`
     );
     
     if (!apiResponse.ok) {
-      console.error(`❌ API Response not OK: ${apiResponse.status} ${apiResponse.statusText}`);
       throw new Error('Failed to fetch geolocation data');
     }
     
@@ -55,26 +39,20 @@ export async function middleware(request: NextRequest) {
     
     // Access the country_code2 from the nested location object
     const countryCode = data.location.country_code2; // ISO country code (e.g., 'ID')
-    console.log(`🗺️ Detected country code: ${countryCode}`);
-    console.log(`📊 Full geolocation data:`, JSON.stringify(data, null, 2));
     
     // Check if user is from Indonesia, otherwise default to English
     const lang = INDONESIAN_COUNTRIES.includes(countryCode) ? 'id' : 'en';
-    console.log(`🔤 Selected language: ${lang}`);
     
     // Check if the language parameter already matches what we detected
     const currentLang = request.nextUrl.searchParams.get('lang');
-    console.log(`🏷️ Current lang parameter: ${currentLang}`);
     
     if (currentLang === lang) {
-      console.log(`✅ Language parameter already matches detected language: ${lang}`);
       // Still update the cookie to refresh expiration time
       const response = NextResponse.next();
       response.cookies.set('NEXT_LOCALE', lang, {
         maxAge: 60 * 60 * 24 * 7, // 1 week
         path: '/',
       });
-      console.log('🍪 Updated cookie without redirect');
       return response;
     }
     
@@ -83,15 +61,11 @@ export async function middleware(request: NextRequest) {
     
     // If there's already a ?lang parameter, replace it
     if (url.searchParams.has('lang')) {
-      console.log(`🔄 Replacing existing lang parameter: ${url.searchParams.get('lang')} -> ${lang}`);
       url.searchParams.set('lang', lang);
     } else {
       // Otherwise, add it
-      console.log(`➕ Adding lang parameter: ${lang}`);
       url.searchParams.append('lang', lang);
     }
-    
-    console.log(`🔀 Redirecting to: ${url.toString()}`);
     
     // Set a cookie for future requests
     const redirectResponse = NextResponse.redirect(url);
@@ -100,19 +74,14 @@ export async function middleware(request: NextRequest) {
       path: '/',
     });
     
-    console.log('✅ Middleware completed successfully with redirect');
     return redirectResponse;
     
   } catch (error) {
-    console.error('❌ Error in middleware:', error);
     // In case of error, default to English
     const url = request.nextUrl.clone();
     if (!url.searchParams.has('lang')) {
-      console.log('➕ Adding default lang=en parameter due to error');
       url.searchParams.append('lang', 'en');
     }
-    
-    console.log(`🔀 Redirecting to: ${url.toString()} (error fallback)`);
     
     const redirectResponse = NextResponse.redirect(url);
     redirectResponse.cookies.set('NEXT_LOCALE', 'en', {
@@ -120,7 +89,6 @@ export async function middleware(request: NextRequest) {
       path: '/',
     });
     
-    console.log('✅ Middleware completed with fallback redirect');
     return redirectResponse;
   }
 }
