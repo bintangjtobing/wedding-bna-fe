@@ -494,7 +494,7 @@ export const Modal: React.FC<DialogProps> = ({
                             />
                             <div>
                               <button className="bg-[#EB2929] lg:px-8 lg:py-2 px-4 py-1 text-xs lg:text-base text-white font-semibold rounded-md lg:mb-5 mb-2">
-                                {t('kisah_cinta.coming_soon')}
+                                {t('kisah_cinta.segera_hadir')}
                               </button>
                               <h3 className="lg:text-3xl text-base">
                                 {t('kisah_cinta.episode4_judul')}
@@ -502,10 +502,10 @@ export const Modal: React.FC<DialogProps> = ({
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
                                 {t('kisah_cinta.episode4_durasi')}
                               </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t('kisah_cinta.episode4_isi')}
+                              </div>
                             </div>
-                          </div>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            {t('kisah_cinta.episode4_isi')}
                           </div>
                         </div>
                       </div>

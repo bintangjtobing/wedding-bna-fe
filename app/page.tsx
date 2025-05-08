@@ -158,7 +158,7 @@ export default function Home() {
                     style={{ backgroundColor: "rgba(2, 6, 23, 0.7)" }}
                     className="border-l-4 border-white px-4 py-2 absolute w-max right-0 bottom-[-4rem] lg:bottom-0"
                   >
-                    <p className="text-white">{t('tanggal')}</p>
+                    <p className="text-white">{t('intro.tanggal')}</p>
                   </motion.div>
                 </div>
               </div>
