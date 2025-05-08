@@ -19,16 +19,31 @@ export async function middleware(request: NextRequest) {
     return NextResponse.next();
   }
   
-  // Get client IP address
-  const ip = request.headers.get('x-forwarded-for') || '127.0.0.1';
-  console.log(`🌐 IP Address: ${ip}`);
-  
   try {
-    console.log('🔎 Calling IPGeolocation API...');
+    // Log all potential IP headers to determine which one contains the client IP
+    console.log('📋 IP Header Debug:');
+    console.log(`  • x-real-ip: ${request.headers.get('x-real-ip')}`);
+    console.log(`  • x-forwarded-for: ${request.headers.get('x-forwarded-for')}`);
+    console.log(`  • cf-connecting-ip: ${request.headers.get('cf-connecting-ip')}`);
+    console.log(`  • x-client-ip: ${request.headers.get('x-client-ip')}`);
+    console.log(`  • request.ip: ${request.ip}`);
     
-    // Call the IPGeolocation API
+    // Get the real client IP address from various headers
+    // This is important when your server is behind a proxy or CDN
+    const clientIp = 
+      request.headers.get('x-real-ip') || 
+      request.headers.get('x-forwarded-for')?.split(',')[0] || 
+      request.headers.get('cf-connecting-ip') || // Cloudflare
+      request.headers.get('x-client-ip') ||
+      request.ip || 
+      '127.0.0.1';
+    
+    console.log(`🌐 Selected Client IP: ${clientIp}`);
+    console.log(`🔎 Calling IPGeolocation API with IP: ${clientIp}...`);
+    
+    // Call the IPGeolocation API with the client's IP
     const apiResponse = await fetch(
-      `https://api.ipgeolocation.io/v2/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe`
+      `https://api.ipgeolocation.io/v2/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe&ip=${clientIp}`
     );
     
     if (!apiResponse.ok) {
@@ -49,6 +64,8 @@ export async function middleware(request: NextRequest) {
     
     // Check if the language parameter already matches what we detected
     const currentLang = request.nextUrl.searchParams.get('lang');
+    console.log(`🏷️ Current lang parameter: ${currentLang}`);
+    
     if (currentLang === lang) {
       console.log(`✅ Language parameter already matches detected language: ${lang}`);
       // Still update the cookie to refresh expiration time
@@ -57,6 +74,7 @@ export async function middleware(request: NextRequest) {
         maxAge: 60 * 60 * 24 * 7, // 1 week
         path: '/',
       });
+      console.log('🍪 Updated cookie without redirect');
       return response;
     }
     
