@@ -44,7 +44,7 @@ export async function middleware(request: NextRequest) {
     try {
       // Call the IPGeolocation API with the client's IP
       const apiResponse = await fetch(
-        `https://api.ipgeolocation.io/v2/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe&ip=${clientIp}`
+        `https://api.ipgeolocation.io/v2/ipgeo?apiKey=4bd22df85b5f4ffaa90d48466feee475&ip=${clientIp}`
       );
       
       if (!apiResponse.ok) {
