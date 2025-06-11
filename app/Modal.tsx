@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import { Collaps } from "./collapsible";
 import Link from "next/link";
 import { useState } from "react";
 import { postAttendance } from "./services/attendance";
