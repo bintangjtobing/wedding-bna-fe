@@ -28,20 +28,19 @@ export const Modal: React.FC<DialogProps> = ({
   openModalCollection,
   setOpenModalGift,
 }) => {
-  const t = useTranslate()
-  const { user } = useUser()
+  const t = useTranslate();
+  const { user } = useUser();
   const [name, setName] = useState<string>("");
-  const [username, setUserName] = useState<string>("")
+  const [username, setUserName] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [attend, setAttend] = useState<string>("tidak_hadir");
 
   useEffect(() => {
     if (user?.name) {
       setName(user.name);
-      setUserName(user.username)
+      setUserName(user.username);
     }
   }, [user]);
-
 
   const Toast = Swal.mixin({
     toast: true,
@@ -53,12 +52,12 @@ export const Modal: React.FC<DialogProps> = ({
       const toastEl = Swal.getPopup();
 
       if (toastEl) {
-        toastEl.classList.add('toast-with-left-border');
+        toastEl.classList.add("toast-with-left-border");
 
         // Cari elemen ikon dan hapus background-nya dengan type casting
-        const iconEl = toastEl.querySelector('.swal2-icon') as HTMLElement;
+        const iconEl = toastEl.querySelector(".swal2-icon") as HTMLElement;
         if (iconEl) {
-          iconEl.style.backgroundColor = 'transparent';
+          iconEl.style.backgroundColor = "transparent";
         }
       }
 
@@ -69,29 +68,27 @@ export const Modal: React.FC<DialogProps> = ({
     color: "#ffffff",
     iconColor: "#4BB543",
     customClass: {
-      popup: 'toast-popup',
-      title: 'toast-title',
-      icon: 'toast-icon' // Tambahkan class khusus untuk ikon
-    }
+      popup: "toast-popup",
+      title: "toast-title",
+      icon: "toast-icon", // Tambahkan class khusus untuk ikon
+    },
   });
 
   const handleClick = async () => {
     try {
-      const response = await postAttendance(
-        {
-          name: name,
-          username: username,
-          message: message,
-          attendance: attend
-        },
-      );
+      const response = await postAttendance({
+        name: name,
+        username: username,
+        message: message,
+        attendance: attend,
+      });
       if (response.status === "success") {
         Toast.fire({
           theme: "dark",
           icon: "success",
           title: "Pesan berhasil terkirim",
           background: "#ffffff",
-          iconColor: "#4BB543"
+          iconColor: "#4BB543",
         });
       }
     } catch (error) {
@@ -185,29 +182,31 @@ export const Modal: React.FC<DialogProps> = ({
                       <div className="absolute z-50 bottom-7 w-full px-5 lg:px-10">
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733231582/image_3_gkyqke.png"
+                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733231582/image_3_gkyqke.png"
                           }
                           width={100}
                           height={100}
                           alt="nikahfix-series"
                         />
                         <h1 className="text-2xl lg:text-3xl font-extrabold mb-2">
-                          {t('intro.nama_pasangan')} <br /> {t('intro.sebelum_hari')}
+                          {t("intro.nama_pasangan")} <br />{" "}
+                          {t("intro.sebelum_hari")}
                         </h1>
-                        <p>{t('intro.deskripsi')}</p>
+                        <p>{t("intro.deskripsi")}</p>
                       </div>
                     </div>
                   </div>
                   <div className="bg-[#151515] text-white px-5 lg:px-10 py-8">
                     <div className="lg:flex justify-between space-y-3 items-center text-gray-400 mb-3 lg:mb-5">
                       <p>
-                        {t('intro.segera_hadir_dengan_tanggal')}<sup>st</sup>{" "}
+                        {t("intro.segera_hadir_dengan_tanggal")}
+                        <sup>st</sup>{" "}
                         <span className="border text-sm px-2 ml-1">4K</span>{" "}
                         <span className="border text-sm px-2">17+</span>
                       </p>
                       <p className="text-white text-sm">
                         <span className="text-gray-400 text-xs">Cast:</span>{" "}
-                        {t('pasangan.nama_lengkap_pasangan')}
+                        {t("pasangan.nama_lengkap_pasangan")}
                       </p>
                     </div>
                     <div className="lg:w-[70%]">
@@ -215,7 +214,7 @@ export const Modal: React.FC<DialogProps> = ({
                         {t("pasangan.cerita_singkat")}
                       </p>
                       <p className="text-xs lg:text-sm text-gray-400 font-light">
-                        {t('pasangan.kutipan_alkitab')}
+                        {t("pasangan.kutipan_alkitab")}
                       </p>
                     </div>
                     <div className="mt-8">
@@ -224,7 +223,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <Image
                         src={
-                          "https://res.cloudinary.com/dilb4d364/image/upload/w_2000/q_auto/f_auto/v1737136266/JON00595_mwjayw.jpg"
+                          "https://res.cloudinary.com/dilb4d364/image/upload/w_2000/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
                         }
                         width={2000}
                         height={1000}
@@ -234,22 +233,22 @@ export const Modal: React.FC<DialogProps> = ({
                       />
 
                       <h4 className="mt-5 font-bold text-xl lg:text-xl">
-                        {t('pengumuman.pengantar')}
+                        {t("pengumuman.pengantar")}
                       </h4>
                       <FormattedText
-                        text={t('pengumuman.isi')}
+                        text={t("pengumuman.isi")}
                         className="mt-5 text-sm lg:text-base"
                       />
                     </div>
                     <div className="mt-8">
                       <h2 className="font-bold text-2xl lg:text-3xl">
-                        {t('pengantin.judul')}
+                        {t("pengantin.judul")}
                       </h2>
                       <div className="grid lg:grid-cols-2 gap-10 mt-8">
                         <div>
                           <Image
                             src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/ar_1:1,c_auto,g_auto,w_500/v1737136694/IMG_1871_uvkjbd.jpg"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/v1737136694/IMG_1871_uvkjbd.jpg"
                             }
                             width={500}
                             height={500}
@@ -262,17 +261,17 @@ export const Modal: React.FC<DialogProps> = ({
                           />
                           <div className="">
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
-                              {t('pengantin.pengantin_wanita')}
+                              {t("pengantin.pengantin_wanita")}
                             </h3>
                             <p className="text-gray-400 text-sm lg:text-base mt-2 lg:mt-3">
-                              {t('pengantin.orang_tua_wanita')}
+                              {t("pengantin.orang_tua_wanita")}
                             </p>
                           </div>
                         </div>
                         <div>
                           <Image
                             src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/ar_1:1,c_auto,g_auto,w_500/v1737136718/JON00635_jayl9u.jpg"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/v1737136718/JON00635_jayl9u.jpg"
                             }
                             width={500}
                             height={500}
@@ -285,10 +284,10 @@ export const Modal: React.FC<DialogProps> = ({
                           />
                           <div>
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
-                              {t('pengantin.pengantin_pria')}
+                              {t("pengantin.pengantin_pria")}
                             </h3>
                             <p className="text-gray-400 text-sm lg:text-base mt-2 lg:mt-3">
-                              {t('pengantin.orang_tua_pria')}
+                              {t("pengantin.orang_tua_pria")}
                             </p>
                           </div>
                         </div>
@@ -297,11 +296,11 @@ export const Modal: React.FC<DialogProps> = ({
 
                     <div className="mt-8">
                       <h2 className="lg:text-3xl text-xl font-bold mb-5 lg:mb-8">
-                        {t('acara.judul_pemberkatan')}
+                        {t("acara.judul_pemberkatan")}
                       </h2>
                       <Image
                         src={
-                          "https://res.cloudinary.com/du0tz73ma/image/upload/v1733409293/image_2_vjflgs.png"
+                          "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733409293/image_2_vjflgs.png"
                         }
                         width={1031}
                         height={403}
@@ -309,19 +308,19 @@ export const Modal: React.FC<DialogProps> = ({
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lg:text-3xl text-xl font-bold mb-2 mt-8">
-                        {t('acara.lokasi_pemberkatan')}
+                        {t("acara.lokasi_pemberkatan")}
                       </h2>
                       <div className="lg:flex items-center justify-between">
                         <div className="flex items-center gap-5 mb-3">
                           <div className="bg-gray-100 px-5 lg:px-10 py-3 lg:py-3 text-[#151515] w-fit text-md lg:text-xl font-semibold rounded-md">
-                            <p>{t('acara.tanggal_pemberkatan')}</p>
+                            <p>{t("acara.tanggal_pemberkatan")}</p>
                           </div>
                           <p className="font-semibold text-white text-base lg:text-lg">
-                            {t('acara.waktu_pemberkatan')}
+                            {t("acara.waktu_pemberkatan")}
                           </p>
                         </div>
                         <p className="text-gray-200 font-light text-sm lg:text-base">
-                          {t('acara.alamat_pemberkatan')}
+                          {t("acara.alamat_pemberkatan")}
                         </p>
                       </div>
                       <Link
@@ -335,13 +334,13 @@ export const Modal: React.FC<DialogProps> = ({
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
-                        {t('acara.tambah_kalender')}
+                        {t("acara.tambah_kalender")}
                       </Link>
                     </div>
                     <div className="mt-8">
                       <Image
                         src={
-                          "https://res.cloudinary.com/du0tz73ma/image/upload/v1733410635/image_3_mmfwm9.png"
+                          "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733410635/image_3_mmfwm9.png"
                         }
                         width={1031}
                         height={403}
@@ -349,19 +348,19 @@ export const Modal: React.FC<DialogProps> = ({
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lx:text-3xl text-xl font-bold mb-2 mt-8">
-                        {t('acara.lokasi_resepsi')}
+                        {t("acara.lokasi_resepsi")}
                       </h2>
                       <div className="lg:flex items-center justify-between">
                         <div className="flex items-center gap-5 mb-3">
                           <div className="bg-gray-100 px-5 lg:px-10 py-3 lg:py-3 text-[#151515] w-fit text-md lg:text-xl font-semibold rounded-md">
-                            <p>{t('acara.tanggal_resepsi')}</p>
+                            <p>{t("acara.tanggal_resepsi")}</p>
                           </div>
                           <p className="font-semibold text-white text-base lg:text-lg">
-                            {t('acara.waktu_resepsi')}
+                            {t("acara.waktu_resepsi")}
                           </p>
                         </div>
                         <p className="text-gray-200 font-light text-sm lg:text-base">
-                          {t('acara.alamat_resepsi')}
+                          {t("acara.alamat_resepsi")}
                         </p>
                       </div>
                       <Link
@@ -375,42 +374,40 @@ export const Modal: React.FC<DialogProps> = ({
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
-                        {t('acara.tambah_kalender')}
+                        {t("acara.tambah_kalender")}
                       </Link>
                     </div>
                     <div className="mt-8 space-y-5 lg:space-y-10">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-2 lg:mb-8">
-                        {t('kisah_cinta.judul')}
+                        {t("kisah_cinta.judul")}
                       </h2>
                       <div className="">
                         <div>
                           <div className="lg:flex grid grid-cols-2 items-center gap-5">
                             <Image
                               src={
-                                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733412700/image_4_cmxovf.png"
+                                "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_600,g_faces,z_0.7/q_auto/f_auto/v1749675740/How-we-meet-each_arrzc8.jpg"
                               }
                               width={500}
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                              }}
                             />
                             <div>
-                              <h3 className="lg:text-3xl text-md">
-                                {t('kisah_cinta.episode1_judul')}
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode1_judul")}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                {t('kisah_cinta.episode1_durasi')}
+                                {t("kisah_cinta.episode1_durasi")}
                               </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode1_isi")}
+                              </div>
                             </div>
-                          </div>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            <Collaps
-                              contentTriger={t('kisah_cinta.episode1_isi')}
-                              // content="Bintang dan Ayu pertama kali bertemu sebagai rekan
-                              // kerja di kantor yang sama. Kegiatan-kegiatan kecil
-                              // kantor yang sering melibatkan orang-orang didala... "
-                              content={t('kisah_cinta.episode1_isi')}
-                            />
                           </div>
                         </div>
                       </div>
@@ -419,31 +416,28 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="lg:flex grid grid-cols-2 items-center gap-5">
                             <Image
                               src={
-                                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733412732/image_5_ifoglt.png"
+                                "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_600,g_faces/q_auto/f_auto/v1749675739/A-Love-that-Grows-With-Time_vpmirg.jpg"
                               }
                               width={500}
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                              }}
                             />
                             <div>
-                              <h3 className="lg:text-3xl text-md">
-                                {t('kisah_cinta.episode2_judul')}
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode2_judul")}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                {t('kisah_cinta.episode2_durasi')}
+                                {t("kisah_cinta.episode2_durasi")}
                               </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode2_isi")}
+                              </div>
                             </div>
-                          </div>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            <Collaps
-                              contentTriger={t('kisah_cinta.episode2_isi')}
-                              //   content="Hari demi hari terlewati, sampai akhirnya mereka
-                              // menyadari bahwa perasaan yang mereka miliki satu
-                              // sama lain bukan sebatas rekan kerja belaka,
-                              // melain..."
-                              content={t('kisah_cinta.episode2_isi')}
-                            />
                           </div>
                         </div>
                       </div>
@@ -452,31 +446,28 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="lg:flex grid grid-cols-2 items-start gap-5">
                             <Image
                               src={
-                                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733412737/image_6_nhp7qd.png"
+                                "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1749675739/choose-to-spend-life-together_gfmk6r.jpg"
                               }
                               width={500}
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                              }}
                             />
                             <div>
-                              <h3 className="lg:text-3xl text-md">
-                                {t('kisah_cinta.episode3_judul')}
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode3_judul")}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                {t('kisah_cinta.episode3_durasi')}
+                                {t("kisah_cinta.episode3_durasi")}
                               </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode3_isi")}
+                              </div>
                             </div>
-                          </div>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            <Collaps
-                              contentTriger={t('kisah_cinta.episode3_isi')}
-                              //   content="Seringkali Bintang memberitahu Ayu bahwa ia tertarik
-                              // dan ingin menjalani hubungan lebih serius. Sampai
-                              // akhirnya di akhir 2023, Bintang mulai
-                              // memberanikan..."
-                              content={t('kisah_cinta.episode3_isi')}
-                            />
                           </div>
                         </div>
                       </div>
@@ -485,25 +476,29 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="lg:flex grid grid-cols-2 gap-5">
                             <Image
                               src={
-                                "https://res.cloudinary.com/du0tz73ma/image/upload/v1733412772/image_7_nabhvi.png"
+                                "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1749675739/the-begining-of-forever_msmt5f.jpg"
                               }
                               width={500}
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                              }}
                             />
                             <div>
                               <button className="bg-[#EB2929] lg:px-8 lg:py-2 px-4 py-1 text-xs lg:text-base text-white font-semibold rounded-md lg:mb-5 mb-2">
-                                {t('kisah_cinta.segera_hadir')}
+                                {t("kisah_cinta.segera_hadir")}
                               </button>
                               <h3 className="lg:text-3xl text-base">
-                                {t('kisah_cinta.episode4_judul')}
+                                {t("kisah_cinta.episode4_judul")}
                               </h3>
                               <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                {t('kisah_cinta.episode4_durasi')}
+                                {t("kisah_cinta.episode4_durasi")}
                               </p>
                               <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                                {t('kisah_cinta.episode4_isi')}
+                                {t("kisah_cinta.episode4_isi")}
                               </div>
                             </div>
                           </div>
@@ -512,12 +507,12 @@ export const Modal: React.FC<DialogProps> = ({
                     </div>
                     <div className="mt-8">
                       <h2 className="lg:text-3xl text-2xl font-bold lg:mb-10 mb-5">
-                        {t('galeri.judul')}
+                        {t("galeri.judul")}
                       </h2>
                       <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-5">
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494925/image_8_b9rs2u.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Fotoud55_klluze.jpg"
                           }
                           width={500}
                           height={500}
@@ -527,7 +522,7 @@ export const Modal: React.FC<DialogProps> = ({
                         <div className="relative">
                           <Image
                             src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494925/image_9_bc9h9c.png"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Fotoud2_sugmjt.jpg"
                             }
                             width={500}
                             height={500}
@@ -537,14 +532,14 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:py-2 lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
                               <p className="lg:text-xl text-sm font-medium">
-                                {t('galeri.favorit_pria')}
+                                {t("galeri.favorit_pria")}
                               </p>
                             </div>
                           </div>
                         </div>
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494925/image_10_eebpfe.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Uud40_jphmyn.jpg"
                           }
                           width={500}
                           height={500}
@@ -553,7 +548,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494925/image_11_ogaeth.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Uud100_fpu1ea.jpg"
                           }
                           width={500}
                           height={500}
@@ -562,7 +557,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494926/image_12_xgvlic.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749678401/9888_c9tdfp.jpg"
                           }
                           width={500}
                           height={500}
@@ -572,7 +567,7 @@ export const Modal: React.FC<DialogProps> = ({
                         <div className="relative">
                           <Image
                             src={
-                              "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494926/image_13_ihgggu.png"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677352/Foto_revisi_6_dowzmz.jpg"
                             }
                             width={500}
                             height={500}
@@ -582,14 +577,14 @@ export const Modal: React.FC<DialogProps> = ({
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
                               <p className="lg:text-xl text-sm font-medium">
-                                {t('galeri.favorit_wanita')}
+                                {t("galeri.favorit_wanita")}
                               </p>
                             </div>
                           </div>
                         </div>
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494926/image_14_nephfh.png"
+                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733494926/image_14_nephfh.png"
                           }
                           width={500}
                           height={500}
@@ -598,7 +593,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494926/image_15_ms1pyd.png"
+                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733494926/image_15_ms1pyd.png"
                           }
                           width={500}
                           height={500}
@@ -607,7 +602,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/v1733494926/image_16_sbfvzp.png"
+                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733494926/image_16_sbfvzp.png"
                           }
                           width={500}
                           height={500}
@@ -623,7 +618,7 @@ export const Modal: React.FC<DialogProps> = ({
                         onClick={() => setOpemModalCollection(true)}
                         className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8"
                       >
-                        {t('galeri.muat_lebih')}
+                        {t("galeri.muat_lebih")}
                       </button>
                     </div>
                     <Messages

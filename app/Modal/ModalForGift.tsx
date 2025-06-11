@@ -85,9 +85,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                   />
                 </div>
 
-                <h2 className="text-2xl font-semibold mt-8">
-                  Transfer
-                </h2>
+                <h2 className="text-2xl font-semibold mt-8">Transfer</h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
                   {[
@@ -99,10 +97,10 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       name: "AYU STEVANI SINAGA",
                     },
                     {
-                      url: "https://res.cloudinary.com/du0tz73ma/image/upload/v1736783268/image_22_i1uh9l.png",
+                      url: "https://res.cloudinary.com/dilb4d364/image/upload/v1749675200/419d0e7a-5e9c-43bb-83a9-00f056156e38.png",
                       background: "#D9D9D9",
                       padding: "2.5rem",
-                      account: "3831 2466 16",
+                      account: "105 002 1416908",
                       name: "BINTANG CATO JEREMIA L TOBING",
                     },
                     {
@@ -126,36 +124,44 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       account: "9015 9696 8041",
                       name: "AYU STEVANI SINAGA",
                     },
-                  ].map(({ account, name, url, background, padding }, index) => (
-                    <div key={index}>
-                      <div
-                        style={{ background, paddingTop: padding, paddingBottom: padding }}
-                        className="rounded-xl"
-                      >
-                        <Image
-                          className="mx-auto"
-                          src={url}
-                          width={300}
-                          height={300}
-                          alt="Asset Wedding Bintang & Ayu"
-                        />
+                  ].map(
+                    ({ account, name, url, background, padding }, index) => (
+                      <div key={index}>
+                        <div
+                          style={{
+                            background,
+                            paddingTop: padding,
+                            paddingBottom: padding,
+                          }}
+                          className="rounded-xl"
+                        >
+                          <Image
+                            className="mx-auto"
+                            src={url}
+                            width={300}
+                            height={300}
+                            alt="Asset Wedding Bintang & Ayu"
+                          />
+                        </div>
+                        <div className="flex items-center justify-between mt-5">
+                          <p className="text-2xl font-semibold">{account}</p>
+                          <ClipboardCopyIcon
+                            className="h-6 w-6 cursor-pointer"
+                            onClick={() => handleCopy(account)}
+                          />
+                        </div>
+                        {copied === account && (
+                          <span className="text-green-500 text-sm">
+                            Copied!
+                          </span>
+                        )}
+                        <p className="text-gray-300 font-light">
+                          {t("gift.atas_nama")}
+                        </p>
+                        <p className="text-gray-300 font-light">{name}</p>
                       </div>
-                      <div className="flex items-center justify-between mt-5">
-                        <p className="text-2xl font-semibold">{account}</p>
-                        <ClipboardCopyIcon
-                          className="h-6 w-6 cursor-pointer"
-                          onClick={() => handleCopy(account)}
-                        />
-                      </div>
-                      {copied === account && (
-                        <span className="text-green-500 text-sm">Copied!</span>
-                      )}
-                      <p className="text-gray-300 font-light">
-                        {t("gift.atas_nama")}
-                      </p>
-                      <p className="text-gray-300 font-light">{name}</p>
-                    </div>
-                  ))}
+                    )
+                  )}
                 </div>
 
                 <h2 className="text-2xl font-semibold mt-8">
@@ -185,7 +191,9 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                     {copied === "bintangjtobing@gmail.com" && (
                       <span className="text-green-500 text-sm">Copied!</span>
                     )}
-                    <p className="text-gray-300 font-light">{t("atas_nama")}</p>
+                    <p className="text-gray-300 font-light">
+                      {t("gift.atas_nama")}
+                    </p>
                     <p className="text-gray-300 font-light">
                       BINTANG CATO JEREMIA L TOBING
                     </p>

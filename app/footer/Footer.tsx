@@ -9,7 +9,8 @@ export const Footer = () => {
         className="text-gray-100 font-light text-sm"
         style={{ color: "rgba(255,255,255,0.5)" }}
       >
-        Copyright ©{new Date().getFullYear()} Bintang Tobing & Ayu Sinaga.
+        Copyright ©{new Date().getFullYear()}. Wedding of Bintang Tobing & Ayu
+        Sinaga.
         <br />
         {t("footer.content1").replace("Bahari", "")}
         <a
@@ -21,10 +22,7 @@ export const Footer = () => {
             color: "rgba(255,255,255,0.5)",
             fontSize: "0.875rem",
           }}
-        >
-          Bahari{" "}
-        </a>
-        <br />
+        ></a>
         <br />
         {t("footer.content2").replace("Solu Photoworks", "")}
         <a
@@ -36,14 +34,12 @@ export const Footer = () => {
             color: "rgba(255,255,255,0.5)",
             fontSize: "0.875rem",
           }}
-        >
-          Solu Photoworks
-        </a>
+        ></a>
         .
         <br />
-        <br />
-        Support by <abbr title="PT Boxity Central Indonesia">BoxityID</abbr>,{" "}
-        <abbr title="PatunganYuk IDN">PatunganYukIDN</abbr>, and{" "}
+        Supported by <abbr title="PT Boxity Central Indonesia">
+          BoxityID
+        </abbr>, <abbr title="PatunganYuk IDN">PatunganYukIDN</abbr>, and{" "}
         <abbr title="Level Up Gaming Market">Level Up Game Hub</abbr>. All
         rights reserved by PT Boxity Central Indonesia.
       </p>

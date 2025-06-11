@@ -1,95 +1,95 @@
 {
-    "umum": {
-      "judul_situs": "Undangan Pernikahan Bintang & Ayu",
-      "bahasa": "Bahasa"
-    },
-    "intro": {
-      "undangan": "Kami dengan hormat mengundang",
-      "nama_pasangan": "Bintang & Ayu",
-      "sebelum_hari": "Sebelum hari H",
-      "segera_hadir": "Coming soon",
-      "buka_undangan": "Buka undangan",
-      "tanggal": "11 July 2025",
-      "deskripsi": "Romantic, Married, Family, Documenter",
-      "segera_hadir_dengan_tanggal": "Coming soon 2025 July 11"
-    },
-    "pasangan": {
-      "nama_lengkap_pasangan": "Bintang Tobing, Ayu Stevani Sinaga",
-      "cerita_singkat": "Setelah Bintang dan Ayu dipertemukan dalam situasi yang tepat, di mana keduanya telah siap untuk memulai hubungan bersama, tibalah mereka di awal perjalanan baru menuju pernikahan.",
-      "kutipan_alkitab": "\"Sehati sepikirlah kamu, dan hiduplah dalam damai sejahtera; maka Allah, sumber kasih dan damai sejahtera akan menyertai kamu!\""
-    },
-    "pengumuman": {
-      "judul": "Breaking News",
-      "pengantar": "Dengan penuh kebahagiaan, kami ingin berbagi kabar gembira ini!",
-      "isi": "Dengan penuh kebahagiaan, kami ingin berbagi kabar gembira ini!\n\nKami telah memutuskan untuk melangkah bersama menuju babak baru dalam kehidupan kami.<3\n\nPernikahan kami akan dilangsungkan secara sederhana dalam suasana wedding di Medan, hanya dihadiri oleh keluarga, teman, dan sahabat terdekat.\n\nKami mohon maaf sebesar-besarnya karena tidak dapat mengundang semua orang yang kami sayangi untuk hadir bersama kami di hari bahagia ini.\n\nNamun, meskipun tidak bersama secara fisik, kami selalu merasakan kehangatan cinta dan dukungan dari kalian semua. Kami mohon doa yang terbaik untuk perjalanan kami ke depan, agar selalu dipenuhi dengan kebahagiaan, cinta, dan berkah.\n\nDengan penuh cinta,\nThe Bride and Groom <3"
-    },
-    "pengantin": {
-      "judul": "Bride and Groom",
-      "pengantin_wanita": "Ayu Stevani Sinaga",
-      "orang_tua_wanita": "Putri dari Bapak Toni Steven Sinaga dan ibu Asnawati br Siregar",
-      "pengantin_pria": "Bintang Cato Jeremia L Tobing",
-      "orang_tua_pria": "Putra dari Bapak Bastian Valen Tobing dan ibu Cicih Warsih br Simanjuntak"
-    },
-    "acara": {
-      "judul_pemberkatan": "Wedding Reception & Blessing",
-      "lokasi_pemberkatan": "HKBP GLUGUR Resort Medan Utara",
-      "tanggal_pemberkatan": "11 July 2025",
-      "waktu_pemberkatan": "10:00 WIB",
-      "alamat_pemberkatan": "Jl Pembangunan III No. 57A, Medan Timur",
-      "tambah_kalender": "Add to calendar",
-      "lokasi_resepsi": "Wisma Mahinna Center",
-      "tanggal_resepsi": "11 July 2025",
-      "waktu_resepsi": "13:00 WIB",
-      "alamat_resepsi": "Jl Rela No. 119, Medan"
-    },
-    "kisah_cinta": {
-      "judul": "Our love story",
-      "episode1_judul": "Episode 01: How we meet each other at time",
-      "episode1_durasi": "26m 10s",
-      "episode1_isi": "Bintang dan Ayu pertama kali bertemu sebagai rekan....",
-      "episode2_judul": "Episode 02: A Love that Grows With Time",
-      "episode2_durasi": "26m 10s",
-      "episode2_isi": "Hari demi hari terlewati, sampai akhirnya mereka...",
-      "episode3_judul": "Episode 03: Choose to Spend Life Together",
-      "episode3_durasi": "26m 10s",
-      "episode3_isi": "Seringkali Bintang memberitahu Ayu bahwa ia tertarik.....",
-      "segera_hadir": "Coming Soon",
-      "episode4_judul": "Episode 04: The Begining of Forever",
-      "episode4_durasi": "26m 10s",
-      "episode4_isi": "Ketika hari H itu datang, Bintang dan Ayu akan berbagi kisah haru mereka disini. Sampai bertemu lagi di cerita bahagia selanjutnya!"
-    },
-    "galeri": {
-      "judul": "Our gallery collections",
-      "favorit_pria": "Groom's Favorite",
-      "favorit_wanita": "Bride's Favorite",
-      "muat_lebih": "Load more collections"
-    },
-    "ucapan": {
-      "judul": "Wish for couples",
-      "nama": "Nama",
-      "pesan": "Pesan",
-      "kehadiran": "Kehadiran",
-      "kirim": "Send"
-    },
-    "kehadiran": {
-      "hadir": "Hadir",
-      "belum_pasti": "Belum pasti",
-      "berhalangan_hadir": "Berhalangan hadir"
-    },
-    "footer": {
-      "content1": "Terima kasih kepada orang tua, keluarga saya dan dari Ayu Sinaga, Bahari dan seluruh tim Boxity untuk terwujudnya acara pranikah, pemberkatan nikah dan juga aplikasi web undangan ini.",
-      "content2": "Serta rasa sangat bersyukur untuk tim media dan dokumentasi dari Solu Photoworks, serta tim akomodasi tempat, makanan, acara, dan musik atas kontribusi mereka terhadap suksesnya acara ini."
-    },
-    "gift": {
-      "terimakasih": "Terimakasih",
-      "pesan1": "Sudah berniat untuk mengirim hadiah",
-      "pesan2": "Ada beberapa cara untuk kak",
-      "pesan3": "bisa mengirim kami hadiah.",  
-      "atas_nama": "Atas nama"
-    },
-    "guest": {
-      "error1": "Nama tidak ditemukan dalam daftar undangan",
-      "error2": "Periksa kembali link undangan Anda atau hubungi pemilik acara untuk mendapatkan link yang benar.",
-      "loading": "Sedang memuat data undangan..."
-    }
+  "umum": {
+    "judul_situs": "Undangan Pernikahan Bintang & Ayu",
+    "bahasa": "Bahasa"
+  },
+  "intro": {
+    "undangan": "Kami dengan hormat mengundang",
+    "nama_pasangan": "Bintang & Ayu",
+    "sebelum_hari": "Sebelum hari H",
+    "segera_hadir": "Coming soon",
+    "buka_undangan": "Buka undangan",
+    "tanggal": "11 July 2025",
+    "deskripsi": "Romantic, Married, Family, Documenter",
+    "segera_hadir_dengan_tanggal": "Coming soon 2025 July 11"
+  },
+  "pasangan": {
+    "nama_lengkap_pasangan": "Bintang Tobing, Ayu Stevani Sinaga",
+    "cerita_singkat": "Setelah Bintang dan Ayu dipertemukan dalam situasi yang tepat, di mana keduanya telah siap untuk memulai hubungan bersama, tibalah mereka di awal perjalanan baru menuju pernikahan.",
+    "kutipan_alkitab": "\"Sehati sepikirlah kamu, dan hiduplah dalam damai sejahtera; maka Allah, sumber kasih dan damai sejahtera akan menyertai kamu!\""
+  },
+  "pengumuman": {
+    "judul": "Breaking News",
+    "pengantar": "Dengan penuh kebahagiaan, kami ingin berbagi kabar gembira ini!",
+    "isi": "Dengan penuh kebahagiaan, kami ingin berbagi kabar gembira ini! Kami telah memutuskan untuk melangkah bersama menuju babak baru dalam kehidupan kami.<3 Pernikahan kami akan dilangsungkan secara sederhana dalam suasana wedding di Medan, hanya dihadiri oleh keluarga, teman, dan sahabat terdekat. Kami mohon maaf sebesar-besarnya karena tidak dapat mengundang semua orang yang kami sayangi untuk hadir bersama kami di hari bahagia ini.\nNamun, meskipun tidak bersama secara fisik, kami selalu merasakan kehangatan cinta dan dukungan dari kalian semua. Kami mohon doa yang terbaik untuk perjalanan kami ke depan, agar selalu dipenuhi dengan kebahagiaan, cinta, dan berkah.\nDengan penuh cinta,\n\nBintang Tobing & Ayu Sinaga <3"
+  },
+  "pengantin": {
+    "judul": "Pengantin Wanita & Pria",
+    "pengantin_wanita": "Ayu Stevani Sinaga, S.Ak",
+    "orang_tua_wanita": "Putri dari Bapak Toni Steven Sinaga dan ibu Asnawati br Siregar",
+    "pengantin_pria": "Bintang Cato Jeremia L Tobing",
+    "orang_tua_pria": "Putra dari Bapak Bastian Valen Tobing dan ibu Cicih Warsih br Simanjuntak"
+  },
+  "acara": {
+    "judul_pemberkatan": "Wedding Reception & Blessing",
+    "lokasi_pemberkatan": "HKBP GLUGUR Resort Medan Utara",
+    "tanggal_pemberkatan": "11 July 2025",
+    "waktu_pemberkatan": "10:00 WIB",
+    "alamat_pemberkatan": "Jl Pembangunan III No. 57A, Medan Timur",
+    "tambah_kalender": "Add to calendar",
+    "lokasi_resepsi": "Wisma Mahinna Center",
+    "tanggal_resepsi": "11 July 2025",
+    "waktu_resepsi": "13:00 WIB",
+    "alamat_resepsi": "Jl Rela No. 119, Medan"
+  },
+  "kisah_cinta": {
+    "judul": "Our love story",
+    "episode1_judul": "Episode 01: Bagaimana Kami Bertemu pada Waktu Itu",
+    "episode1_durasi": "18m 32s",
+    "episode1_isi": "Bintang dan Ayu pertama kali berkenalan melalui koneksi kampus, meskipun mereka tidak pernah benar-benar bertemu secara langsung selama masa kuliah. Mereka hanya saling mengenal secara sekilas melalui teman bersama dan interaksi media sosial. Baru bertahun-tahun kemudian takdir mempertemukan mereka dengan cara yang tak terduga.",
+    "episode2_judul": "Episode 02: Cinta yang Tumbuh Seiring Waktu",
+    "episode2_durasi": "24m 07s",
+    "episode2_isi": "Hari demi hari terlewati, sampai akhirnya mereka terhubung kembali melalui pertemuan kebetulan yang menyalakan kembali koneksi mereka. Yang dimulai sebagai percakapan santai perlahan berkembang menjadi pertukaran yang lebih dalam tentang hidup, mimpi, dan aspirasi. Ikatan mereka semakin kuat setiap hari, menemukan kesamaan lebih dari yang pernah dibayangkan.",
+    "episode3_judul": "Episode 03: Memilih untuk Menghabiskan Hidup Bersama",
+    "episode3_durasi": "31m 45s",
+    "episode3_isi": "Seringkali Bintang memberitahu Ayu bahwa ia tertarik untuk membangun masa depan bersama, menyadari bahwa Ayu adalah bagian yang hilang dalam hidupnya. Setelah berbulan-bulan memupuk hubungan dan merencanakan hari esok, akhirnya dia melamar saat makan malam sunset di restoran favorit mereka. Dengan air mata bahagia, Ayu mengatakan ya untuk selamanya.",
+    "segera_hadir": "Segera Hadir",
+    "episode4_judul": "Episode 04: Awal dari Selamanya",
+    "episode4_durasi": "42m 18s",
+    "episode4_isi": "Ketika hari H itu datang, Bintang dan Ayu akan berbagi kisah pernikahan mereka yang mengharukan di sini. Dari janji yang emosional hingga perayaan penuh sukacita bersama keluarga dan teman, setiap momen akan menjadi saksi perjalanan cinta mereka yang indah. Sampai bertemu lagi di cerita bahagia selanjutnya dalam hidup mereka!"
+  },
+  "galeri": {
+    "judul": "Our gallery collections",
+    "favorit_pria": "Groom's Favorite",
+    "favorit_wanita": "Bride's Favorite",
+    "muat_lebih": "Load more collections"
+  },
+  "ucapan": {
+    "judul": "Wish for couples",
+    "nama": "Nama",
+    "pesan": "Pesan",
+    "kehadiran": "Kehadiran",
+    "kirim": "Send"
+  },
+  "kehadiran": {
+    "hadir": "Hadir",
+    "belum_pasti": "Belum pasti",
+    "berhalangan_hadir": "Berhalangan hadir"
+  },
+  "footer": {
+    "content1": "Terima kasih kepada orang tua, keluarga saya dan dari Ayu Sinaga, Bahari dan seluruh tim Boxity untuk terwujudnya acara pranikah, pemberkatan nikah dan juga aplikasi web undangan ini.",
+    "content2": "Serta rasa sangat bersyukur untuk tim media dan dokumentasi dari Solu Photoworks, serta tim akomodasi tempat, makanan, acara, dan musik atas kontribusi mereka terhadap suksesnya acara ini."
+  },
+  "gift": {
+    "terimakasih": "Terimakasih",
+    "pesan1": "Sudah berniat untuk mengirim hadiah",
+    "pesan2": "Ada beberapa cara untuk kak",
+    "pesan3": "bisa mengirim kami hadiah.",
+    "atas_nama": "Atas nama"
+  },
+  "guest": {
+    "error1": "Nama tidak ditemukan dalam daftar undangan",
+    "error2": "Periksa kembali link undangan Anda atau hubungi pemilik acara untuk mendapatkan link yang benar.",
+    "loading": "Sedang memuat data undangan..."
   }
+}
