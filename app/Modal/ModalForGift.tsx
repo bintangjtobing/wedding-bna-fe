@@ -6,6 +6,7 @@ import { Footer } from "../footer/Footer";
 import { ArrowLeft } from "lucide-react";
 import { useUser } from "@/context/UserContext";
 import { useTranslate } from "@/context/LanguageContext";
+import { trackCopyAction } from "@/utils/analytics";
 
 interface ModalForGiftProps {
   openModalGift: boolean;
@@ -20,11 +21,22 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
   const { user } = useUser();
   const t = useTranslate();
 
-  const handleCopy = (text: string) => {
+  const handleCopy = (text: string, copyType?: string) => {
     navigator.clipboard
       .writeText(text)
       .then(() => {
         setCopied(text);
+
+        // Track copy action
+        const type =
+          copyType ||
+          (text.includes("@")
+            ? "Email"
+            : text.length > 20
+            ? "Crypto_Address"
+            : "Account_Number");
+        trackCopyAction(type, text);
+
         setTimeout(() => setCopied(null), 2000);
       })
       .catch((err) => console.error("Failed to copy text: ", err));
@@ -147,7 +159,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                           <p className="text-2xl font-semibold">{account}</p>
                           <ClipboardCopyIcon
                             className="h-6 w-6 cursor-pointer"
-                            onClick={() => handleCopy(account)}
+                            onClick={() => handleCopy(account, "Bank_Account")}
                           />
                         </div>
                         {copied === account && (
@@ -185,7 +197,9 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       </p>
                       <ClipboardCopyIcon
                         className="h-6 w-6 cursor-pointer"
-                        onClick={() => handleCopy("bintangjtobing@gmail.com")}
+                        onClick={() =>
+                          handleCopy("bintangjtobing@gmail.com", "Wise")
+                        }
                       />
                     </div>
                     {copied === "bintangjtobing@gmail.com" && (
@@ -215,7 +229,10 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                       <ClipboardCopyIcon
                         className="h-6 w-6 cursor-pointer"
                         onClick={() =>
-                          handleCopy("TSQ4Mgu431dghWzu7U6McftK2hTJ7QVoz3")
+                          handleCopy(
+                            "TSQ4Mgu431dghWzu7U6McftK2hTJ7QVoz3",
+                            "USDT_Address"
+                          )
                         }
                       />
                     </div>

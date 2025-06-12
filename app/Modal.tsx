@@ -1,7 +1,6 @@
 import React, { useEffect } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
-import Link from "next/link";
 import { useState } from "react";
 import { postAttendance } from "./services/attendance";
 import Swal from "sweetalert2";
@@ -11,6 +10,12 @@ import { useUser } from "@/context/UserContext";
 import { Messages } from "@/components/commons/Messages";
 import { useTranslate } from "@/context/LanguageContext";
 import FormattedText from "@/lib/FormatedText";
+import {
+  trackLoadMoreCollections,
+  trackSendMessage,
+  trackCalendarAdd,
+  trackModalOpen,
+} from "@/utils/analytics";
 
 interface DialogProps {
   open: boolean;
@@ -75,6 +80,11 @@ export const Modal: React.FC<DialogProps> = ({
 
   const handleClick = async () => {
     try {
+      trackSendMessage({
+        hasName: !!name,
+        hasMessage: !!message,
+        attendance: attend,
+      });
       const response = await postAttendance({
         name: name,
         username: username,
@@ -96,8 +106,21 @@ export const Modal: React.FC<DialogProps> = ({
   };
 
   const handleClickOpenModalGift = () => {
+    trackModalOpen("Gift");
     setOpenModalGift(true);
     setOpen(false);
+  };
+  const handleCalendarClick = (eventType: string, url: string) => {
+    // Track calendar add event
+    trackCalendarAdd(eventType);
+    // Navigate to the calendar URL
+    window.open(url, "_blank", "noopener,noreferrer");
+  };
+  const handleLoadMoreCollections = () => {
+    // Track load more collections event
+    trackLoadMoreCollections();
+    trackModalOpen("Collections");
+    setOpemModalCollection(true);
   };
   const modalVariants = {
     hidden: {
@@ -322,19 +345,20 @@ export const Modal: React.FC<DialogProps> = ({
                           {t("acara.alamat_pemberkatan")}
                         </p>
                       </div>
-                      <Link
-                        href={
-                          "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pemberkatan+Pernikahan+Bintang+%26+Ayu&dates=20250711T030000Z/20250711T040000Z&details=Pemberkatan+Pernikahan+di+HKBP+GLUGUR+Resort+Medan+Utara.&location=HKBP+GLUGUR+Resort+Medan+Utara"
+                      <button
+                        onClick={() =>
+                          handleCalendarClick(
+                            "Blessing",
+                            "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pemberkatan+Pernikahan+Bintang+%26+Ayu&dates=20250711T030000Z/20250711T040000Z&details=Pemberkatan+Pernikahan+di+HKBP+GLUGUR+Resort+Medan+Utara.&location=HKBP+GLUGUR+Resort+Medan+Utara"
+                          )
                         }
-                        target="_blank"
-                        rel="noopener noreferrer"
                         style={{
                           backgroundColor: "rgb(217,217,217, 0.5)",
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
                         {t("acara.tambah_kalender")}
-                      </Link>
+                      </button>
                     </div>
                     <div className="mt-8">
                       <Image
@@ -362,19 +386,20 @@ export const Modal: React.FC<DialogProps> = ({
                           {t("acara.alamat_resepsi")}
                         </p>
                       </div>
-                      <Link
-                        href={
-                          "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pesta+Adat+Pernikahan+Bintang+%26+Ayu&dates=20250711T060000Z/20250711T070000Z&details=Pesta+Adat+Pernikahan+di+Wisma+Mahinna+Center.&location=Wisma+Mahinna+Center"
+                      <button
+                        onClick={() =>
+                          handleCalendarClick(
+                            "Reception",
+                            "https://calendar.google.com/calendar/render?action=TEMPLATE&text=Pesta+Adat+Pernikahan+Bintang+%26+Ayu&dates=20250711T060000Z/20250711T070000Z&details=Pesta+Adat+Pernikahan+di+Wisma+Mahinna+Center.&location=Wisma+Mahinna+Center"
+                          )
                         }
-                        target="_blank"
-                        rel="noopener noreferrer"
                         style={{
                           backgroundColor: "rgb(217,217,217, 0.5)",
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
                         {t("acara.tambah_kalender")}
-                      </Link>
+                      </button>
                     </div>
                     <div className="mt-8 space-y-5 lg:space-y-10">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-2 lg:mb-8">
@@ -614,7 +639,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </Link> */}
 
                       <button
-                        onClick={() => setOpemModalCollection(true)}
+                        onClick={handleLoadMoreCollections}
                         className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8"
                       >
                         {t("galeri.muat_lebih")}
