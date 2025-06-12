@@ -3,7 +3,7 @@ import localFont from "next/font/local";
 import { Poppins } from "next/font/google";
 import "./globals.css";
 import { UserProvider } from "@/context/UserContext";
-import { LanguageProvider } from '@/context/LanguageContext';
+import { LanguageProvider } from "@/context/LanguageContext";
 
 // Importing local fonts
 const geistSans = localFont({
@@ -35,9 +35,9 @@ export const metadata: Metadata = {
     description:
       "Ikuti perjalanan cinta Bintang dan Ayu menuju pernikahan mereka yang penuh kehangatan dan cinta. Saksikan cerita romantis dan inspiratif melalui kisah mereka.",
     images: [
-      "https://res.cloudinary.com/du0tz73ma/image/upload/v1733231582/image_3_gkyqke.png",
+      "https://res.cloudinary.com/dilb4d364/image/upload/q_auto/f_auto/v1749703630/bintang-ayu-invitationcard_nmpn5s.jpg",
     ],
-    url: "https://yourwebsite.com/bintang-ayu",
+    url: "https://wedding-bintang-ayu.bintangtobing.com",
     type: "website",
   },
   twitter: {
@@ -46,7 +46,7 @@ export const metadata: Metadata = {
     description:
       "Ikuti perjalanan cinta Bintang dan Ayu menuju pernikahan mereka yang penuh kehangatan dan cinta. Saksikan cerita romantis dan inspiratif melalui kisah mereka.",
     images: [
-      "https://res.cloudinary.com/du0tz73ma/image/upload/v1733231582/image_3_gkyqke.png",
+      "https://res.cloudinary.com/dilb4d364/image/upload/q_auto/f_auto/v1749703630/bintang-ayu-invitationcard_nmpn5s.jpg",
     ],
   },
   icons: {
@@ -73,7 +73,9 @@ export default function RootLayout({
       <body
         className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
       >
-        <LanguageProvider><UserProvider>{children}</UserProvider></LanguageProvider>
+        <LanguageProvider>
+          <UserProvider>{children}</UserProvider>
+        </LanguageProvider>
       </body>
     </html>
   );
