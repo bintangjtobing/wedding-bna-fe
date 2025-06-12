@@ -382,7 +382,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <div className="">
                         <div>
-                          <div className="lg:flex grid grid-cols-2 items-center gap-5">
+                          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
                             <Image
                               src={
                                 "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_600,g_faces,z_0.7/q_auto/f_auto/v1749675740/How-we-meet-each_arrzc8.jpg"
@@ -412,7 +412,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </div>
                       <div>
                         <div>
-                          <div className="lg:flex grid grid-cols-2 items-center gap-5">
+                          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
                             <Image
                               src={
                                 "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_600,g_faces/q_auto/f_auto/v1749675739/A-Love-that-Grows-With-Time_vpmirg.jpg"
@@ -442,7 +442,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </div>
                       <div>
                         <div>
-                          <div className="lg:flex grid grid-cols-2 items-start gap-5">
+                          <div className="flex flex-col lg:flex-row items-start gap-5">
                             <Image
                               src={
                                 "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1749675739/choose-to-spend-life-together_gfmk6r.jpg"
@@ -472,7 +472,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </div>
                       <div>
                         <div>
-                          <div className="lg:flex grid grid-cols-2 gap-5">
+                          <div className="flex flex-col lg:flex-row gap-5">
                             <Image
                               src={
                                 "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1749675739/the-begining-of-forever_msmt5f.jpg"
