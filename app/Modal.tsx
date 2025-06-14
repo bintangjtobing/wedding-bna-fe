@@ -293,7 +293,7 @@ export const Modal: React.FC<DialogProps> = ({
                         <div>
                           <Image
                             src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/v1737136718/JON00635_jayl9u.jpg"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/v1749929950/JON00751_hz0iwi.jpg"
                             }
                             width={500}
                             height={500}
@@ -353,7 +353,7 @@ export const Modal: React.FC<DialogProps> = ({
                           )
                         }
                         style={{
-                          backgroundColor: "rgb(217,217,217, 0.5)",
+                          backgroundColor: "rgb(229, 9, 20)",
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
@@ -394,7 +394,7 @@ export const Modal: React.FC<DialogProps> = ({
                           )
                         }
                         style={{
-                          backgroundColor: "rgb(217,217,217, 0.5)",
+                          backgroundColor: "rgb(229, 9, 20)",
                         }}
                         className="w-full py-3 mt-3 block text-center rounded-md"
                       >
@@ -546,7 +546,7 @@ export const Modal: React.FC<DialogProps> = ({
                         <div className="relative">
                           <Image
                             src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Fotoud2_sugmjt.jpg"
+                              "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749930054/JON00963-3_1_vzem4m.jpg"
                             }
                             width={500}
                             height={500}
@@ -572,7 +572,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Uud100_fpu1ea.jpg"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929952/JON00837-3_ce3s9k.jpg"
                           }
                           width={500}
                           height={500}
@@ -581,7 +581,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749678401/9888_c9tdfp.jpg"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929954/JON00599_wjbhn0.jpg"
                           }
                           width={500}
                           height={500}
@@ -608,7 +608,7 @@ export const Modal: React.FC<DialogProps> = ({
                         </div>
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733494926/image_14_nephfh.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929949/JON00678_klufwg.jpg"
                           }
                           width={500}
                           height={500}
@@ -617,7 +617,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733494926/image_15_ms1pyd.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929952/edit-00943_mnw1qi.jpg"
                           }
                           width={500}
                           height={500}
@@ -626,7 +626,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         <Image
                           src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733494926/image_16_sbfvzp.png"
+                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929949/JON00667_behru6.jpg"
                           }
                           width={500}
                           height={500}

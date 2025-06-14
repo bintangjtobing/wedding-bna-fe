@@ -318,7 +318,7 @@ export const Messages: React.FC<MessagesProps> = ({
                           }}
                           className="border-l-4 border-gray-400 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
                         >
-                          <p className="text-sm">Sending gift?</p>
+                          <p className="text-sm">🎁 Wedding Gift?</p>
                         </motion.div>
                       )}
                     </motion.div>

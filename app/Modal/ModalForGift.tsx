@@ -81,15 +81,15 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                   {t("gift.terimakasih")}
                 </h1>
                 <h2 className="text-md font-semibold mb-5">
-                  {t("gift.pesan1")}
+                  {t("gift.pesan1")}, {user?.name}.
                 </h2>
                 <p className="text-sm font-light text-gray-200">
-                  {t("gift.pesan2")} {user?.name} {t("gift.pesan3")}
+                  {t("gift.pesan2")}
                 </p>
 
                 <div className="mt-5">
                   <Image
-                    src="https://res.cloudinary.com/du0tz73ma/image/upload/v1736782597/image_17_cpxamh.png"
+                    src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_500/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
                     width={857}
                     height={403}
                     alt="Asset Wedding Bintang & Ayu"
@@ -97,7 +97,9 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                   />
                 </div>
 
-                <h2 className="text-2xl font-semibold mt-8">Transfer</h2>
+                <h2 className="text-2xl font-semibold mt-8">
+                  Account Information
+                </h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
                   {[
@@ -177,7 +179,7 @@ export const ModalForGift: React.FC<ModalForGiftProps> = ({
                 </div>
 
                 <h2 className="text-2xl font-semibold mt-8">
-                  Transfer dari Luar Negeri?
+                  Sending Gift from abroad?
                 </h2>
 
                 <div className="grid grid-cols-1 lg:grid-cols-2 gap-5 mt-5">
