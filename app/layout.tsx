@@ -28,13 +28,13 @@ const poppins = Poppins({
 export const metadata: Metadata = {
   title: "Wedding Bintang & Ayu - Invitation",
   description:
-    "Ikuti perjalanan cinta Bintang dan Ayu menuju pernikahan mereka yang penuh kehangatan dan cinta. Saksikan cerita romantis dan inspiratif melalui kisah mereka.",
+    "The wedding invitation of Bintang and Ayu. Join us in celebrating their love story and witness their romantic journey towards a lifetime of happiness together.",
   keywords:
     "Pernikahan, Bintang Tobing, Ayu Stevani Sinaga, Intimate Wedding, Kisah Cinta, Dokumenter Pernikahan, Gallery Pernikahan",
   openGraph: {
-    title: "Bintang & Ayu: Sebelum Hari H",
+    title: "The wedding invitation of Bintang & Ayu; Before D-Day",
     description:
-      "Ikuti perjalanan cinta Bintang dan Ayu menuju pernikahan mereka yang penuh kehangatan dan cinta. Saksikan cerita romantis dan inspiratif melalui kisah mereka.",
+      "The wedding invitation of Bintang and Ayu. Join us in celebrating their love story and witness their romantic journey towards a lifetime of happiness together.",
     images: [
       "https://res.cloudinary.com/dilb4d364/image/upload/q_auto/f_auto/v1749703630/bintang-ayu-invitationcard_nmpn5s.jpg",
     ],
@@ -43,9 +43,9 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "Bintang & Ayu: Sebelum Hari H",
+    title: "The wedding invitation of Bintang & Ayu; Before D-Day",
     description:
-      "Ikuti perjalanan cinta Bintang dan Ayu menuju pernikahan mereka yang penuh kehangatan dan cinta. Saksikan cerita romantis dan inspiratif melalui kisah mereka.",
+      "The wedding invitation of Bintang and Ayu. Join us in celebrating their love story and witness their romantic journey towards a lifetime of happiness together.",
     images: [
       "https://res.cloudinary.com/dilb4d364/image/upload/q_auto/f_auto/v1749703630/bintang-ayu-invitationcard_nmpn5s.jpg",
     ],
