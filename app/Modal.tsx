@@ -322,10 +322,10 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <Image
                         src={
-                          "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733409293/image_2_vjflgs.png"
+                          "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_550/q_auto/f_auto/v1750084942/488d9ec0-6342-4fe4-9eb3-884163f97f1e.png"
                         }
                         width={1031}
-                        height={403}
+                        height={400}
                         alt="Asset Wedding Bintang & Ayu"
                         className="w-full rounded-3xl"
                       />
@@ -363,7 +363,7 @@ export const Modal: React.FC<DialogProps> = ({
                     <div className="mt-8">
                       <Image
                         src={
-                          "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733410635/image_3_mmfwm9.png"
+                          "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_550/q_auto/f_auto/v1750084956/6eed01fd-0f93-4445-a6c1-fd859fb71187.png"
                         }
                         width={1031}
                         height={403}

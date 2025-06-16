@@ -1,9 +1,9 @@
-'use client';
+"use client";
 
 import { motion, AnimatePresence } from "framer-motion";
 import Image from "next/image";
 import { useEffect, useState, Suspense } from "react";
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { useTranslate } from "@/context/LanguageContext";
 
@@ -16,11 +16,11 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
   const t = useTranslate();
   const { setUser } = useUser();
   const [name, setName] = useState<string>("");
-  const [welcome, setWelcome] = useState(t('intro.undangan'));
+  const [welcome, setWelcome] = useState(t("intro.undangan"));
   const [isLoading, setIsLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
   const searchParams = useSearchParams();
-  const invite = searchParams.get('we-invite');
+  const invite = searchParams.get("we-invite");
 
   useEffect(() => {
     if (invite) {
@@ -29,7 +29,6 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
       setWelcome(""); // kosongkan jika tidak ada kode
     }
   }, [t, invite]);
-
 
   const variant = {
     visible: {
@@ -69,7 +68,7 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
         setUser({
           name: result.data.name,
           username: result.data.username,
-          phone_number: result.data.phone_number || ''
+          phone_number: result.data.phone_number || "",
         });
       } catch (error) {
         setError(t("guest.error1")); // Nama tidak ditemukan
@@ -106,10 +105,9 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
           <div className="text-center px-6">
             {welcome && (
               <h1 className="text-2xl xl:text-4xl font-medium max-w-2xl text-white mb-6">
-                {welcome}
+                {welcome}, <b>{name}</b>
               </h1>
             )}
-
 
             {isLoading ? (
               <div className="flex flex-col items-center">
@@ -139,7 +137,6 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
                   src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733748883/Screenshot_2024-12-02_at_19.50.56_1_1_vyki1m.png"
                   alt="Guest Avatar"
                 />
-                <p className="text-white font-medium text-2xl mt-5">{name}</p>
               </div>
             )}
           </div>
@@ -156,7 +153,9 @@ const GuestScreenLoading = ({ openGuest }: { openGuest: boolean }) => {
   return (
     <div className="fixed inset-0 h-screen w-screen bg-[#141414] flex items-center justify-center z-50">
       <div className="text-center">
-        <h1 className="text-4xl font-medium text-white mb-6">{t("guest.loading")}</h1>
+        <h1 className="text-4xl font-medium text-white mb-6">
+          {t("guest.loading")}
+        </h1>
         <div className="w-16 h-16 border-t-4 border-white border-solid rounded-full animate-spin mx-auto"></div>
       </div>
     </div>
