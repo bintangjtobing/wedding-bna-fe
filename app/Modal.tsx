@@ -9,7 +9,6 @@ import { Form } from "./Form";
 import { useUser } from "@/context/UserContext";
 import { Messages } from "@/components/commons/Messages";
 import { useTranslate } from "@/context/LanguageContext";
-import FormattedText from "@/lib/FormatedText";
 import {
   trackLoadMoreCollections,
   trackSendMessage,
