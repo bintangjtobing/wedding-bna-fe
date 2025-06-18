@@ -67,14 +67,14 @@ export default function Home() {
       <GuestScreen openGuest={openGuest} setOpenGuest={setOpenGuest} />
       <section className="fixed w-screen">
         <div className="relative">
-          <nav className="w-full mx-auto py-5 px-3 absolute top-0">
-            <div className="max-w-screen-xxl mx-auto px-10">
+          <nav className="w-full mx-auto py-5 px-3 absolute top-0 z-10">
+            <div className="max-w-screen-xxl mx-auto pl-5 pt-10 lg:pl-32 lg:pt-20">
               <Image
                 className=""
                 src={
                   "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1736927089/BINTANGAYU-logoweb_kmycu4.png"
                 }
-                width={120}
+                width={180}
                 height={120}
                 alt="Logo Wedding Bintang & Ayu"
               />

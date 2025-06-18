@@ -1,4 +1,3 @@
-import Image from "next/image";
 import { motion, AnimatePresence } from "framer-motion";
 import { useInView } from "react-intersection-observer";
 import { useEffect, useState, useRef } from "react";
@@ -56,6 +55,83 @@ interface MessagesProps {
   handleClickOpenModalGift: () => void;
 }
 
+// Komponen Avatar Statis untuk Messages
+const StaticAvatar = ({
+  name,
+  messageId,
+}: {
+  name: string;
+  messageId: string | number;
+}) => {
+  // Fungsi untuk generate inisial (maksimal 2 karakter untuk ukuran kecil)
+  const getInitials = (fullName: string): string => {
+    if (!fullName) return "G";
+
+    const words = fullName.trim().split(/\s+/);
+    let initials = "";
+
+    // Ambil huruf pertama dari 2 kata pertama
+    for (let i = 0; i < Math.min(words.length, 2); i++) {
+      if (words[i] && words[i].length > 0) {
+        initials += words[i][0].toUpperCase();
+      }
+    }
+
+    return initials || "G";
+  };
+
+  // Fungsi untuk generate warna berdasarkan nama + messageId untuk variasi
+  const getGradientColor = (
+    name: string,
+    messageId: string | number
+  ): string => {
+    if (!name) return "from-gray-400 to-gray-600";
+
+    const gradients = [
+      "from-pink-400 to-purple-500",
+      "from-blue-400 to-cyan-500",
+      "from-green-400 to-emerald-500",
+      "from-yellow-400 to-orange-500",
+      "from-purple-400 to-pink-500",
+      "from-indigo-400 to-blue-500",
+      "from-teal-400 to-green-500",
+      "from-red-400 to-pink-500",
+      "from-orange-400 to-red-500",
+      "from-cyan-400 to-blue-500",
+      "from-emerald-400 to-teal-500",
+      "from-violet-400 to-purple-500",
+      "from-rose-400 to-red-500",
+      "from-lime-400 to-green-500",
+      "from-sky-400 to-blue-500",
+      "from-amber-400 to-yellow-500",
+      "from-fuchsia-400 to-pink-500",
+      "from-slate-400 to-gray-500",
+    ];
+
+    // Combine nama dan messageId untuk membuat hash yang unik per pesan
+    const combinedString = `${name}-${messageId}`;
+    let hash = 0;
+
+    for (let i = 0; i < combinedString.length; i++) {
+      hash = combinedString.charCodeAt(i) + ((hash << 5) - hash);
+    }
+
+    const index = Math.abs(hash) % gradients.length;
+    return gradients[index];
+  };
+
+  const initials = getInitials(name);
+  const gradientClass = getGradientColor(name, messageId);
+
+  return (
+    <div
+      className={`w-10 h-10 rounded-lg bg-gradient-to-br ${gradientClass} flex items-center justify-center shadow-md`}
+    >
+      <span className="text-white font-semibold text-xs">{initials}</span>
+    </div>
+  );
+};
+
 export const Messages: React.FC<MessagesProps> = ({
   handleClickOpenModalGift,
 }) => {
@@ -75,6 +151,7 @@ export const Messages: React.FC<MessagesProps> = ({
     hidden: { x: "80%", opacity: 0 },
     visible: { x: 0, opacity: 1 },
   };
+
   const handleSendingGiftClick = () => {
     // Track the sending gift click
     trackSendingGiftClick();
@@ -265,6 +342,10 @@ export const Messages: React.FC<MessagesProps> = ({
                   // Define animation based on whether this is a new message
                   const isNewItem = message.isNew;
 
+                  // Get the display name for avatar
+                  const displayName =
+                    message.contact?.name || message.name || "Guest";
+
                   return (
                     <motion.div
                       key={`message-${message.id}`}
@@ -281,18 +362,10 @@ export const Messages: React.FC<MessagesProps> = ({
                         delay: isNewItem ? 0 : index * 0.1, // Stagger delay for existing items
                       }}
                     >
-                      <Image
-                        src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733497935/Screenshot_2024-12-02_at_19.50.56_1_xe6zau.png"
-                        width={200}
-                        height={200}
-                        alt="User Avatar"
-                        className="w-10 h-10"
-                      />
+                      <StaticAvatar name={displayName} messageId={message.id} />
                       <div className="flex-1">
                         <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                          {message.contact?.name ||
-                            message.name ||
-                            "Wedding Guest"}
+                          {displayName}
                         </h3>
                         <p className="text-gray-300 text-sm lg:text-base w-max">
                           {typeof message.message === "string"
@@ -316,7 +389,7 @@ export const Messages: React.FC<MessagesProps> = ({
                             backgroundColor: "rgba(80, 80, 80, 0.7)",
                             willChange: "transform, opacity",
                           }}
-                          className="border-l-4 border-gray-400 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
+                          className="border-l-4 border-red-500 absolute right-[-2rem] lg:right-[-2.5rem] py-2 pr-10 pl-3 will-change-auto"
                         >
                           <p className="text-sm">🎁 Wedding Gift?</p>
                         </motion.div>
