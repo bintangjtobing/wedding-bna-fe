@@ -25,6 +25,97 @@ interface DialogProps {
   setOpenModalGift: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+const BrideGroomPhoto = ({
+  src,
+  alt,
+  delay = 0,
+}: {
+  src: string;
+  alt: string;
+  delay?: number;
+}) => {
+  return (
+    <div className="relative overflow-hidden rounded-2xl aspect-square group">
+      <Image
+        src={src}
+        width={500}
+        height={500}
+        alt={alt}
+        className="aspect-square transition-transform duration-700 group-hover:scale-105"
+        style={{
+          objectFit: "cover",
+        }}
+      />
+
+      {/* Efek Kilau Kaca */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100"
+        style={{
+          background: `linear-gradient(
+            135deg,
+            transparent 30%,
+            rgba(255, 255, 255, 0.1) 40%,
+            rgba(255, 255, 255, 0.3) 50%,
+            rgba(255, 255, 255, 0.1) 60%,
+            transparent 70%
+          )`,
+          animation: `shimmer 3s ease-in-out infinite ${delay}s`,
+        }}
+      />
+
+      {/* Overlay untuk efek kaca yang lebih halus */}
+      <div
+        className="absolute inset-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500"
+        style={{
+          background: `linear-gradient(
+            45deg,
+            transparent 0%,
+            rgba(255, 255, 255, 0.05) 25%,
+            rgba(255, 255, 255, 0.1) 50%,
+            rgba(255, 255, 255, 0.05) 75%,
+            transparent 100%
+          )`,
+          animation: `shimmerSlow 4s ease-in-out infinite ${delay + 1}s`,
+        }}
+      />
+
+      {/* CSS untuk animasi kilau */}
+      <style jsx>{`
+        @keyframes shimmer {
+          0% {
+            transform: translateX(-100%) translateY(-100%) rotate(90deg);
+            opacity: 0;
+          }
+          50% {
+            opacity: 1;
+          }
+          100% {
+            transform: translateX(100%) translateY(100%) rotate(90deg);
+            opacity: 0;
+          }
+        }
+
+        @keyframes shimmerSlow {
+          0% {
+            transform: translateX(-120%) translateY(-120%) rotate(90deg);
+            opacity: 0;
+          }
+          30% {
+            opacity: 0.3;
+          }
+          70% {
+            opacity: 0.3;
+          }
+          100% {
+            transform: translateX(120%) translateY(120%) rotate(90deg);
+            opacity: 0;
+          }
+        }
+      `}</style>
+    </div>
+  );
+};
+
 export const Modal: React.FC<DialogProps> = ({
   open,
   setOpen,
@@ -257,10 +348,105 @@ export const Modal: React.FC<DialogProps> = ({
                       <h4 className="mt-5 font-bold text-xl lg:text-xl">
                         {t("pengumuman.pengantar")}
                       </h4>
-                      <FormattedText
-                        text={t("pengumuman.isi")}
-                        className="mt-5 text-sm lg:text-base"
-                      />
+                      <div className="mt-5 text-sm lg:text-base">
+                        {(() => {
+                          const fullText = t("pengumuman.isi");
+
+                          // Split berdasarkan "Dengan penuh cinta,"
+                          const beforeSignature = fullText.split(
+                            "Dengan penuh cinta,"
+                          )[0];
+                          const afterSignature = fullText.split(
+                            "Dengan penuh cinta,"
+                          )[1];
+
+                          // Split bagian setelah signature untuk memisahkan nama
+                          const beforeNames = afterSignature
+                            ? afterSignature.split(
+                                "Bintang Tobing & Ayu Sinaga"
+                              )[0]
+                            : "";
+                          const namesAndHeart =
+                            "Bintang Tobing & Ayu Sinaga ❤️";
+
+                          // Function untuk convert text dengan \n menjadi React elements
+                          const renderTextWithBreaks = (text: string) => {
+                            return text
+                              .replace(/<3/g, "❤️")
+                              .split("\n")
+                              .map(
+                                (
+                                  line: string,
+                                  index: number,
+                                  array: string[]
+                                ) => {
+                                  const isEmptyLine = line.trim() === "";
+                                  const nextLineEmpty =
+                                    array[index + 1] &&
+                                    array[index + 1].trim() === "";
+
+                                  return (
+                                    <React.Fragment key={index}>
+                                      {/* Jika line kosong, render sebagai spacing */}
+                                      {isEmptyLine ? (
+                                        <div className="h-4"></div> // Spacing untuk line kosong
+                                      ) : (
+                                        <>
+                                          {line}
+                                          {/* Jika line berikutnya ada dan bukan kosong, tambah <br /> */}
+                                          {index < array.length - 1 &&
+                                            !isEmptyLine &&
+                                            !nextLineEmpty && <br />}
+                                          {/* Jika line berikutnya kosong (double break), tambah margin */}
+                                          {index < array.length - 1 &&
+                                            !isEmptyLine &&
+                                            nextLineEmpty && (
+                                              <div className="mb-4"></div>
+                                            )}
+                                        </>
+                                      )}
+                                    </React.Fragment>
+                                  );
+                                }
+                              );
+                          };
+
+                          return (
+                            <>
+                              {/* Text sebelum signature */}
+                              <div>{renderTextWithBreaks(beforeSignature)}</div>
+
+                              {/* "Dengan penuh cinta," */}
+                              <div className="mt-4 mb-2">
+                                Dengan penuh cinta,
+                              </div>
+
+                              {/* Tanda tangan */}
+                              <div className="flex justify-start my-6">
+                                <Image
+                                  src="https://res.cloudinary.com/dilb4d364/image/upload/v1750281053/signature-bintang-ayu-white_dnodsy.png"
+                                  width={150}
+                                  height={100}
+                                  alt="Tanda Tangan Bintang & Ayu"
+                                  className="opacity-100 filter drop-shadow-sm"
+                                />
+                              </div>
+
+                              {/* Nama pasangan */}
+                              <div className="text-left font-medium mb-2">
+                                {namesAndHeart}
+                              </div>
+
+                              {/* Text tambahan jika ada setelah nama */}
+                              {beforeNames && beforeNames.trim() && (
+                                <div className="mt-2">
+                                  {renderTextWithBreaks(beforeNames.trim())}
+                                </div>
+                              )}
+                            </>
+                          );
+                        })()}
+                      </div>
                     </div>
                     <div className="mt-8">
                       <h2 className="font-bold text-2xl lg:text-3xl">
@@ -268,18 +454,10 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <div className="grid lg:grid-cols-2 gap-10 mt-8">
                         <div>
-                          <Image
-                            src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/v1737136694/IMG_1871_uvkjbd.jpg"
-                            }
-                            width={500}
-                            height={500}
-                            alt="Asset Wedding Bintang & Ayu"
-                            className="aspect-square"
-                            style={{
-                              objectFit: "cover",
-                              borderRadius: "1rem",
-                            }}
+                          <BrideGroomPhoto
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1737136694/IMG_1871_uvkjbd.jpg"
+                            alt="Asset Wedding Bintang & Ayu - Pengantin Wanita"
+                            delay={0}
                           />
                           <div className="">
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
@@ -291,18 +469,10 @@ export const Modal: React.FC<DialogProps> = ({
                           </div>
                         </div>
                         <div>
-                          <Image
-                            src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/v1749929950/JON00751_hz0iwi.jpg"
-                            }
-                            width={500}
-                            height={500}
-                            alt="Asset Wedding Bintang & Ayu"
-                            className="aspect-square"
-                            style={{
-                              objectFit: "cover",
-                              borderRadius: "1rem",
-                            }}
+                          <BrideGroomPhoto
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1749929950/JON00751_hz0iwi.jpg"
+                            alt="Asset Wedding Bintang & Ayu - Pengantin Pria"
+                            delay={1.5}
                           />
                           <div>
                             <h3 className="lg:text-2xl text-xl font-bold mt-5">
