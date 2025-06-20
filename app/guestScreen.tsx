@@ -6,6 +6,7 @@ import { useSearchParams } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { useTranslate } from "@/context/LanguageContext";
 import FormattedText from "@/lib/FormatedText";
+import TypingAnimation from "@/components/TypingAnimation";
 
 interface Props {
   openGuest: boolean;
@@ -308,9 +309,11 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
                     text={t("intro.undangan_desc").replace("{name}", name)}
                     className="text-gray-300 text-base xl:text-lg mb-4 [&>p:not(:first-child)]:mt-1"
                   />
-                  <FormattedText
+                  <TypingAnimation
                     text={t("intro.undangan_note").replace("{name}", name)}
                     className="text-gray-400 text-sm xl:text-base"
+                    speed={50}
+                    delay={1000}
                   />
                 </div>
               </div>
