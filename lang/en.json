@@ -4,7 +4,10 @@
     "bahasa": "Language"
   },
   "intro": {
-    "undangan": "We respectfully invite you",
+    "undangan": "Dear",
+    "undangan_subtitle": "With great gratitude and happiness, we would like to invite you to attend our wedding ceremony",
+    "undangan_desc": "Your presence would be an honor and blessing for both of us.",
+    "undangan_note": "Although we are sending this invitation digitally, our respect and appreciation for {name} remain very high. We hope this method of delivery provides convenience in accessing the event information.",
     "nama_pasangan": "Bintang & Ayu",
     "sebelum_hari": "Before the big day",
     "segera_hadir": "Coming soon",

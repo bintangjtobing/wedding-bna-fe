@@ -4,7 +4,10 @@
     "bahasa": "Bahasa"
   },
   "intro": {
-    "undangan": "Dengan hormat, kami turut mengundang Saudara/i",
+    "undangan": "Yang Terhormat",
+    "undangan_subtitle": "Dengan penuh rasa syukur dan kebahagiaan, kami turut mengundang anda untuk hadir dalam acara pernikahan kami",
+    "undangan_desc": "Kehadiran {name} merupakan\nkehormatan dan keberkahan bagi kami berdua.",
+    "undangan_note": "Meskipun undangan ini kami sampaikan secara digital, namun rasa hormat dan penghargaan kami kepada {name} sangatlah besar.\nKami berharap cara penyampaian ini dapat memberikan kemudahan akses informasi.",
     "nama_pasangan": "Bintang & Ayu",
     "sebelum_hari": "Sebelum hari H",
     "segera_hadir": "Coming soon",

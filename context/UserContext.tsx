@@ -1,12 +1,13 @@
 // context/UserContext.tsx
-'use client'; // jika digunakan di App Router (Next.js 13+)
+"use client"; // jika digunakan di App Router (Next.js 13+)
 
-import React, { createContext, useContext, useState, ReactNode } from 'react';
+import React, { createContext, useContext, useState, ReactNode } from "react";
 
 type User = {
   name: string;
   phone_number: string;
-  username: string
+  username: string;
+  greeting: string;
 };
 
 type UserContextType = {
@@ -30,7 +31,7 @@ export const UserProvider = ({ children }: { children: ReactNode }) => {
 export const useUser = () => {
   const context = useContext(UserContext);
   if (!context) {
-    throw new Error('useUser must be used within a UserProvider');
+    throw new Error("useUser must be used within a UserProvider");
   }
   return context;
 };

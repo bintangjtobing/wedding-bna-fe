@@ -5,6 +5,7 @@ import { useEffect, useState, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useUser } from "@/context/UserContext";
 import { useTranslate } from "@/context/LanguageContext";
+import FormattedText from "@/lib/FormatedText";
 
 interface Props {
   openGuest: boolean;
@@ -239,6 +240,7 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
         setUser({
           name: result.data.name,
           username: result.data.username,
+          greeting: result.data.greeting || "",
           phone_number: result.data.phone_number || "",
         });
       } catch (error) {
@@ -275,9 +277,14 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
         >
           <div className="text-center px-6">
             {welcome && (
-              <h1 className="text-2xl xl:text-4xl font-medium max-w-3xl text-white mb-6">
-                {welcome}, <b>{name}</b>
-              </h1>
+              <div className="mb-6">
+                <h1 className="text-2xl xl:text-4xl font-medium max-w-3xl text-white mb-4">
+                  {welcome}, <b>{name}</b>
+                </h1>
+                <p className="text-gray-300 text-base xl:text-lg max-w-3xl mx-auto">
+                  {t("intro.undangan_subtitle")}
+                </p>
+              </div>
             )}
 
             {isLoading ? (
@@ -296,6 +303,16 @@ const GuestScreenContent = ({ openGuest, setOpenGuest }: Props) => {
             ) : (
               <div className="animate-fadeIn">
                 <DynamicAvatar name={name} />
+                <div className="mt-6 max-w-3xl mx-auto">
+                  <FormattedText
+                    text={t("intro.undangan_desc").replace("{name}", name)}
+                    className="text-gray-300 text-base xl:text-lg mb-4 [&>p:not(:first-child)]:mt-1"
+                  />
+                  <FormattedText
+                    text={t("intro.undangan_note").replace("{name}", name)}
+                    className="text-gray-400 text-sm xl:text-base"
+                  />
+                </div>
               </div>
             )}
           </div>
