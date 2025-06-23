@@ -344,21 +344,21 @@ export const Modal: React.FC<DialogProps> = ({
                         playsInline
                         preload="metadata"
                         id="prawedding-bintang-ayu-clip"
-                        poster="https://res.cloudinary.com/dilb4d364/image/upload/w_1080,h_608,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
+                        poster="https://res.cloudinary.com/dilb4d364/image/upload/v1749675453/bintang-ayu-1_tq8zas.jpg"
                         onClick={toggleVideoSound}
                       >
                         <source
-                          src="https://res.cloudinary.com/dilb4d364/video/upload/w_1080,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.mp4"
+                          src="https://res.cloudinary.com/dilb4d364/video/upload/v1737136144/prawedding-ba-1_vbgkrh.mp4"
                           type="video/mp4"
                         />
                         <source
-                          src="https://res.cloudinary.com/dilb4d364/video/upload/w_1080,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
+                          src="https://res.cloudinary.com/dilb4d364/video/upload/v1737136144/prawedding-ba-1_vbgkrh.webm"
                           type="video/webm"
                         />
                         {/* Fallback for browsers that don't support video */}
                         <div className="bg-gray-800 aspect-video rounded-t-3xl flex items-center justify-center">
                           <Image
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/w_1080,h_608,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1749675453/bintang-ayu-1_tq8zas.jpg"
                             width={1080}
                             height={608}
                             alt="Wedding Video Poster"
@@ -409,7 +409,7 @@ export const Modal: React.FC<DialogProps> = ({
                       />
                       <div className="absolute z-50 bottom-7 w-full px-5 lg:px-10">
                         <Image
-                          src="https://res.cloudinary.com/du0tz73ma/image/upload/w_200/q_auto/f_auto/v1733231582/image_3_gkyqke.png"
+                          src="https://res.cloudinary.com/du0tz73ma/image/upload/v1733231582/image_3_gkyqke.png"
                           width={100}
                           height={100}
                           loading="eager"
@@ -459,7 +459,7 @@ export const Modal: React.FC<DialogProps> = ({
                         {t("pengumuman.judul")}
                       </h2>
                       <Image
-                        src="https://res.cloudinary.com/dilb4d364/image/upload/w_1200,h_600,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
+                        src="https://res.cloudinary.com/dilb4d364/image/upload/v1749675453/bintang-ayu-1_tq8zas.jpg"
                         width={2000}
                         height={1000}
                         alt="Asset Wedding Bintang & Ayu"
@@ -519,7 +519,7 @@ export const Modal: React.FC<DialogProps> = ({
                               <div className="mt-4 mb-2">Dengan penuh cinta,</div>
                               <div className="flex justify-start my-6">
                                 <Image
-                                  src="https://res.cloudinary.com/dilb4d364/image/upload/w_300/q_auto/f_auto/v1750281053/signature-bintang-ayu-white_dnodsy.png"
+                                  src="https://res.cloudinary.com/dilb4d364/image/upload/v1750281053/signature-bintang-ayu-white_dnodsy.png"
                                   width={150}
                                   height={100}
                                   alt="Tanda Tangan Bintang & Ayu"
@@ -552,7 +552,7 @@ export const Modal: React.FC<DialogProps> = ({
                       <div className="grid lg:grid-cols-2 gap-10 mt-8">
                         <div>
                           <BrideGroomPhoto
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_600,c_fill/q_auto/f_auto/v1737136694/IMG_1871_uvkjbd.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1737136694/IMG_1871_uvkjbd.jpg"
                             alt="Asset Wedding Bintang & Ayu - Pengantin Wanita"
                             delay={0}
                           />
@@ -567,7 +567,7 @@ export const Modal: React.FC<DialogProps> = ({
                         </div>
                         <div>
                           <BrideGroomPhoto
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_600,c_fill/q_auto/f_auto/v1749929950/JON00751_hz0iwi.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1749929950/JON00751_hz0iwi.jpg"
                             alt="Asset Wedding Bintang & Ayu - Pengantin Pria"
                             delay={1.5}
                           />
@@ -589,7 +589,7 @@ export const Modal: React.FC<DialogProps> = ({
                         {t("acara.judul_pemberkatan")}
                       </h2>
                       <Image
-                        src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1080,h_550/q_auto/f_auto/v1750084942/488d9ec0-6342-4fe4-9eb3-884163f97f1e.png"
+                        src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_550/q_auto/f_auto/v1750084942/488d9ec0-6342-4fe4-9eb3-884163f97f1e.png"
                         width={1031}
                         height={400}
                         alt="Asset Wedding Bintang & Ayu"
@@ -635,7 +635,7 @@ export const Modal: React.FC<DialogProps> = ({
                     {/* Reception Event Section */}
                     <div className="mt-8">
                       <Image
-                        src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1080,h_550/q_auto/f_auto/v1750084956/6eed01fd-0f93-4445-a6c1-fd859fb71187.png"
+                        src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_550/q_auto/f_auto/v1750084956/6eed01fd-0f93-4445-a6c1-fd859fb71187.png"
                         width={1031}
                         height={403}
                         alt="Asset Wedding Bintang & Ayu"
@@ -685,128 +685,144 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       
                       {/* Episode 1 */}
-                      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
-                        <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_600,h_400,g_faces,z_0.7/q_auto/f_auto/v1749675740/How-we-meet-each_arrzc8.jpg"
-                          width={500}
-                          height={500}
-                          alt="Asset Wedding Bintang & Ayu"
-                          className="aspect-video"
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={generateBlurDataURL(16, 9)}
-                          style={{
-                            objectFit: "cover",
-                            borderRadius: "1rem",
-                            ...safariImageStyles,
-                          }}
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div className="">
                         <div>
-                          <h3 className="lg:text-3xl text-base">
-                            {t("kisah_cinta.episode1_judul")}
-                          </h3>
-                          <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                            {t("kisah_cinta.episode1_durasi")}
-                          </p>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            {t("kisah_cinta.episode1_isi")}
+                          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
+                            <Image
+                              src="https://res.cloudinary.com/dilb4d364/image/upload/v1749675740/How-we-meet-each_arrzc8.jpg"
+                              width={500}
+                              height={500}
+                              alt="Asset Wedding Bintang & Ayu"
+                              className="aspect-video"
+                              loading="eager"
+                              placeholder="blur"
+                              blurDataURL={generateBlurDataURL(16, 9)}
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                                ...safariImageStyles,
+                              }}
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                            <div>
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode1_judul")}
+                              </h3>
+                              <p className="text-gray-300 text-sm lg:mt-2 mt-1">
+                                {t("kisah_cinta.episode1_durasi")}
+                              </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode1_isi")}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Episode 2 */}
-                      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
-                        <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_600,h_400,g_faces/q_auto/f_auto/v1749675739/A-Love-that-Grows-With-Time_vpmirg.jpg"
-                          width={500}
-                          height={500}
-                          alt="Asset Wedding Bintang & Ayu"
-                          className="aspect-video"
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={generateBlurDataURL(16, 9)}
-                          style={{
-                            objectFit: "cover",
-                            borderRadius: "1rem",
-                            ...safariImageStyles,
-                          }}
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div>
                         <div>
-                          <h3 className="lg:text-3xl text-base">
-                            {t("kisah_cinta.episode2_judul")}
-                          </h3>
-                          <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                            {t("kisah_cinta.episode2_durasi")}
-                          </p>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            {t("kisah_cinta.episode2_isi")}
+                          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
+                            <Image
+                              src="https://res.cloudinary.com/dilb4d364/image/upload/v1749675739/A-Love-that-Grows-With-Time_vpmirg.jpg"
+                              width={500}
+                              height={500}
+                              alt="Asset Wedding Bintang & Ayu"
+                              className="aspect-video"
+                              loading="eager"
+                              placeholder="blur"
+                              blurDataURL={generateBlurDataURL(16, 9)}
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                                ...safariImageStyles,
+                              }}
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                            <div>
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode2_judul")}
+                              </h3>
+                              <p className="text-gray-300 text-sm lg:mt-2 mt-1">
+                                {t("kisah_cinta.episode2_durasi")}
+                              </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode2_isi")}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Episode 3 */}
-                      <div className="flex flex-col lg:flex-row items-start gap-5">
-                        <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_400,c_fill/q_auto/f_auto/v1749675739/choose-to-spend-life-together_gfmk6r.jpg"
-                          width={500}
-                          height={500}
-                          alt="Asset Wedding Bintang & Ayu"
-                          className="aspect-video"
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={generateBlurDataURL(16, 9)}
-                          style={{
-                            objectFit: "cover",
-                            borderRadius: "1rem",
-                            ...safariImageStyles,
-                          }}
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div>
                         <div>
-                          <h3 className="lg:text-3xl text-base">
-                            {t("kisah_cinta.episode3_judul")}
-                          </h3>
-                          <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                            {t("kisah_cinta.episode3_durasi")}
-                          </p>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            {t("kisah_cinta.episode3_isi")}
+                          <div className="flex flex-col lg:flex-row items-start gap-5">
+                            <Image
+                              src="https://res.cloudinary.com/dilb4d364/image/upload/v1749675739/choose-to-spend-life-together_gfmk6r.jpg"
+                              width={500}
+                              height={500}
+                              alt="Asset Wedding Bintang & Ayu"
+                              className="aspect-video"
+                              loading="eager"
+                              placeholder="blur"
+                              blurDataURL={generateBlurDataURL(16, 9)}
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                                ...safariImageStyles,
+                              }}
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                            <div>
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode3_judul")}
+                              </h3>
+                              <p className="text-gray-300 text-sm lg:mt-2 mt-1">
+                                {t("kisah_cinta.episode3_durasi")}
+                              </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode3_isi")}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
 
                       {/* Episode 4 */}
-                      <div className="flex flex-col lg:flex-row gap-5">
-                        <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_400,c_fill/q_auto/f_auto/v1749675739/the-begining-of-forever_msmt5f.jpg"
-                          width={500}
-                          height={500}
-                          alt="Asset Wedding Bintang & Ayu"
-                          className="aspect-video"
-                          loading="eager"
-                          placeholder="blur"
-                          blurDataURL={generateBlurDataURL(16, 9)}
-                          style={{
-                            objectFit: "cover",
-                            borderRadius: "1rem",
-                            ...safariImageStyles,
-                          }}
-                          sizes="(max-width: 768px) 100vw, 50vw"
-                        />
+                      <div>
                         <div>
-                          <button className="bg-[#EB2929] lg:px-8 lg:py-2 px-4 py-1 text-xs lg:text-base text-white font-semibold rounded-md lg:mb-5 mb-2">
-                            {t("kisah_cinta.segera_hadir")}
-                          </button>
-                          <h3 className="lg:text-3xl text-base">
-                            {t("kisah_cinta.episode4_judul")}
-                          </h3>
-                          <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                            {t("kisah_cinta.episode4_durasi")}
-                          </p>
-                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                            {t("kisah_cinta.episode4_isi")}
+                          <div className="flex flex-col lg:flex-row gap-5">
+                            <Image
+                              src="https://res.cloudinary.com/dilb4d364/image/upload/v1749675739/the-begining-of-forever_msmt5f.jpg"
+                              width={500}
+                              height={500}
+                              alt="Asset Wedding Bintang & Ayu"
+                              className="aspect-video"
+                              loading="eager"
+                              placeholder="blur"
+                              blurDataURL={generateBlurDataURL(16, 9)}
+                              style={{
+                                objectFit: "cover",
+                                borderRadius: "1rem",
+                                ...safariImageStyles,
+                              }}
+                              sizes="(max-width: 768px) 100vw, 50vw"
+                            />
+                            <div>
+                              <button className="bg-[#EB2929] lg:px-8 lg:py-2 px-4 py-1 text-xs lg:text-base text-white font-semibold rounded-md lg:mb-5 mb-2">
+                                {t("kisah_cinta.segera_hadir")}
+                              </button>
+                              <h3 className="lg:text-3xl text-base">
+                                {t("kisah_cinta.episode4_judul")}
+                              </h3>
+                              <p className="text-gray-300 text-sm lg:mt-2 mt-1">
+                                {t("kisah_cinta.episode4_durasi")}
+                              </p>
+                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                                {t("kisah_cinta.episode4_isi")}
+                              </div>
+                            </div>
                           </div>
                         </div>
                       </div>
@@ -819,7 +835,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-5">
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749677350/Fotoud55_klluze.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Fotoud55_klluze.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
@@ -833,7 +849,7 @@ export const Modal: React.FC<DialogProps> = ({
                         
                         <div className="relative">
                           <Image
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749930054/JON00963-3_1_vzem4m.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749930054/JON00963-3_1_vzem4m.jpg"
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
@@ -854,7 +870,7 @@ export const Modal: React.FC<DialogProps> = ({
                         </div>
                         
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749677350/Uud40_jphmyn.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Uud40_jphmyn.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
@@ -867,7 +883,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929952/JON00837-3_ce3s9k.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929952/JON00837-3_ce3s9k.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
@@ -880,7 +896,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929954/JON00599_wjbhn0.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929954/JON00599_wjbhn0.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
@@ -894,7 +910,7 @@ export const Modal: React.FC<DialogProps> = ({
                         
                         <div className="relative">
                           <Image
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749677352/Foto_revisi_6_dowzmz.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677352/Foto_revisi_6_dowzmz.jpg"
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
@@ -915,7 +931,7 @@ export const Modal: React.FC<DialogProps> = ({
                         </div>
                         
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929949/JON00678_klufwg.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929949/JON00678_klufwg.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
@@ -928,7 +944,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929952/edit-00943_mnw1qi.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929952/edit-00943_mnw1qi.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
@@ -941,7 +957,7 @@ export const Modal: React.FC<DialogProps> = ({
                         />
                         
                         <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929949/JON00667_behru6.jpg"
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929949/JON00667_behru6.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
