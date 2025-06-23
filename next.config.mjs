@@ -12,12 +12,6 @@ const nextConfig = {
     minimumCacheTTL: 60,
   },
   
-  // Enable experimental features for better performance
-  experimental: {
-    optimizeCss: true,
-    scrollRestoration: true,
-  },
-  
   // Webpack optimization
   webpack: (config, { dev, isServer }) => {
     if (!dev && !isServer) {
