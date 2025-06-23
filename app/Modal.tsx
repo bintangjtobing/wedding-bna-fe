@@ -24,6 +24,9 @@ interface DialogProps {
   setOpenModalGift: React.Dispatch<React.SetStateAction<boolean>>;
 }
 
+// Optimized blur placeholder for better loading experience
+const BLUR_DATA_URL = "data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wBDAAYEBQYFBAYGBQYHBwYIChAKCgkJChQODwwQFxQYGBcUFhYaHSUfGhsjHBYWICwgIyYnKSopGR8tMC0oMCUoKSj/2wBDAQcHBwoIChMKChMoGhYaKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCgoKCj/wAARCAABAAEDASIAAhEBAxEB/8QAFQABAQAAAAAAAAAAAAAAAAAAAAv/xAAUEAEAAAAAAAAAAAAAAAAAAAAA/8QAFQEBAQAAAAAAAAAAAAAAAAAAAAX/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwCdABmX/9k=";
+
 const BrideGroomPhoto = ({
   src,
   alt,
@@ -39,12 +42,15 @@ const BrideGroomPhoto = ({
         src={src}
         width={500}
         height={500}
-        loading="eager"
+        loading="lazy"
         alt={alt}
+        placeholder="blur"
+        blurDataURL={BLUR_DATA_URL}
         className="aspect-square transition-transform duration-700 group-hover:scale-105"
         style={{
           objectFit: "cover",
         }}
+        sizes="(max-width: 768px) 100vw, (max-width: 1200px) 50vw, 33vw"
       />
 
       {/* Efek Kilau Kaca */}
@@ -294,13 +300,14 @@ export const Modal: React.FC<DialogProps> = ({
                       ></div>
                       <div className="absolute z-50 bottom-7 w-full px-5 lg:px-10">
                         <Image
-                          src={
-                            "https://res.cloudinary.com/du0tz73ma/image/upload/w_1000/q_auto/f_auto/v1733231582/image_3_gkyqke.png"
-                          }
+                          src="https://res.cloudinary.com/du0tz73ma/image/upload/w_200/q_auto/f_auto/v1733231582/image_3_gkyqke.png"
                           width={100}
                           height={100}
-                          loading="lazy"
+                          loading="eager"
+                          priority={true}
                           alt="nikahfix-series"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                         />
                         <h1 className="text-2xl lg:text-3xl font-extrabold mb-2">
                           {t("intro.nama_pasangan")} <br />{" "}
@@ -336,14 +343,16 @@ export const Modal: React.FC<DialogProps> = ({
                         {t("pengumuman.judul")}
                       </h2>
                       <Image
-                        src={
-                          "https://res.cloudinary.com/dilb4d364/image/upload/w_2000/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
-                        }
+                        src="https://res.cloudinary.com/dilb4d364/image/upload/w_1200,h_600,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
                         width={2000}
                         height={1000}
                         alt="Asset Wedding Bintang & Ayu"
                         className="w-full aspect-video mt-5 rounded-3xl"
                         style={{ objectFit: "cover" }}
+                        loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={BLUR_DATA_URL}
+                        sizes="(max-width: 768px) 100vw, 1080px"
                       />
 
                       <h4 className="mt-5 font-bold text-xl lg:text-xl">
@@ -425,11 +434,14 @@ export const Modal: React.FC<DialogProps> = ({
                               {/* Tanda tangan */}
                               <div className="flex justify-start my-6">
                                 <Image
-                                  src="https://res.cloudinary.com/dilb4d364/image/upload/v1750281053/signature-bintang-ayu-white_dnodsy.png"
+                                  src="https://res.cloudinary.com/dilb4d364/image/upload/w_300/q_auto/f_auto/v1750281053/signature-bintang-ayu-white_dnodsy.png"
                                   width={150}
                                   height={100}
                                   alt="Tanda Tangan Bintang & Ayu"
                                   className="opacity-100 filter drop-shadow-sm"
+                                  loading="lazy"
+                                  placeholder="blur"
+                                  blurDataURL={BLUR_DATA_URL}
                                 />
                               </div>
 
@@ -456,7 +468,7 @@ export const Modal: React.FC<DialogProps> = ({
                       <div className="grid lg:grid-cols-2 gap-10 mt-8">
                         <div>
                           <BrideGroomPhoto
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1737136694/IMG_1871_uvkjbd.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_600,c_fill/q_auto/f_auto/v1737136694/IMG_1871_uvkjbd.jpg"
                             alt="Asset Wedding Bintang & Ayu - Pengantin Wanita"
                             delay={0}
                           />
@@ -471,7 +483,7 @@ export const Modal: React.FC<DialogProps> = ({
                         </div>
                         <div>
                           <BrideGroomPhoto
-                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1749929950/JON00751_hz0iwi.jpg"
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_600,c_fill/q_auto/f_auto/v1749929950/JON00751_hz0iwi.jpg"
                             alt="Asset Wedding Bintang & Ayu - Pengantin Pria"
                             delay={1.5}
                           />
@@ -492,14 +504,15 @@ export const Modal: React.FC<DialogProps> = ({
                         {t("acara.judul_pemberkatan")}
                       </h2>
                       <Image
-                        src={
-                          "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_550/q_auto/f_auto/v1750084942/488d9ec0-6342-4fe4-9eb3-884163f97f1e.png"
-                        }
+                        src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1080,h_550/q_auto/f_auto/v1750084942/488d9ec0-6342-4fe4-9eb3-884163f97f1e.png"
                         width={1031}
                         height={400}
                         alt="Asset Wedding Bintang & Ayu"
                         loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={BLUR_DATA_URL}
                         className="w-full rounded-3xl"
+                        sizes="(max-width: 768px) 100vw, 1080px"
                       />
                       <h2 className="lg:text-3xl text-xl font-bold mb-2 mt-8">
                         {t("acara.lokasi_pemberkatan")}
@@ -534,14 +547,15 @@ export const Modal: React.FC<DialogProps> = ({
                     </div>
                     <div className="mt-8">
                       <Image
-                        src={
-                          "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_550/q_auto/f_auto/v1750084956/6eed01fd-0f93-4445-a6c1-fd859fb71187.png"
-                        }
+                        src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1080,h_550/q_auto/f_auto/v1750084956/6eed01fd-0f93-4445-a6c1-fd859fb71187.png"
                         width={1031}
                         height={403}
                         alt="Asset Wedding Bintang & Ayu"
                         loading="lazy"
+                        placeholder="blur"
+                        blurDataURL={BLUR_DATA_URL}
                         className="w-full rounded-3xl"
+                        sizes="(max-width: 768px) 100vw, 1080px"
                       />
                       <h2 className="lx:text-3xl text-xl font-bold mb-2 mt-8">
                         {t("acara.lokasi_resepsi")}
@@ -582,80 +596,19 @@ export const Modal: React.FC<DialogProps> = ({
                         <div>
                           <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
                             <Image
-                              src={
-                                "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_600,g_faces,z_0.7/q_auto/f_auto/v1749675740/How-we-meet-each_arrzc8.jpg"
-                              }
+                              src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_600,h_400,g_faces,z_0.7/q_auto/f_auto/v1749675740/How-we-meet-each_arrzc8.jpg"
                               width={500}
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
                               loading="lazy"
+                              placeholder="blur"
+                              blurDataURL={BLUR_DATA_URL}
                               style={{
                                 objectFit: "cover",
                                 borderRadius: "1rem",
                               }}
-                            />
-                            <div>
-                              <h3 className="lg:text-3xl text-base">
-                                {t("kisah_cinta.episode1_judul")}
-                              </h3>
-                              <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                {t("kisah_cinta.episode1_durasi")}
-                              </p>
-                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                                {t("kisah_cinta.episode1_isi")}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div>
-                          <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
-                            <Image
-                              src={
-                                "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_600,g_faces/q_auto/f_auto/v1749675739/A-Love-that-Grows-With-Time_vpmirg.jpg"
-                              }
-                              width={500}
-                              height={500}
-                              alt="Asset Wedding Bintang & Ayu"
-                              className="aspect-video"
-                              loading="lazy"
-                              style={{
-                                objectFit: "cover",
-                                borderRadius: "1rem",
-                              }}
-                            />
-                            <div>
-                              <h3 className="lg:text-3xl text-base">
-                                {t("kisah_cinta.episode2_judul")}
-                              </h3>
-                              <p className="text-gray-300 text-sm lg:mt-2 mt-1">
-                                {t("kisah_cinta.episode2_durasi")}
-                              </p>
-                              <div className="mt-4 lg:text-lg text-xs text-gray-200">
-                                {t("kisah_cinta.episode2_isi")}
-                              </div>
-                            </div>
-                          </div>
-                        </div>
-                      </div>
-                      <div>
-                        <div>
-                          <div className="flex flex-col lg:flex-row items-start gap-5">
-                            <Image
-                              src={
-                                "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1749675739/choose-to-spend-life-together_gfmk6r.jpg"
-                              }
-                              width={500}
-                              height={500}
-                              alt="Asset Wedding Bintang & Ayu"
-                              className="aspect-video"
-                              loading="lazy"
-                              style={{
-                                objectFit: "cover",
-                                borderRadius: "1rem",
-                              }}
+                              sizes="(max-width: 768px) 100vw, 50vw"
                             />
                             <div>
                               <h3 className="lg:text-3xl text-base">
@@ -675,18 +628,19 @@ export const Modal: React.FC<DialogProps> = ({
                         <div>
                           <div className="flex flex-col lg:flex-row gap-5">
                             <Image
-                              src={
-                                "https://res.cloudinary.com/dilb4d364/image/upload/w_1000/q_auto/f_auto/v1749675739/the-begining-of-forever_msmt5f.jpg"
-                              }
+                              src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_400,c_fill/q_auto/f_auto/v1749675739/the-begining-of-forever_msmt5f.jpg"
                               width={500}
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
                               loading="lazy"
+                              placeholder="blur"
+                              blurDataURL={BLUR_DATA_URL}
                               style={{
                                 objectFit: "cover",
                                 borderRadius: "1rem",
                               }}
+                              sizes="(max-width: 768px) 100vw, 50vw"
                             />
                             <div>
                               <button className="bg-[#EB2929] lg:px-8 lg:py-2 px-4 py-1 text-xs lg:text-base text-white font-semibold rounded-md lg:mb-5 mb-2">
@@ -712,25 +666,27 @@ export const Modal: React.FC<DialogProps> = ({
                       </h2>
                       <div className="grid lg:grid-cols-3 grid-cols-2 lg:gap-10 gap-5">
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Fotoud55_klluze.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749677350/Fotoud55_klluze.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                         <div className="relative">
                           <Image
-                            src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749930054/JON00963-3_1_vzem4m.jpg"
-                            }
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749930054/JON00963-3_1_vzem4m.jpg"
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
                             loading="lazy"
+                            placeholder="blur"
+                            blurDataURL={BLUR_DATA_URL}
                             className="rounded-2xl absolute"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                           />
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:py-2 lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
@@ -741,45 +697,49 @@ export const Modal: React.FC<DialogProps> = ({
                           </div>
                         </div>
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677350/Uud40_jphmyn.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749677350/Uud40_jphmyn.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929952/JON00837-3_ce3s9k.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929952/JON00837-3_ce3s9k.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929954/JON00599_wjbhn0.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929954/JON00599_wjbhn0.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                         <div className="relative">
                           <Image
-                            src={
-                              "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749677352/Foto_revisi_6_dowzmz.jpg"
-                            }
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749677352/Foto_revisi_6_dowzmz.jpg"
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
                             loading="lazy"
+                            placeholder="blur"
+                            blurDataURL={BLUR_DATA_URL}
                             className="rounded-2xl"
+                            sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                           />
                           <div className="absolute bottom-4 w-full">
                             <div className="bg-[#EB2929] lg:px-3 py-1 px-2 rounded-lg w-fit mx-auto">
@@ -790,39 +750,39 @@ export const Modal: React.FC<DialogProps> = ({
                           </div>
                         </div>
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929949/JON00678_klufwg.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929949/JON00678_klufwg.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929952/edit-00943_mnw1qi.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929952/edit-00943_mnw1qi.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                         <Image
-                          src={
-                            "https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_1000,h_1518/q_auto/f_auto/v1749929949/JON00667_behru6.jpg"
-                          }
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_400,h_600/q_auto/f_auto/v1749929949/JON00667_behru6.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
                           loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={BLUR_DATA_URL}
                           className="rounded-2xl"
+                          sizes="(max-width: 768px) 50vw, (max-width: 1200px) 33vw, 25vw"
                         />
                       </div>
-                      {/* <Link href={'/more-collection'} className="block w-full py-3 rounded-md font-semibold bg-[#EB2929] text-center mt-8">
-                        Load more collections
-                      </Link> */}
 
                       <button
                         onClick={handleLoadMoreCollections}
@@ -851,4 +811,4 @@ export const Modal: React.FC<DialogProps> = ({
       </AnimatePresence>
     </>
   );
-};
+}
