@@ -134,7 +134,7 @@ export const ModalForMoreCollections: React.FC<
                             alt="Celebration"
                             fill
                             className="object-cover"
-                            loading="lazy"
+                            loading="eager"
                           />
                         </div>
                       </motion.div>
@@ -231,7 +231,7 @@ export const ModalForMoreCollections: React.FC<
                         alt="Wedding couple portrait"
                         fill
                         className="object-cover transition-transform duration-300 group-hover:scale-105"
-                        loading="lazy"
+                        loading="eager"
                       />
                       <div className="absolute inset-0 bg-black/10 rounded-3xl" />
                     </motion.div>
