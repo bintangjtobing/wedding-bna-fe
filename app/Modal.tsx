@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useRef } from "react";
 import Image from "next/image";
 import { motion, AnimatePresence } from "motion/react";
 import { useState } from "react";
@@ -155,6 +155,46 @@ export const Modal: React.FC<DialogProps> = ({
   const [username, setUserName] = useState<string>("");
   const [message, setMessage] = useState<string>("");
   const [attend, setAttend] = useState<string>("tidak_hadir");
+  const [videoMuted, setVideoMuted] = useState(true);
+  const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Handle video autoplay with sound for Android compatibility
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video && open) {
+      // Reset video state when modal opens
+      video.muted = true;
+      setVideoMuted(true);
+      
+      // Try to autoplay
+      const playVideo = async () => {
+        try {
+          await video.play();
+          // If autoplay succeeds, video will be muted by default
+          // User can click to unmute
+        } catch (error) {
+          console.log('Autoplay prevented:', error);
+        }
+      };
+      
+      // Small delay to ensure video is loaded
+      setTimeout(playVideo, 100);
+    }
+  }, [open]);
+
+  const toggleVideoSound = () => {
+    const video = videoRef.current;
+    if (video) {
+      if (video.muted) {
+        video.muted = false;
+        video.volume = 0.7;
+        setVideoMuted(false);
+      } else {
+        video.muted = true;
+        setVideoMuted(true);
+      }
+    }
+  };
 
   useEffect(() => {
     if (user?.name) {
@@ -293,37 +333,66 @@ export const Modal: React.FC<DialogProps> = ({
               <div className="absolute z-50 w-full h-screen">
                 <div className="w-screen lg:w-[1080px] mx-auto text-white overflow-hidden">
                   <div className="mt-20 rounded-t-3xl">
-                    {/* Safari-compatible video */}
-                    <video
-                      className="object-cover aspect-video rounded-t-3xl"
-                      autoPlay
-                      loop
-                      muted
-                      playsInline
-                      preload="metadata"
-                      id="prawedding-bintang-ayu-clip"
-                      poster="https://res.cloudinary.com/dilb4d364/image/upload/w_1080,h_608,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
-                    >
-                      <source
-                        src="https://res.cloudinary.com/dilb4d364/video/upload/w_1080,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.mp4"
-                        type="video/mp4"
-                      />
-                      <source
-                        src="https://res.cloudinary.com/dilb4d364/video/upload/w_1080,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
-                        type="video/webm"
-                      />
-                      {/* Fallback for browsers that don't support video */}
-                      <div className="bg-gray-800 aspect-video rounded-t-3xl flex items-center justify-center">
-                        <Image
-                          src="https://res.cloudinary.com/dilb4d364/image/upload/w_1080,h_608,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
-                          width={1080}
-                          height={608}
-                          alt="Wedding Video Poster"
-                          className="object-cover aspect-video rounded-t-3xl"
-                          priority={true}
+                    {/* Safari-compatible video with Android-friendly controls */}
+                    <div className="relative">
+                      <video
+                        ref={videoRef}
+                        className="object-cover aspect-video rounded-t-3xl w-full"
+                        autoPlay
+                        loop
+                        muted
+                        playsInline
+                        preload="metadata"
+                        id="prawedding-bintang-ayu-clip"
+                        poster="https://res.cloudinary.com/dilb4d364/image/upload/w_1080,h_608,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
+                        onClick={toggleVideoSound}
+                      >
+                        <source
+                          src="https://res.cloudinary.com/dilb4d364/video/upload/w_1080,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.mp4"
+                          type="video/mp4"
                         />
-                      </div>
-                    </video>
+                        <source
+                          src="https://res.cloudinary.com/dilb4d364/video/upload/w_1080,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
+                          type="video/webm"
+                        />
+                        {/* Fallback for browsers that don't support video */}
+                        <div className="bg-gray-800 aspect-video rounded-t-3xl flex items-center justify-center">
+                          <Image
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/w_1080,h_608,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
+                            width={1080}
+                            height={608}
+                            alt="Wedding Video Poster"
+                            className="object-cover aspect-video rounded-t-3xl"
+                            priority={true}
+                          />
+                        </div>
+                      </video>
+                      
+                      {/* Sound toggle button - positioned for mobile */}
+                      <button
+                        onClick={(e) => {
+                          e.stopPropagation();
+                          toggleVideoSound();
+                        }}
+                        className="absolute top-4 right-4 bg-black bg-opacity-70 text-white p-3 rounded-full hover:bg-opacity-90 transition-all duration-200 z-10 touch-manipulation"
+                        style={{ 
+                          WebkitTapHighlightColor: 'transparent',
+                          touchAction: 'manipulation'
+                        }}
+                        title={videoMuted ? "Tap to unmute video" : "Tap to mute video"}
+                      >
+                        {videoMuted ? (
+                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.765L4.757 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.757l3.626-3.765a1 1 0 011.617.765zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          </svg>
+                        ) : (
+                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
+                            <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.765L4.757 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.757l3.626-3.765a1 1 0 011.617.765zM12.22 8.22a1 1 0 011.56 0 5.5 5.5 0 010 7.56 1 1 0 01-1.56 0 3.5 3.5 0 000-4.95 1 1 0 010-1.39z" clipRule="evenodd" />
+                            <path d="M14.657 2.757a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414z" />
+                          </svg>
+                        )}
+                      </button>
+                    </div>
 
                     <div className="relative h-full w-full">
                       <div
