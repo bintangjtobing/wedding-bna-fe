@@ -609,7 +609,7 @@ export const Modal: React.FC<DialogProps> = ({
                       </button>
                     </div>
 
-                    {/* Love Story Section */}
+                    {/* Love Story Section - Complete with all 4 episodes */}
                     <div className="mt-8 space-y-5 lg:space-y-10">
                       <h2 className="lg:text-3xl text-2xl font-bold mb-2 lg:mb-8">
                         {t("kisah_cinta.judul")}
@@ -619,6 +619,68 @@ export const Modal: React.FC<DialogProps> = ({
                       <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
                         <Image
                           src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_600,h_400,g_faces,z_0.7/q_auto/f_auto/v1749675740/How-we-meet-each_arrzc8.jpg"
+                          width={500}
+                          height={500}
+                          alt="Asset Wedding Bintang & Ayu"
+                          className="aspect-video"
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={generateBlurDataURL(16, 9)}
+                          style={{
+                            objectFit: "cover",
+                            borderRadius: "1rem",
+                            ...safariImageStyles,
+                          }}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                        <div>
+                          <h3 className="lg:text-3xl text-base">
+                            {t("kisah_cinta.episode1_judul")}
+                          </h3>
+                          <p className="text-gray-300 text-sm lg:mt-2 mt-1">
+                            {t("kisah_cinta.episode1_durasi")}
+                          </p>
+                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                            {t("kisah_cinta.episode1_isi")}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Episode 2 */}
+                      <div className="flex flex-col lg:flex-row items-start lg:items-center gap-5">
+                        <Image
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/c_fill,w_600,h_400,g_faces/q_auto/f_auto/v1749675739/A-Love-that-Grows-With-Time_vpmirg.jpg"
+                          width={500}
+                          height={500}
+                          alt="Asset Wedding Bintang & Ayu"
+                          className="aspect-video"
+                          loading="lazy"
+                          placeholder="blur"
+                          blurDataURL={generateBlurDataURL(16, 9)}
+                          style={{
+                            objectFit: "cover",
+                            borderRadius: "1rem",
+                            ...safariImageStyles,
+                          }}
+                          sizes="(max-width: 768px) 100vw, 50vw"
+                        />
+                        <div>
+                          <h3 className="lg:text-3xl text-base">
+                            {t("kisah_cinta.episode2_judul")}
+                          </h3>
+                          <p className="text-gray-300 text-sm lg:mt-2 mt-1">
+                            {t("kisah_cinta.episode2_durasi")}
+                          </p>
+                          <div className="mt-4 lg:text-lg text-xs text-gray-200">
+                            {t("kisah_cinta.episode2_isi")}
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Episode 3 */}
+                      <div className="flex flex-col lg:flex-row items-start gap-5">
+                        <Image
+                          src="https://res.cloudinary.com/dilb4d364/image/upload/w_600,h_400,c_fill/q_auto/f_auto/v1749675739/choose-to-spend-life-together_gfmk6r.jpg"
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
