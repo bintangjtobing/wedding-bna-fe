@@ -6,23 +6,27 @@ import { UserProvider } from "@/context/UserContext";
 import { LanguageProvider } from "@/context/LanguageContext";
 import Script from "next/script";
 
-// Importing local fonts
+// Reduce Geist font usage
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
   variable: "--font-geist-sans",
-  weight: "100 900",
+  weight: "400 700", // Reduced weight range
+  display: 'swap',
+  preload: true,
 });
 
-const geistMono = localFont({
-  src: "./fonts/GeistMonoVF.woff",
-  variable: "--font-geist-mono",
-  weight: "100 900",
-});
+// const geistMono = localFont({
+//   src: "./fonts/GeistMonoVF.woff",
+//   variable: "--font-geist-mono",
+//   weight: "100 900",
+// });
 
-// Importing Poppins font with all weights
 const poppins = Poppins({
-  weight: ["300", "400", "500", "600", "700", "900"], // Requesting all weights
+  weight: ["400", "600"], // Hanya weight yang benar-benar digunakan
   subsets: ["latin"],
+  display: 'swap', // Better font loading experience
+  preload: true,
+  fallback: ['system-ui', 'arial'], // Fallback fonts
 });
 
 export const metadata: Metadata = {
@@ -70,9 +74,21 @@ export default function RootLayout({
           type="image/png"
           sizes="any"
         />
+
+        {/* Preload critical Cloudinary images */}
+        <link
+          rel="preload"
+          as="image"
+          href="https://res.cloudinary.com/dilb4d364/image/upload/w_400,h_400,c_fill,q_auto,f_auto/v1749703630/bintang-ayu-invitationcard_nmpn5s.jpg"
+        />
+
+        {/* DNS prefetch for external domains */}
+        <link rel="dns-prefetch" href="//res.cloudinary.com" />
+        <link rel="dns-prefetch" href="//www.googletagmanager.com" />
+        <link rel="dns-prefetch" href="//clarity.ms" />
       </head>
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${poppins.className} antialiased`}
+        className={`${geistSans.variable} ${poppins.className} antialiased`}
       >
         <LanguageProvider>
           <UserProvider>{children}</UserProvider>
