@@ -39,6 +39,7 @@ const BrideGroomPhoto = ({
         src={src}
         width={500}
         height={500}
+        loading="eager"
         alt={alt}
         className="aspect-square transition-transform duration-700 group-hover:scale-105"
         style={{
@@ -298,6 +299,7 @@ export const Modal: React.FC<DialogProps> = ({
                           }
                           width={100}
                           height={100}
+                          loading="lazy"
                           alt="nikahfix-series"
                         />
                         <h1 className="text-2xl lg:text-3xl font-extrabold mb-2">
@@ -496,6 +498,7 @@ export const Modal: React.FC<DialogProps> = ({
                         width={1031}
                         height={400}
                         alt="Asset Wedding Bintang & Ayu"
+                        loading="lazy"
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lg:text-3xl text-xl font-bold mb-2 mt-8">
@@ -537,6 +540,7 @@ export const Modal: React.FC<DialogProps> = ({
                         width={1031}
                         height={403}
                         alt="Asset Wedding Bintang & Ayu"
+                        loading="lazy"
                         className="w-full rounded-3xl"
                       />
                       <h2 className="lx:text-3xl text-xl font-bold mb-2 mt-8">
@@ -585,6 +589,7 @@ export const Modal: React.FC<DialogProps> = ({
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              loading="lazy"
                               style={{
                                 objectFit: "cover",
                                 borderRadius: "1rem",
@@ -615,6 +620,7 @@ export const Modal: React.FC<DialogProps> = ({
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              loading="lazy"
                               style={{
                                 objectFit: "cover",
                                 borderRadius: "1rem",
@@ -645,6 +651,7 @@ export const Modal: React.FC<DialogProps> = ({
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              loading="lazy"
                               style={{
                                 objectFit: "cover",
                                 borderRadius: "1rem",
@@ -675,6 +682,7 @@ export const Modal: React.FC<DialogProps> = ({
                               height={500}
                               alt="Asset Wedding Bintang & Ayu"
                               className="aspect-video"
+                              loading="lazy"
                               style={{
                                 objectFit: "cover",
                                 borderRadius: "1rem",
@@ -710,6 +718,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                         <div className="relative">
@@ -720,6 +729,7 @@ export const Modal: React.FC<DialogProps> = ({
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
+                            loading="lazy"
                             className="rounded-2xl absolute"
                           />
                           <div className="absolute bottom-4 w-full">
@@ -737,6 +747,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                         <Image
@@ -746,6 +757,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                         <Image
@@ -755,6 +767,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                         <div className="relative">
@@ -765,6 +778,7 @@ export const Modal: React.FC<DialogProps> = ({
                             width={500}
                             height={500}
                             alt="Asset Wedding Bintang & Ayu"
+                            loading="lazy"
                             className="rounded-2xl"
                           />
                           <div className="absolute bottom-4 w-full">
@@ -782,6 +796,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                         <Image
@@ -791,6 +806,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                         <Image
@@ -800,6 +816,7 @@ export const Modal: React.FC<DialogProps> = ({
                           width={500}
                           height={500}
                           alt="Asset Wedding Bintang & Ayu"
+                          loading="lazy"
                           className="rounded-2xl"
                         />
                       </div>
