@@ -1,4 +1,5 @@
 import { useTranslate } from "@/context/LanguageContext";
+import { useState } from "react";
 
 interface FormProps {
     setName: React.Dispatch<React.SetStateAction<string>>;
@@ -17,6 +18,18 @@ export const Form: React.FC<FormProps> = ({
 }) => {
 
     const t = useTranslate()
+    const [isLoading, setIsLoading] = useState(false)
+
+    const handleSubmit = async () => {
+        setIsLoading(true)
+        try {
+            await handleClick()
+        } catch (error) {
+            console.error('Error submitting form:', error)
+        } finally {
+            setIsLoading(false)
+        }
+    }
 
     return (
         <>
@@ -30,6 +43,7 @@ export const Form: React.FC<FormProps> = ({
                         value={name}
                         type="text"
                         className="bg-white h-10 text-black px-3"
+                        disabled={isLoading}
                     />
                 </div>
                 <div className="flex flex-col mt-10">
@@ -40,6 +54,7 @@ export const Form: React.FC<FormProps> = ({
                         onChange={(e) => setMessage(e.target.value)}
                         rows={5}
                         className="bg-white text-black px-3"
+                        disabled={isLoading}
                     />
                 </div>
                 <div className="mt-10 flex flex-col">
@@ -56,6 +71,7 @@ export const Form: React.FC<FormProps> = ({
                         id="attendance"
                         defaultValue="berhalangan-hadir"
                         aria-label="Attendance options"
+                        disabled={isLoading}
                     >
                         <option value="tidak_hadir">{t('kehadiran.berhalangan_hadir')}</option>
                         <option value="belum_pasti">{t('kehadiran.belum_pasti')}</option>
@@ -63,10 +79,24 @@ export const Form: React.FC<FormProps> = ({
                     </select>
                 </div>
                 <button
-                    onClick={handleClick}
-                    className="bg-[#EB2929] py-4 w-full text-white mt-8 font-medium rounded-md"
+                    onClick={handleSubmit}
+                    disabled={isLoading}
+                    className={`py-4 w-full text-white mt-8 font-medium rounded-md flex items-center justify-center gap-2 transition-all duration-200 ${
+                        isLoading 
+                            ? 'bg-gray-400 cursor-not-allowed' 
+                            : 'bg-[#EB2929] hover:bg-[#d12424]'
+                    }`}
                 >
-                     {t('ucapan.kirim')}
+                    {isLoading ? (
+                        <>
+                            <div className="w-5 h-5 border-2 border-white border-t-transparent rounded-full animate-spin"></div>
+                            <span>Mengirim...</span>
+                        </>
+                    ) : (
+                        <>
+                            <span>{t('ucapan.kirim')}</span>
+                        </>
+                    )}
                 </button>
             </div>
         </>

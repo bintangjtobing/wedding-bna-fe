@@ -132,6 +132,57 @@ const StaticAvatar = ({
   );
 };
 
+// Komponen Badge Kehadiran
+const AttendanceBadge = ({ attendance }: { attendance: string }) => {
+  const getBadgeConfig = (status: string) => {
+    switch (status) {
+      case "hadir":
+        return {
+          text: "Hadir",
+          bgColor: "bg-green-500/20",
+          textColor: "text-green-400",
+          borderColor: "border-green-500/30",
+          icon: "✓"
+        };
+      case "tidak_hadir":
+        return {
+          text: "Tidak Hadir",
+          bgColor: "bg-red-500/20",
+          textColor: "text-red-400",
+          borderColor: "border-red-500/30",
+          icon: "✗"
+        };
+      case "belum_pasti":
+        return {
+          text: "Belum Pasti",
+          bgColor: "bg-yellow-500/20",
+          textColor: "text-yellow-400",
+          borderColor: "border-yellow-500/30",
+          icon: "?"
+        };
+      default:
+        return {
+          text: "Belum Pasti",
+          bgColor: "bg-gray-500/20",
+          textColor: "text-gray-400",
+          borderColor: "border-gray-500/30",
+          icon: "?"
+        };
+    }
+  };
+
+  const config = getBadgeConfig(attendance);
+
+  return (
+    <div
+      className={`inline-flex items-center gap-1 px-2 py-1 rounded-full text-xs font-medium border ${config.bgColor} ${config.textColor} ${config.borderColor}`}
+    >
+      <span className="text-[10px]">{config.icon}</span>
+      <span>{config.text}</span>
+    </div>
+  );
+};
+
 export const Messages: React.FC<MessagesProps> = ({
   handleClickOpenModalGift,
 }) => {
@@ -366,9 +417,14 @@ export const Messages: React.FC<MessagesProps> = ({
                     >
                       <StaticAvatar name={displayName} messageId={message.id} />
                       <div className="flex-1">
-                        <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
-                          {displayName}
-                        </h3>
+                        <div className="flex items-start justify-between mb-1 lg:mb-3">
+                          <h3 className="lg:text-2xl text-base font-medium">
+                            {displayName}
+                          </h3>
+                          <div className="ml-2">
+                            <AttendanceBadge attendance={message.attendance} />
+                          </div>
+                        </div>
                         <p className="text-gray-300 text-sm lg:text-base break-words leading-relaxed">
                           {typeof message.message === "string"
                             ? message.message
