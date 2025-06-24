@@ -323,7 +323,9 @@ export const Messages: React.FC<MessagesProps> = ({
         </h2>
         <div className="space-y-5">
           {loading ? (
-            <p className="text-gray-300">Loading messages...</p>
+            <p className="text-gray-300 text-sm lg:text-base break-words leading-relaxed">
+              Loading messages...
+            </p>
           ) : error ? (
             <p className="text-red-400">{error}</p>
           ) : messages.length === 0 ? (
@@ -333,7 +335,7 @@ export const Messages: React.FC<MessagesProps> = ({
           ) : (
             <>
               <AnimatePresence mode="popLayout">
-                {messages.slice(0, 4).map((message, index) => {
+                {messages.slice(0, 10).map((message, index) => {
                   // Only add animation class for new messages
                   const newMessageClass = message.isNew
                     ? "border border-white/30 rounded-lg bg-white/5"
@@ -367,7 +369,7 @@ export const Messages: React.FC<MessagesProps> = ({
                         <h3 className="lg:text-2xl text-base font-medium mb-1 lg:mb-3">
                           {displayName}
                         </h3>
-                        <p className="text-gray-300 text-sm lg:text-base w-max">
+                        <p className="text-gray-300 text-sm lg:text-base break-words leading-relaxed">
                           {typeof message.message === "string"
                             ? message.message
                             : "Congratulations on your wedding day!"}
