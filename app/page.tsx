@@ -1,7 +1,7 @@
 "use client";
 
 import Image from "next/image";
-import { useState, useRef } from "react";
+import { useState, useRef, useEffect } from "react";
 import { Modal } from "./Modal";
 import { GuestScreen } from "./guestScreen";
 import { motion } from "framer-motion";
@@ -22,6 +22,43 @@ export default function Home() {
 
   // Referensi ke elemen video
   const videoRef = useRef<HTMLVideoElement>(null);
+
+  // Handle video autoplay for Safari
+  useEffect(() => {
+    const video = videoRef.current;
+    if (video) {
+      // Set video properties for Safari compatibility
+      video.muted = true;
+      video.playsInline = true;
+      
+      // Try to play video after component mounts
+      const playVideo = async () => {
+        try {
+          await video.play();
+          console.log('Video autoplay successful');
+        } catch (error) {
+          console.log('Autoplay prevented, will play on user interaction:', error);
+          
+          // If autoplay fails, try to play on any user interaction
+          const handleUserInteraction = async () => {
+            try {
+              await video.play();
+              document.removeEventListener('click', handleUserInteraction);
+              document.removeEventListener('touchstart', handleUserInteraction);
+            } catch (err) {
+              console.log('Manual play also failed:', err);
+            }
+          };
+          
+          document.addEventListener('click', handleUserInteraction);
+          document.addEventListener('touchstart', handleUserInteraction);
+        }
+      };
+      
+      // Small delay to ensure video is loaded
+      setTimeout(playVideo, 500);
+    }
+  }, []);
 
   // Variants untuk animasi
   const motionVariants = {
@@ -80,19 +117,58 @@ export default function Home() {
               />
             </div>
           </nav>
+          
+          {/* Safari-compatible video with enhanced autoplay */}
           <video
-            ref={videoRef} // Tambahkan referensi ke elemen video
+            ref={videoRef}
             className="h-screen object-cover w-screen"
             muted
-            autoPlay
             loop
+            playsInline
+            preload="auto"
             id="prawedding-bintang-ayu-clip"
+            poster="https://res.cloudinary.com/dilb4d364/image/upload/w_1920,h_1080,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg"
+            style={{
+              WebkitTransform: "translateZ(0)",
+              transform: "translateZ(0)",
+            }}
+            onLoadedData={() => {
+              // Try to play when video data is loaded
+              const video = videoRef.current;
+              if (video) {
+                video.play().catch(err => {
+                  console.log('Video play on loaded data failed:', err);
+                });
+              }
+            }}
+            onCanPlay={() => {
+              // Another attempt when video can play
+              const video = videoRef.current;
+              if (video) {
+                video.play().catch(err => {
+                  console.log('Video play on can play failed:', err);
+                });
+              }
+            }}
           >
+            {/* MP4 first for Safari compatibility */}
             <source
-              src="https://res.cloudinary.com/dilb4d364/video/upload/w_2000/q_auto/f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
+              src="https://res.cloudinary.com/dilb4d364/video/upload/w_1920,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.mp4"
+              type="video/mp4"
+            />
+            <source
+              src="https://res.cloudinary.com/dilb4d364/video/upload/w_1920,q_auto,f_auto/v1737136144/prawedding-ba-1_vbgkrh.webm"
               type="video/webm"
             />
+            {/* Fallback image for browsers that don't support video */}
+            <div 
+              className="h-screen w-screen bg-cover bg-center bg-no-repeat"
+              style={{
+                backgroundImage: "url('https://res.cloudinary.com/dilb4d364/image/upload/w_1920,h_1080,c_fill/q_auto/f_auto/v1749675453/bintang-ayu-1_tq8zas.jpg')"
+              }}
+            />
           </video>
+          
           <div
             style={{
               position: "absolute",
@@ -124,7 +200,14 @@ export default function Home() {
                     {t("intro.segera_hadir")}
                   </button>
                   <button
-                    onClick={() => handleOpenChange(true)}
+                    onClick={() => {
+                      // Try to play video on button click (user interaction)
+                      const video = videoRef.current;
+                      if (video && video.paused) {
+                        video.play().catch(err => console.log('Play on button click failed:', err));
+                      }
+                      handleOpenChange(true);
+                    }}
                     className="text-white py-2 px-3 lg:py-4 lg:px-9 rounded-md text-sm lg:text-2xl font-semibold flex gap-1 items-center"
                     style={{
                       backgroundColor: "rgba(249, 250, 251, 0.3)",

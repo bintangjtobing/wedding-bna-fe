@@ -36,6 +36,7 @@ const ImageModal: React.FC<ImageModalProps> = ({ isOpen, onClose, imageUrl }) =>
               width={1000}
               height={1000}
               className="rounded-lg w-full h-full object-contain"
+              loading="eager"
             />
           </div>
         </Dialog.Content>
