@@ -142,7 +142,7 @@ const AttendanceBadge = ({ attendance }: { attendance: string }) => {
           bgColor: "bg-green-500/20",
           textColor: "text-green-400",
           borderColor: "border-green-500/30",
-          icon: "✓"
+          icon: "✓",
         };
       case "tidak_hadir":
         return {
@@ -150,7 +150,7 @@ const AttendanceBadge = ({ attendance }: { attendance: string }) => {
           bgColor: "bg-red-500/20",
           textColor: "text-red-400",
           borderColor: "border-red-500/30",
-          icon: "✗"
+          icon: "✗",
         };
       case "belum_pasti":
         return {
@@ -158,7 +158,7 @@ const AttendanceBadge = ({ attendance }: { attendance: string }) => {
           bgColor: "bg-yellow-500/20",
           textColor: "text-yellow-400",
           borderColor: "border-yellow-500/30",
-          icon: "?"
+          icon: "?",
         };
       default:
         return {
@@ -166,7 +166,7 @@ const AttendanceBadge = ({ attendance }: { attendance: string }) => {
           bgColor: "bg-gray-500/20",
           textColor: "text-gray-400",
           borderColor: "border-gray-500/30",
-          icon: "?"
+          icon: "?",
         };
     }
   };
@@ -396,8 +396,7 @@ export const Messages: React.FC<MessagesProps> = ({
                   const isNewItem = message.isNew;
 
                   // Get the display name for avatar
-                  const displayName =
-                    message.contact?.name || message.name || "Guest";
+                  const displayName = message.name || "Guest";
 
                   return (
                     <motion.div
