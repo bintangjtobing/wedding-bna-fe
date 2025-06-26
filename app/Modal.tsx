@@ -9,6 +9,7 @@ import { Form } from "./Form";
 import { useUser } from "@/context/UserContext";
 import { Messages } from "@/components/commons/Messages";
 import { useTranslate } from "@/context/LanguageContext";
+import { trackSendingGiftClick } from "@/utils/analytics";
 import {
   trackLoadMoreCollections,
   trackSendMessage,
@@ -174,7 +175,7 @@ export const Modal: React.FC<DialogProps> = ({
           // If autoplay succeeds, video will be muted by default
           // User can click to unmute
         } catch (error) {
-          console.log('Autoplay prevented:', error);
+          console.log("Autoplay prevented:", error);
         }
       };
 
@@ -263,6 +264,7 @@ export const Modal: React.FC<DialogProps> = ({
   };
 
   const handleClickOpenModalGift = () => {
+    trackSendingGiftClick();
     trackModalOpen("Gift");
     setOpenModalGift(true);
     setOpen(false);
@@ -378,18 +380,38 @@ export const Modal: React.FC<DialogProps> = ({
                         }}
                         className="absolute top-4 right-4 bg-black bg-opacity-70 text-white p-3 rounded-full hover:bg-opacity-90 transition-all duration-200 z-10 touch-manipulation"
                         style={{
-                          WebkitTapHighlightColor: 'transparent',
-                          touchAction: 'manipulation'
+                          WebkitTapHighlightColor: "transparent",
+                          touchAction: "manipulation",
                         }}
-                        title={videoMuted ? "Tap to unmute video" : "Tap to mute video"}
+                        title={
+                          videoMuted
+                            ? "Tap to unmute video"
+                            : "Tap to mute video"
+                        }
                       >
                         {videoMuted ? (
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.765L4.757 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.757l3.626-3.765a1 1 0 011.617.765zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z" clipRule="evenodd" />
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.765L4.757 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.757l3.626-3.765a1 1 0 011.617.765zM12.293 7.293a1 1 0 011.414 0L15 8.586l1.293-1.293a1 1 0 111.414 1.414L16.414 10l1.293 1.293a1 1 0 01-1.414 1.414L15 11.414l-1.293 1.293a1 1 0 01-1.414-1.414L13.586 10l-1.293-1.293a1 1 0 010-1.414z"
+                              clipRule="evenodd"
+                            />
                           </svg>
                         ) : (
-                          <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 20 20">
-                            <path fillRule="evenodd" d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.765L4.757 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.757l3.626-3.765a1 1 0 011.617.765zM12.22 8.22a1 1 0 011.56 0 5.5 5.5 0 010 7.56 1 1 0 01-1.56 0 3.5 3.5 0 000-4.95 1 1 0 010-1.39z" clipRule="evenodd" />
+                          <svg
+                            className="w-6 h-6"
+                            fill="currentColor"
+                            viewBox="0 0 20 20"
+                          >
+                            <path
+                              fillRule="evenodd"
+                              d="M9.383 3.076A1 1 0 0110 4v12a1 1 0 01-1.617.765L4.757 13H2a1 1 0 01-1-1V8a1 1 0 011-1h2.757l3.626-3.765a1 1 0 011.617.765zM12.22 8.22a1 1 0 011.56 0 5.5 5.5 0 010 7.56 1 1 0 01-1.56 0 3.5 3.5 0 000-4.95 1 1 0 010-1.39z"
+                              clipRule="evenodd"
+                            />
                             <path d="M14.657 2.757a1 1 0 011.414 0A9.972 9.972 0 0119 10a9.972 9.972 0 01-2.929 7.071 1 1 0 01-1.414-1.414A7.971 7.971 0 0017 10c0-2.21-.894-4.208-2.343-5.657a1 1 0 010-1.414z" />
                           </svg>
                         )}
@@ -481,46 +503,64 @@ export const Modal: React.FC<DialogProps> = ({
                       <div className="mt-5 text-sm lg:text-base">
                         {(() => {
                           const fullText = t("pengumuman.isi");
-                          const beforeSignature = fullText.split("Dengan penuh cinta,")[0];
-                          const afterSignature = fullText.split("Dengan penuh cinta,")[1];
+                          const beforeSignature = fullText.split(
+                            "Dengan penuh cinta,"
+                          )[0];
+                          const afterSignature = fullText.split(
+                            "Dengan penuh cinta,"
+                          )[1];
                           const beforeNames = afterSignature
-                            ? afterSignature.split("Bintang Tobing & Ayu Sinaga")[0]
+                            ? afterSignature.split(
+                                "Bintang Tobing & Ayu Sinaga"
+                              )[0]
                             : "";
-                          const namesAndHeart = "Bintang Tobing & Ayu Sinaga ❤️";
+                          const namesAndHeart =
+                            "Bintang Tobing & Ayu Sinaga ❤️";
 
                           const renderTextWithBreaks = (text: string) => {
                             return text
                               .replace(/<3/g, "❤️")
                               .split("\n")
-                              .map((line: string, index: number, array: string[]) => {
-                                const isEmptyLine = line.trim() === "";
-                                const nextLineEmpty =
-                                  array[index + 1] && array[index + 1].trim() === "";
+                              .map(
+                                (
+                                  line: string,
+                                  index: number,
+                                  array: string[]
+                                ) => {
+                                  const isEmptyLine = line.trim() === "";
+                                  const nextLineEmpty =
+                                    array[index + 1] &&
+                                    array[index + 1].trim() === "";
 
-                                return (
-                                  <React.Fragment key={index}>
-                                    {isEmptyLine ? (
-                                      <div className="h-4"></div>
-                                    ) : (
-                                      <>
-                                        {line}
-                                        {index < array.length - 1 &&
-                                          !isEmptyLine &&
-                                          !nextLineEmpty && <br />}
-                                        {index < array.length - 1 &&
-                                          !isEmptyLine &&
-                                          nextLineEmpty && <div className="mb-4"></div>}
-                                      </>
-                                    )}
-                                  </React.Fragment>
-                                );
-                              });
+                                  return (
+                                    <React.Fragment key={index}>
+                                      {isEmptyLine ? (
+                                        <div className="h-4"></div>
+                                      ) : (
+                                        <>
+                                          {line}
+                                          {index < array.length - 1 &&
+                                            !isEmptyLine &&
+                                            !nextLineEmpty && <br />}
+                                          {index < array.length - 1 &&
+                                            !isEmptyLine &&
+                                            nextLineEmpty && (
+                                              <div className="mb-4"></div>
+                                            )}
+                                        </>
+                                      )}
+                                    </React.Fragment>
+                                  );
+                                }
+                              );
                           };
 
                           return (
                             <>
                               <div>{renderTextWithBreaks(beforeSignature)}</div>
-                              <div className="mt-4 mb-2">Dengan penuh cinta,</div>
+                              <div className="mt-4 mb-2">
+                                Dengan penuh cinta,
+                              </div>
                               <div className="flex justify-start my-6">
                                 <Image
                                   quality={85}
@@ -996,6 +1036,27 @@ export const Modal: React.FC<DialogProps> = ({
                       >
                         {t("galeri.muat_lebih")}
                       </button>
+                      {/* Gift Banner Section - NEW */}
+                      <div className="mt-8">
+                        <button
+                          onClick={handleClickOpenModalGift}
+                          className="w-full transition-all duration-300 hover:scale-[1.02] hover:shadow-lg"
+                        >
+                          <Image
+                            quality={85}
+                            src="https://res.cloudinary.com/dilb4d364/image/upload/v1750925018/wedding-gift-banner_h4eu1g.png"
+                            width={1200}
+                            height={200}
+                            alt="Wedding Gift Banner"
+                            loading="eager"
+                            placeholder="blur"
+                            blurDataURL={generateBlurDataURL(1200, 200)}
+                            className="w-full h-auto rounded-lg"
+                            sizes="(max-width: 768px) 100vw, 1200px"
+                            style={safariImageStyles}
+                          />
+                        </button>
+                      </div>
                     </div>
 
                     {/* Messages Component */}
