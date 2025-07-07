@@ -183,12 +183,43 @@ const AttendanceBadge = ({ attendance }: { attendance: string }) => {
   );
 };
 
+// Load More Button Component
+const LoadMoreButton = ({ onClick, hasMore }: { onClick: () => void; hasMore: boolean }) => {
+  if (!hasMore) return null;
+
+  return (
+    <div className="flex justify-center mt-6">
+      <button
+        onClick={onClick}
+        className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:scale-105"
+      >
+        <svg 
+          className="w-4 h-4" 
+          fill="none" 
+          stroke="currentColor" 
+          viewBox="0 0 24 24"
+        >
+          <path 
+            strokeLinecap="round" 
+            strokeLinejoin="round" 
+            strokeWidth={2} 
+            d="M19 14l-7 7m0 0l-7-7m7 7V3" 
+          />
+        </svg>
+        Load More Message
+      </button>
+    </div>
+  );
+};
+
 export const Messages: React.FC<MessagesProps> = ({
   handleClickOpenModalGift,
 }) => {
   const [messages, setMessages] = useState<MessageData[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
+  const [displayedMessageCount, setDisplayedMessageCount] = useState(10);
+  const [newlyLoadedMessages, setNewlyLoadedMessages] = useState<Set<string | number>>(new Set());
   const newMessageTimeoutRef = useRef<NodeJS.Timeout | null>(null);
   const t = useTranslate();
 
@@ -209,6 +240,27 @@ export const Messages: React.FC<MessagesProps> = ({
 
     // Call the original function
     handleClickOpenModalGift();
+  };
+
+  const handleLoadMore = () => {
+    const currentCount = displayedMessageCount;
+    const newCount = currentCount + 10;
+    
+    // Mark the newly loaded messages for animation
+    const newlyLoaded = new Set<string | number>();
+    for (let i = currentCount; i < Math.min(newCount, messages.length); i++) {
+      if (messages[i]) {
+        newlyLoaded.add(messages[i].id);
+      }
+    }
+    
+    setNewlyLoadedMessages(newlyLoaded);
+    setDisplayedMessageCount(newCount);
+    
+    // Clear the newly loaded messages after animation completes
+    setTimeout(() => {
+      setNewlyLoadedMessages(new Set());
+    }, 1000);
   };
 
   // Initial data fetch
@@ -386,14 +438,15 @@ export const Messages: React.FC<MessagesProps> = ({
           ) : (
             <>
               <AnimatePresence mode="popLayout">
-                {messages.slice(0, 10).map((message, index) => {
+                {messages.slice(0, displayedMessageCount).map((message, index) => {
                   // Only add animation class for new messages
                   const newMessageClass = message.isNew
                     ? "border border-white/30 rounded-lg bg-white/5"
                     : "";
 
-                  // Define animation based on whether this is a new message
+                  // Define animation based on whether this is a new message or newly loaded
                   const isNewItem = message.isNew;
+                  const isNewlyLoaded = newlyLoadedMessages.has(message.id);
 
                   // Get the display name for avatar
                   const displayName = message.name || "Guest";
@@ -404,14 +457,22 @@ export const Messages: React.FC<MessagesProps> = ({
                       className={`flex lg:gap-10 gap-5 relative p-2 ${newMessageClass}`}
                       layout
                       initial={
-                        isNewItem ? { opacity: 0, y: -50 } : { opacity: 1 }
+                        isNewItem 
+                          ? { opacity: 0, y: -50 } 
+                          : isNewlyLoaded 
+                            ? { opacity: 0, y: 20, scale: 0.95 }
+                            : { opacity: 1 }
                       }
-                      animate={{ opacity: 1, y: 0 }}
+                      animate={{ opacity: 1, y: 0, scale: 1 }}
                       transition={{
                         type: "spring",
                         stiffness: 300,
                         damping: 24,
-                        delay: isNewItem ? 0 : index * 0.1, // Stagger delay for existing items
+                        delay: isNewItem 
+                          ? 0 
+                          : isNewlyLoaded 
+                            ? (index - (displayedMessageCount - 10)) * 0.1 
+                            : index * 0.05,
                       }}
                     >
                       <StaticAvatar name={displayName} messageId={message.id} />
@@ -455,6 +516,10 @@ export const Messages: React.FC<MessagesProps> = ({
                   );
                 })}
               </AnimatePresence>
+              <LoadMoreButton 
+                onClick={handleLoadMore} 
+                hasMore={displayedMessageCount < messages.length} 
+              />
             </>
           )}
         </div>
