@@ -188,10 +188,14 @@ const LoadMoreButton = ({ onClick, hasMore }: { onClick: () => void; hasMore: bo
   if (!hasMore) return null;
 
   return (
-    <div className="flex justify-center mt-6">
+    <div className="flex justify-center mt-6 px-4">
       <button
         onClick={onClick}
-        className="flex items-center gap-2 px-4 py-2 bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:scale-105"
+        className="flex items-center justify-center gap-2 px-6 py-3 w-full max-w-xs bg-white/10 hover:bg-white/20 border border-white/20 rounded-lg text-white text-sm font-medium transition-all duration-200 hover:scale-105 active:scale-95"
+        style={{
+          WebkitTapHighlightColor: "transparent",
+          touchAction: "manipulation",
+        }}
       >
         <svg 
           className="w-4 h-4" 
