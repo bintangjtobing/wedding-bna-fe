@@ -257,8 +257,16 @@ Wahyu Roma,Rental Mobil`;
   }
 
   return (
-    <div className="min-h-screen bg-black text-white overflow-x-hidden">
-      <div className="max-w-4xl mx-auto px-8 py-16">
+    <div className="min-h-screen bg-black text-white overflow-x-hidden relative">
+      {/* Stars background */}
+      <div className="fixed inset-0 overflow-hidden pointer-events-none">
+        <div className="stars"></div>
+        <div className="stars2"></div>
+        <div className="stars3"></div>
+        <div className="shooting-star"></div>
+      </div>
+      
+      <div className="max-w-4xl mx-auto px-8 py-16 relative z-10">
         {/* Opening Section */}
         <div className="min-h-screen flex flex-col justify-center items-center text-center mb-32">
           <h1 className="text-6xl md:text-8xl font-bold mb-8 animate-fade-in">
@@ -413,6 +421,140 @@ Wahyu Roma,Rental Mobil`;
         .animate-fade-in-delay {
           animation: fade-in 1s ease-out 0.5s forwards;
           opacity: 0;
+        }
+        
+        /* Stars animation */
+        .stars, .stars2, .stars3 {
+          position: absolute;
+          width: 100%;
+          height: 100%;
+          top: 0;
+          left: 0;
+        }
+        
+        .stars {
+          background: transparent;
+        }
+        
+        .stars::before {
+          content: '';
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          border-radius: 50%;
+          box-shadow: 
+            20vw 10vh 0 0.5px rgba(255, 255, 255, 0.8),
+            40vw 20vh 0 0.5px rgba(255, 255, 255, 0.6),
+            60vw 30vh 0 1px rgba(255, 255, 255, 0.7),
+            80vw 15vh 0 0.5px rgba(255, 255, 255, 0.5),
+            10vw 50vh 0 0.5px rgba(255, 255, 255, 0.6),
+            30vw 60vh 0 1px rgba(255, 255, 255, 0.8),
+            50vw 70vh 0 0.5px rgba(255, 255, 255, 0.5),
+            70vw 80vh 0 0.5px rgba(255, 255, 255, 0.7),
+            90vw 40vh 0 1px rgba(255, 255, 255, 0.6),
+            15vw 90vh 0 0.5px rgba(255, 255, 255, 0.5),
+            35vw 95vh 0 0.5px rgba(255, 255, 255, 0.7),
+            55vw 85vh 0 1px rgba(255, 255, 255, 0.6),
+            75vw 25vh 0 0.5px rgba(255, 255, 255, 0.8),
+            25vw 35vh 0 0.5px rgba(255, 255, 255, 0.5),
+            45vw 45vh 0 1px rgba(255, 255, 255, 0.7),
+            65vw 55vh 0 0.5px rgba(255, 255, 255, 0.6),
+            85vw 65vh 0 0.5px rgba(255, 255, 255, 0.5),
+            95vw 75vh 0 1px rgba(255, 255, 255, 0.8);
+          animation: twinkle 4s ease-in-out infinite;
+        }
+        
+        .stars2 {
+          background: transparent;
+        }
+        
+        .stars2::before {
+          content: '';
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          border-radius: 50%;
+          box-shadow: 
+            5vw 5vh 0 0.5px rgba(255, 255, 255, 0.4),
+            25vw 15vh 0 0.5px rgba(255, 255, 255, 0.3),
+            45vw 25vh 0 0.5px rgba(255, 255, 255, 0.5),
+            65vw 35vh 0 0.5px rgba(255, 255, 255, 0.4),
+            85vw 45vh 0 0.5px rgba(255, 255, 255, 0.3),
+            15vw 55vh 0 0.5px rgba(255, 255, 255, 0.5),
+            35vw 65vh 0 0.5px rgba(255, 255, 255, 0.4),
+            55vw 75vh 0 0.5px rgba(255, 255, 255, 0.3),
+            75vw 85vh 0 0.5px rgba(255, 255, 255, 0.5),
+            95vw 95vh 0 0.5px rgba(255, 255, 255, 0.4);
+          animation: twinkle 6s ease-in-out infinite;
+          animation-delay: 1s;
+        }
+        
+        .stars3 {
+          background: transparent;
+        }
+        
+        .stars3::before {
+          content: '';
+          position: absolute;
+          width: 1px;
+          height: 1px;
+          border-radius: 50%;
+          box-shadow: 
+            12vw 8vh 0 0.5px rgba(255, 255, 255, 0.3),
+            32vw 18vh 0 0.5px rgba(255, 255, 255, 0.2),
+            52vw 28vh 0 0.5px rgba(255, 255, 255, 0.4),
+            72vw 38vh 0 0.5px rgba(255, 255, 255, 0.3),
+            92vw 48vh 0 0.5px rgba(255, 255, 255, 0.2),
+            22vw 58vh 0 0.5px rgba(255, 255, 255, 0.4),
+            42vw 68vh 0 0.5px rgba(255, 255, 255, 0.3),
+            62vw 78vh 0 0.5px rgba(255, 255, 255, 0.2),
+            82vw 88vh 0 0.5px rgba(255, 255, 255, 0.4);
+          animation: twinkle 8s ease-in-out infinite;
+          animation-delay: 2s;
+        }
+        
+        @keyframes twinkle {
+          0%, 100% { opacity: 1; }
+          50% { opacity: 0.3; }
+        }
+        
+        /* Shooting star */
+        .shooting-star {
+          position: absolute;
+          width: 2px;
+          height: 2px;
+          background: white;
+          border-radius: 50%;
+          animation: shoot 15s linear infinite;
+          opacity: 0;
+        }
+        
+        .shooting-star::before {
+          content: '';
+          position: absolute;
+          top: 0;
+          left: 0;
+          width: 50px;
+          height: 1px;
+          background: linear-gradient(to left, transparent, rgba(255, 255, 255, 0.6));
+          transform: translateX(-50px) translateY(0.5px);
+        }
+        
+        @keyframes shoot {
+          0% {
+            opacity: 0;
+            transform: translateX(-100px) translateY(-100px);
+          }
+          5% {
+            opacity: 1;
+          }
+          15% {
+            opacity: 0;
+            transform: translateX(100vw) translateY(50vh);
+          }
+          100% {
+            opacity: 0;
+          }
         }
       `}</style>
     </div>
