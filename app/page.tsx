@@ -158,7 +158,7 @@ Wahyu Roma,Rental Mobil`;
 
         return { name, role };
       })
-      .filter((item) => item && item.name);
+      .filter((item): item is Acknowledgment => item !== null && item.name !== "");
 
     setAcknowledgments(parsedData);
 
