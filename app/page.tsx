@@ -20,15 +20,81 @@ interface Guest {
   side: "groom" | "bride";
 }
 
+const translations = {
+  en: {
+    thankYou: "Thank You",
+    thankYouMessage: {
+      line1: "From the depths of our hearts, we express our gratitude.",
+      line2:
+        "To those who were present, you colored our happy day with warmth and love. To those who could not attend, your prayers and wishes still resonate in our hearts.",
+      line3:
+        "Every support, every good wish, and every prayer you gave is the most beautiful gift that we will cherish forever. You all have made our wedding perfect.",
+    },
+    specialThanks: "Special Thanks To",
+    belovedGuests: "Our Beloved Guests",
+    groomSide: "Groom's Side",
+    brideSide: "Bride's Side",
+    additionalThanks:
+      "And thank you to friends from Instagram and other platforms, whom we cannot mention one by one, thank you for your prayers and wishes.",
+    engagementVerse: "Engagement Verse",
+    weddingVerse: "Wedding Verse",
+  },
+  id: {
+    thankYou: "Terima Kasih",
+    thankYouMessage: {
+      line1: "Dari lubuk hati yang terdalam, kami mengucapkan terima kasih.",
+      line2:
+        "Bagi yang hadir, kalian telah mewarnai hari bahagia kami dengan kehangatan dan cinta. Bagi yang berhalangan hadir, doa dan ucapan kalian tetap kami rasakan dalam hati.",
+      line3:
+        "Setiap dukungan, setiap harapan baik, dan setiap doa yang kalian berikan adalah hadiah terindah yang akan kami kenang selamanya. Kalian semua telah membuat pernikahan kami menjadi sempurna.",
+    },
+    specialThanks: "Ucapan Terima Kasih Khusus Kepada",
+    belovedGuests: "Para Tamu Tercinta",
+    groomSide: "Dari Pihak Mempelai Pria",
+    brideSide: "Dari Pihak Mempelai Wanita",
+    additionalThanks:
+      "Dan terima kasih untuk teman-teman dari Instagram dan platform lainnya, yang tidak dapat kami sebutkan satu persatu, terima kasih untuk doa dan harapannya.",
+    engagementVerse: "Ayat Tunangan",
+    weddingVerse: "Ayat Pernikahan",
+  },
+};
+
 export default function Home() {
   const searchParams = useSearchParams();
   const weInvite = searchParams.get("we-invite");
+  const urlLang = searchParams.get("lang");
+  const [detectedLang, setDetectedLang] = useState<"en" | "id">("en");
+  const lang = (urlLang || detectedLang) as "en" | "id";
+  const t = translations[lang];
+
   const [acknowledgments, setAcknowledgments] = useState<Acknowledgment[]>([]);
   const [guests, setGuests] = useState<{ groom: Guest[]; bride: Guest[] }>({
     groom: [],
     bride: [],
   });
   const [isLoading, setIsLoading] = useState(true);
+
+  // Detect user location and set language
+  useEffect(() => {
+    if (!urlLang) {
+      fetch(
+        "https://api.ipgeolocation.io/ipgeo?apiKey=6980c4c2ec9d45039a0b241b7382e7fe"
+      )
+        .then((res) => res.json())
+        .then((data) => {
+          const countryCode = data.location?.country_code2;
+          if (countryCode === "ID") {
+            setDetectedLang("id");
+          } else {
+            setDetectedLang("en");
+          }
+        })
+        .catch((err) => {
+          console.error("Error detecting location:", err);
+          setDetectedLang("en");
+        });
+    }
+  }, [urlLang]);
 
   useEffect(() => {
     // Parse CSV data
@@ -73,7 +139,11 @@ Punguan Datudolok Simanjuntak Kota Medan,
 Punguan Simanjuntak Sitolu Sada Ina Sektor 19 Medan Timur,
 STM Punguan Saulaon,
 godbless.production,Documentation
+Solu Photoworks,Documentation
 larissasalonstudio,MUA For Bride
+JaksaMakeUp,MUA For Bride
+Management Wisma Mahinna,Venue
+Management Gereja HKBP Glugur,Church Venue
 ferrygunawandecor,Decoration
 Wahyu Roma,Rental Mobil`;
 
@@ -120,7 +190,7 @@ Wahyu Roma,Rental Mobil`;
       // Smooth scroll to bottom
       let startTime: number | null = null;
       let animationId: number | null = null;
-      
+
       const scrollAnimation = (currentTime: number) => {
         if (!startTime) startTime = currentTime;
         const elapsed = currentTime - startTime;
@@ -147,10 +217,19 @@ Wahyu Roma,Rental Mobil`;
         }
       };
 
-      window.addEventListener('wheel', handleManualScroll);
-      window.addEventListener('touchmove', handleManualScroll);
-      window.addEventListener('keydown', (e) => {
-        if (['ArrowUp', 'ArrowDown', 'PageUp', 'PageDown', 'Home', 'End'].includes(e.key)) {
+      window.addEventListener("wheel", handleManualScroll);
+      window.addEventListener("touchmove", handleManualScroll);
+      window.addEventListener("keydown", (e) => {
+        if (
+          [
+            "ArrowUp",
+            "ArrowDown",
+            "PageUp",
+            "PageDown",
+            "Home",
+            "End",
+          ].includes(e.key)
+        ) {
           handleManualScroll();
         }
       });
@@ -159,8 +238,8 @@ Wahyu Roma,Rental Mobil`;
         if (animationId) {
           cancelAnimationFrame(animationId);
         }
-        window.removeEventListener('wheel', handleManualScroll);
-        window.removeEventListener('touchmove', handleManualScroll);
+        window.removeEventListener("wheel", handleManualScroll);
+        window.removeEventListener("touchmove", handleManualScroll);
       };
     };
 
@@ -183,28 +262,19 @@ Wahyu Roma,Rental Mobil`;
         {/* Opening Section */}
         <div className="min-h-screen flex flex-col justify-center items-center text-center mb-32">
           <h1 className="text-6xl md:text-8xl font-bold mb-8 animate-fade-in">
-            Thank You
+            {t.thankYou}
           </h1>
           <div className="text-lg md:text-xl text-gray-300 animate-fade-in-delay max-w-3xl mx-auto leading-relaxed">
-            <p className="mb-4">
-              From the depths of our hearts, we express our gratitude.
-            </p>
-            <p className="mb-4">
-              To those who were present, you colored our happy day with warmth and love.
-              To those who could not attend, your prayers and wishes still resonate in our hearts.
-            </p>
-            <p>
-              Every support, every good wish, and every prayer you gave
-              is the most beautiful gift that we will cherish forever.
-              You all have made our wedding perfect.
-            </p>
+            <p className="mb-4">{t.thankYouMessage.line1}</p>
+            <p className="mb-4">{t.thankYouMessage.line2}</p>
+            <p>{t.thankYouMessage.line3}</p>
           </div>
         </div>
 
         {/* Acknowledgments Section */}
         <div className="mb-32">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            Special Thanks To
+            {t.specialThanks}
           </h2>
           <div className="space-y-6">
             {acknowledgments.map((ack, index) => (
@@ -229,13 +299,13 @@ Wahyu Roma,Rental Mobil`;
         {/* Guests Section */}
         <div className="mb-32">
           <h2 className="text-3xl md:text-4xl font-bold text-center mb-16">
-            Our Beloved Guests
+            {t.belovedGuests}
           </h2>
 
           {/* Groom's Side */}
           <div className="mb-16">
             <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-blue-400">
-              Groom's Side
+              {t.groomSide}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {guests.groom.map((guest, index) => (
@@ -258,7 +328,7 @@ Wahyu Roma,Rental Mobil`;
           {/* Bride's Side */}
           <div>
             <h3 className="text-2xl md:text-3xl font-semibold text-center mb-8 text-pink-400">
-              Bride's Side
+              {t.brideSide}
             </h3>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               {guests.bride.map((guest, index) => (
@@ -282,9 +352,7 @@ Wahyu Roma,Rental Mobil`;
         {/* Additional Thanks */}
         <div className="mb-32 text-center">
           <p className="text-lg md:text-xl text-gray-300 max-w-3xl mx-auto leading-relaxed">
-            And thank you to friends from Instagram and other platforms, 
-            whom we cannot mention one by one, 
-            thank you for your prayers and wishes.
+            {t.additionalThanks}
           </p>
         </div>
 
@@ -300,25 +368,27 @@ Wahyu Roma,Rental Mobil`;
           <div className="mt-12 space-y-8">
             <div>
               <h3 className="text-xl md:text-2xl font-semibold text-gray-300 mb-3">
-                Engagement Verse
+                {t.engagementVerse}
               </h3>
               <p className="text-lg md:text-xl text-gray-400 italic max-w-2xl mx-auto">
-                "See, I have engraved you on the palms of my hands; your walls are ever before me."
+                "See, I have engraved you on the palms of my hands; your walls
+                are ever before me."
               </p>
               <p className="text-base text-gray-500 mt-2">Isaiah 49:16</p>
             </div>
-            
+
             <div>
               <h3 className="text-xl md:text-2xl font-semibold text-gray-300 mb-3">
-                Wedding Verse
+                {t.weddingVerse}
               </h3>
               <p className="text-lg md:text-xl text-gray-400 italic max-w-2xl mx-auto">
-                "How long shall I take counsel in my soul, having sorrow in my heart daily? How long shall mine enemy be exalted over me?"
+                "How long shall I take counsel in my soul, having sorrow in my
+                heart daily? How long shall mine enemy be exalted over me?"
               </p>
               <p className="text-base text-gray-500 mt-2">Psalm 13:2</p>
             </div>
           </div>
-          
+
           <p className="text-lg text-gray-400 mt-12">2025</p>
         </div>
       </div>
