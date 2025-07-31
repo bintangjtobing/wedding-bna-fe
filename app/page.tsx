@@ -61,7 +61,7 @@ const translations = {
 
 export default function Home() {
   const searchParams = useSearchParams();
-  const weInvite = searchParams.get("we-invite");
+  // const weInvite = searchParams.get("we-invite"); // Reserved for future use
   const urlLang = searchParams.get("lang");
   const [detectedLang, setDetectedLang] = useState<"en" | "id">("en");
   const lang = (urlLang || detectedLang) as "en" | "id";
@@ -379,8 +379,8 @@ Wahyu Roma,Rental Mobil`;
                 {t.engagementVerse}
               </h3>
               <p className="text-lg md:text-xl text-gray-400 italic max-w-2xl mx-auto">
-                "See, I have engraved you on the palms of my hands; your walls
-                are ever before me."
+                &ldquo;See, I have engraved you on the palms of my hands; your walls
+                are ever before me.&rdquo;
               </p>
               <p className="text-base text-gray-500 mt-2">Isaiah 49:16</p>
             </div>
@@ -390,8 +390,8 @@ Wahyu Roma,Rental Mobil`;
                 {t.weddingVerse}
               </h3>
               <p className="text-lg md:text-xl text-gray-400 italic max-w-2xl mx-auto">
-                "How long shall I take counsel in my soul, having sorrow in my
-                heart daily? How long shall mine enemy be exalted over me?"
+                &ldquo;How long shall I take counsel in my soul, having sorrow in my
+                heart daily? How long shall mine enemy be exalted over me?&rdquo;
               </p>
               <p className="text-base text-gray-500 mt-2">Psalm 13:2</p>
             </div>
